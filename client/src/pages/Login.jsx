@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
@@ -27,8 +26,8 @@ function calcPasswordStrength(pw) {
 export default function Login() {
   const { user, login, signup, sendResetEmail } = useContext(AuthContext);
   const navigate = useNavigate();
-  const formTop = useRef();
-  const recaptchaRef = useRef();
+  const formTop = useRef(null);
+  const recaptchaRef = useRef(null);
 
   const [mode, setMode] = useState("login"); // "login" | "signup" | "reset"
   const [form, setForm] = useState({
@@ -43,6 +42,9 @@ export default function Login() {
   const [pwFocused, setPwFocused] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
 
+  // Vite env var for site key
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
   useEffect(() => {
     if (user) navigate("/home", { replace: true });
   }, [user, navigate]);
@@ -50,10 +52,17 @@ export default function Login() {
   useEffect(() => {
     formTop.current?.scrollIntoView({ behavior: "smooth" });
     setErrors({});
-    // reset recaptcha when mode changes
     setRecaptchaToken(null);
     recaptchaRef.current?.reset();
   }, [mode]);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((f) => ({
+      ...f,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
   const validate = () => {
     const errs = {};
@@ -65,9 +74,7 @@ export default function Login() {
       else if (mode === "signup" && form.password.length < 8)
         errs.password = "At least 8 characters";
     }
-    if (!recaptchaToken) {
-      errs.recaptcha = "Please complete the reCAPTCHA";
-    }
+    if (!recaptchaToken) errs.recaptcha = "Please complete the reCAPTCHA";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -93,10 +100,11 @@ export default function Login() {
         setMode("login");
       }
     } catch (err) {
-      toast.error(err.message || "Something went wrong");
+      toast.error(
+        err.response?.data?.error || err.message || "Something went wrong"
+      );
     } finally {
       setLoading(false);
-      // reset recaptcha for next submit
       recaptchaRef.current?.reset();
       setRecaptchaToken(null);
     }
@@ -147,9 +155,10 @@ export default function Login() {
             <div>
               <label className="block text-gray-300 mb-1">Name</label>
               <input
+                name="name"
                 type="text"
                 value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={handleChange}
                 className={`w-full px-4 py-2 bg-[#2a2a2a] text-white rounded-lg outline-none ${
                   errors.name
                     ? "border-red-500 border"
@@ -165,9 +174,10 @@ export default function Login() {
           <div>
             <label className="block text-gray-300 mb-1">Email</label>
             <input
+              name="email"
               type="email"
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={handleChange}
               className={`w-full px-4 py-2 bg-[#2a2a2a] text-white rounded-lg outline-none ${
                 errors.email
                   ? "border-red-500 border"
@@ -194,11 +204,10 @@ export default function Login() {
                   className="text-purple-400 mr-3"
                 />
                 <input
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   value={form.password}
-                  onChange={(e) =>
-                    setForm({ ...form, password: e.target.value })
-                  }
+                  onChange={handleChange}
                   onFocus={() => setPwFocused(true)}
                   onBlur={() => setPwFocused(false)}
                   className="flex-1 bg-transparent text-white outline-none"
@@ -242,9 +251,9 @@ export default function Login() {
             </div>
           )}
 
-          <div>
+          <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey="YOUR_RECAPTCHA_SITE_KEY"
+              sitekey={siteKey}
               onChange={(token) => {
                 setRecaptchaToken(token);
                 setErrors((e) => ({ ...e, recaptcha: undefined }));

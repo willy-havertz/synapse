@@ -1,34 +1,36 @@
 // server/src/middlewares/recaptcha.js
+require("dotenv").config(); // ← ensure RECAPTCHA_SECRET_KEY is loaded
 const axios = require("axios");
 
 async function verifyRecaptcha(req, res, next) {
-  const token = req.body.recaptcha;
+  // your front‑end is POSTing { recaptchaToken: "…" }
+  const token = req.body.recaptchaToken;
   if (!token) {
     return res.status(400).json({ error: "reCAPTCHA token missing" });
   }
 
   try {
     const secret = process.env.RECAPTCHA_SECRET_KEY;
-    // verify with Google
-    const resp = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify`,
+    const { data } = await axios.post(
+      "https://www.google.com/recaptcha/api/siteverify",
       null,
       {
         params: {
           secret,
           response: token,
-          remoteip: req.ip,
+          remoteip: req.ip, // optional
         },
       }
     );
-    if (!resp.data.success) {
-      return res
-        .status(403)
-        .json({
-          error: "reCAPTCHA verification failed",
-          details: resp.data["error-codes"],
-        });
+
+    if (!data.success) {
+      return res.status(403).json({
+        error: "reCAPTCHA verification failed",
+        details: data["error-codes"],
+      });
     }
+
+    // pass validation
     next();
   } catch (err) {
     console.error("reCAPTCHA error:", err);

@@ -1,4 +1,3 @@
-// src/pages/Register.jsx
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
@@ -27,6 +26,11 @@ export default function Register() {
     if (user) navigate("/home", { replace: true });
   }, [user, navigate]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,19 +41,20 @@ export default function Register() {
 
     setSubmitting(true);
     try {
-      // Pass recaptchaToken as third arg (adjust your signup signature accordingly)
       await signup(form.name, form.email, form.password, recaptchaToken);
       toast.success("🎉 Registration successful! Redirecting…");
       setTimeout(() => navigate("/login", { replace: true }), 1500);
     } catch (err) {
       toast.error(err.response?.data?.error || "❌ Registration failed");
-      // reset recaptcha so user can try again
       recaptchaRef.current.reset();
       setRecaptchaToken(null);
     } finally {
       setSubmitting(false);
     }
   };
+
+  // Vite env var for site key
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900 px-4">
@@ -66,10 +71,11 @@ export default function Register() {
               <FontAwesomeIcon icon={faUser} className="mr-2" /> Name
             </label>
             <input
+              name="name"
               type="text"
               placeholder="Your name"
               value={form.name}
-              onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+              onChange={handleChange}
               required
               className="w-full px-4 py-2 bg-gray-700 text-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
@@ -80,12 +86,11 @@ export default function Register() {
               <FontAwesomeIcon icon={faEnvelope} className="mr-2" /> Email
             </label>
             <input
+              name="email"
               type="email"
               placeholder="you@example.com"
               value={form.email}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, email: e.target.value }))
-              }
+              onChange={handleChange}
               required
               className="w-full px-4 py-2 bg-gray-700 text-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
@@ -96,12 +101,11 @@ export default function Register() {
               <FontAwesomeIcon icon={faLock} className="mr-2" /> Password
             </label>
             <input
+              name="password"
               type="password"
               placeholder="••••••••"
               value={form.password}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, password: e.target.value }))
-              }
+              onChange={handleChange}
               required
               className="w-full px-4 py-2 bg-gray-700 text-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
@@ -109,7 +113,7 @@ export default function Register() {
 
           <div className="flex justify-center">
             <ReCAPTCHA
-              sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+              sitekey={siteKey}
               onChange={setRecaptchaToken}
               ref={recaptchaRef}
             />

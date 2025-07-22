@@ -26,13 +26,17 @@ function calcPasswordStrength(pw) {
 export default function Signup() {
   const { user, signup } = useContext(AuthContext);
   const navigate = useNavigate();
-  const recaptchaRef = useRef();
+  const recaptchaRef = useRef(null);
+
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  // Pull your Vite env var
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   useEffect(() => {
     if (user) navigate("/home", { replace: true });
@@ -54,13 +58,14 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+
     setLoading(true);
     try {
       await signup(form.name, form.email, form.password, recaptchaToken);
       toast.success("Registration successful! Redirecting…", { icon: "🎉" });
       setTimeout(() => navigate("/home", { replace: true }), 1000);
     } catch (err) {
-      toast.error(err.response?.data?.error || "Sign‑up failed");
+      toast.error(err.response?.data?.error || "Sign-up failed");
     } finally {
       setLoading(false);
       recaptchaRef.current?.reset();
@@ -159,6 +164,7 @@ export default function Signup() {
             {errors.password && (
               <p className="mt-1 text-red-500 text-sm">{errors.password}</p>
             )}
+
             {/* Strength Meter */}
             <div className="mt-2">
               <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden mb-1">
@@ -190,7 +196,7 @@ export default function Signup() {
           {/* reCAPTCHA */}
           <div>
             <ReCAPTCHA
-              sitekey="YOUR_RECAPTCHA_SITE_KEY"
+              sitekey={siteKey}
               onChange={(token) => {
                 setRecaptchaToken(token);
                 setErrors((e) => ({ ...e, recaptcha: undefined }));
@@ -202,7 +208,7 @@ export default function Signup() {
             )}
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
