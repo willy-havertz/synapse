@@ -1,6 +1,6 @@
-// src/components/Layout.jsx
+
 import React, { useState, useContext, useEffect, useRef } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 import Footer from "./Footer";
 import ThemeContext from "../contexts/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
