@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Use Inter everywhere */
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* IE, Edge */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.gradient-text {
+  background: linear-gradient(to right, #8a4fff, #ff4fa1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
