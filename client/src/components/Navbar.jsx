@@ -1,8 +1,8 @@
-// src/components/NavBar.jsx
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import ThemeContext from "../contexts/ThemeContext";
+import api from "../services/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCog,
@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar({ mobileOpen, onMobileClose }) {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { dark, toggleTheme } = useContext(ThemeContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -143,10 +143,13 @@ export default function NavBar({ mobileOpen, onMobileClose }) {
             {dark ? "Light Mode" : "Dark Mode"}
           </span>
         </button>
+
         <button
           onClick={() => {
-            logout();
-            navigate("/login");
+            localStorage.removeItem("token");
+            delete api.defaults.headers.common.Authorization;
+
+            window.location.replace("/");
           }}
           className="flex items-center w-full px-4 py-2 space-x-3 bg-red-800 rounded-lg hover:bg-red-700 transition"
         >

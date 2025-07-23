@@ -1,7 +1,7 @@
-// src/pages/DeviceInspector.jsx
+
 import React, { useState, useEffect } from "react";
 
-// FontAwesome core styles
+
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;

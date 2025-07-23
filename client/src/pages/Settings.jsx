@@ -1,4 +1,3 @@
-// src/pages/Settings.jsx
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
@@ -7,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserEdit, faImage, faSave } from "@fortawesome/free-solid-svg-icons";
 
 export default function Settings() {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [name, setName] = useState("");
   const [avatarFile, setAvatarFile] = useState(null);
@@ -18,14 +17,12 @@ export default function Settings() {
   const [toast, setToast] = useState({ visible: false, message: "" });
   const fileInputRef = useRef();
 
-  // Populate fields once user arrives
   useEffect(() => {
     if (!user) return;
     setName(user.name || "");
     setAvatarPreview(user.avatarUrl || null);
   }, [user]);
 
-  // Mark dirty when name or avatar change
   useEffect(() => {
     if (!user) {
       setDirty(false);
@@ -52,10 +49,10 @@ export default function Settings() {
     if (!dirty) return;
     setSaving(true);
     try {
-      const form = new FormData();
-      form.append("name", name.trim());
-      if (avatarFile) form.append("avatar", avatarFile);
-      await api.put("/auth/profile", form);
+      const formData = new FormData();
+      formData.append("name", name.trim());
+      if (avatarFile) formData.append("avatar", avatarFile);
+      await api.put("/auth/profile", formData);
       showToast("Profile updated successfully!");
       setDirty(false);
     } catch {
@@ -164,12 +161,12 @@ export default function Settings() {
               : "bg-gray-700 cursor-not-allowed"
           }`}
         >
-          <FontAwesomeIcon icon={faSave} />
-          <span>{saving ? "Saving..." : "Save Changes"}</span>
+          <FontAwesomeIcon icon={faSave} className="mr-2" />
+          {saving ? "Saving..." : "Save Changes"}
         </button>
       </form>
 
-      {/* Privacy & Terms Links */}
+      {/* Privacy & Terms */}
       <div className="flex justify-between text-gray-400 px-2">
         <Link to="/privacy" className="hover:text-white">
           Privacy Policy
@@ -180,14 +177,12 @@ export default function Settings() {
       </div>
 
       {/* Sign Out */}
-      <div>
-        <button
-          onClick={() => setShowModal(true)}
-          className="w-full max-w-xs bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md transition"
-        >
-          Sign Out
-        </button>
-      </div>
+      <button
+        onClick={() => setShowModal(true)}
+        className="w-full max-w-xs bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md transition"
+      >
+        Sign Out
+      </button>
 
       {/* Confirmation Modal */}
       {showModal && (
@@ -207,7 +202,11 @@ export default function Settings() {
               <button
                 onClick={() => {
                   setShowModal(false);
-                  logout();
+
+                  localStorage.removeItem("token");
+                  delete api.defaults.headers.common.Authorization;
+
+                  window.location.replace("/");
                 }}
                 className="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white"
               >

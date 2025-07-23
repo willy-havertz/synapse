@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import 'react-toastify/dist/ReactToastify.css';
+@import "react-toastify/dist/ReactToastify.css";
 
 /* Use Inter everywhere */
 .hide-scrollbar::-webkit-scrollbar {
@@ -9,12 +9,36 @@
 
 /* IE, Edge */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.gradient-text {
-  background: linear-gradient(to right, #8a4fff, #ff4fa1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Base width */
+main::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+main::-webkit-scrollbar-track {
+  background: #2a2a2a; /* dark track */
+}
+
+/* Thumb */
+main::-webkit-scrollbar-thumb {
+  background-color: #7e22ce; /* purple-600 */
+  border-radius: 4px;
+}
+
+/* On light mode, override track */
+.dark main::-webkit-scrollbar-track {
+  background: #d1d5db; /* gray-300 in light mode */
+}
+
+/* Firefox */
+main {
+  scrollbar-width: thin;
+  scrollbar-color: #7e22ce #2a2a2a;
+}
+.dark main {
+  scrollbar-color: #7e22ce;
 }

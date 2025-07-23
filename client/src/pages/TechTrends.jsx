@@ -1,4 +1,4 @@
-// src/pages/TechTrends.jsx
+
 import React, { useState, useEffect, useCallback } from "react";
 import api from "../services/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

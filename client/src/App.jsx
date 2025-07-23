@@ -26,9 +26,9 @@ import Home from "./pages/Home";
 
 import Layout from "./components/Layout";
 
+// Track pageviews (unchanged)
 function AnalyticsTracker() {
   const { pathname } = useLocation();
-
   useEffect(() => {
     api
       .post("/analytics/event", {
@@ -39,16 +39,13 @@ function AnalyticsTracker() {
       })
       .catch(() => {});
   }, [pathname]);
-
   return null;
 }
 
+// Only allows through if user is logged in
 function ProtectedRoute({ children }) {
   const { user } = useContext(AuthContext);
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
+  return user ? children : <Navigate to="/login" replace />;
 }
 
 export default function App() {
@@ -57,7 +54,7 @@ export default function App() {
       <AnalyticsTracker />
 
       <Routes>
-        {/* Public routes */}
+        {/* ─── PUBLIC ─────────────────────────────────────────── */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login initialMode="login" />} />
         <Route path="/signup" element={<Login initialMode="signup" />} />
@@ -66,32 +63,92 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
 
-        {/* Protected app routes wrapped in Layout */}
+        {/* ─── PROTECTED ─────────────────────────────────────── */}
+        {/* Wrap Layout+page in ProtectedRoute */}
         <Route
-          path="/*"
+          path="/home"
           element={
             <ProtectedRoute>
               <Layout>
-                <Routes>
-                  <Route path="home" element={<Home />} />
-                  <Route path="chat" element={<Chat />} />
-                  <Route path="settings" element={<Settings />} />
-                  <Route path="photo-analyzer" element={<PhotoAnalyzer />} />
-                  <Route path="weather" element={<Weather />} />
-                  <Route
-                    path="device-inspector"
-                    element={<DeviceInspector />}
-                  />
-                  <Route path="tech-trends" element={<TechTrends />} />
-                  <Route path="analytics" element={<Analytics />} />
-
-                  {/* Redirect unknown protected paths to home */}
-                  <Route path="*" element={<Navigate to="/home" replace />} />
-                </Routes>
+                <Home />
               </Layout>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Chat />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Settings />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/photo-analyzer"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <PhotoAnalyzer />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/weather"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Weather />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/device-inspector"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <DeviceInspector />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tech-trends"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <TechTrends />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Analytics />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ─── FALLBACK ───────────────────────────────────────── */}
+        {/* Anything else (including after logout) goes to Landing */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

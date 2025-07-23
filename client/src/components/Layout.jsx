@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect, useRef } from "react";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
@@ -12,7 +11,6 @@ export default function Layout({ children }) {
   const mainRef = useRef(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
-  // Close sidebar on Escape
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "Escape" && sidebarOpen) {
@@ -23,16 +21,11 @@ export default function Layout({ children }) {
     return () => window.removeEventListener("keydown", handleKey);
   }, [sidebarOpen]);
 
-  // Show "Back to Top" button
   useEffect(() => {
-    const onScroll = () => {
-      if (mainRef.current.scrollTop > 300) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
     const el = mainRef.current;
+    const onScroll = () => {
+      setShowBackToTop(el.scrollTop > 300);
+    };
     el.addEventListener("scroll", onScroll);
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
@@ -49,13 +42,11 @@ export default function Layout({ children }) {
         dark ? "dark" : ""
       }`}
     >
-      {/* Sidebar */}
       <NavBar
         mobileOpen={sidebarOpen}
         onMobileClose={() => setSidebarOpen(false)}
       />
 
-      {/* Mobile menu button */}
       {!sidebarOpen && (
         <button
           onClick={openSidebar}
@@ -66,16 +57,25 @@ export default function Layout({ children }) {
         </button>
       )}
 
-      {/* Main content wrapper */}
       <div className="flex-1 flex flex-col">
         <main
           ref={mainRef}
           tabIndex={-1}
-          className="flex-1 overflow-y-auto scrollbar-hide scroll-smooth p-8"
+          className="
+            flex-1 
+            overflow-y-auto 
+            scroll-smooth 
+            p-8 
+
+            /* Tailwind scrollbar classes, requires scrollbar plugin */
+            scrollbar-thin 
+            scrollbar-thumb-purple-600 
+            scrollbar-track-gray-800 
+            dark:scrollbar-track-gray-300
+          "
         >
           {children}
 
-          {/* Back to Top button */}
           {showBackToTop && (
             <button
               onClick={scrollToTop}
