@@ -1,0 +1,105 @@
+
+{
+  "appName": "Synapse",
+
+  "nav": {
+    "home": "Start",
+    "features": "Funktionen",
+    "faq": "FAQ",
+    "about": "Über",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren"
+  },
+
+  "hero": {
+    "welcome": "Willkommen bei {{appName}}",
+    "tagline": "Ihr All-in-One KI-Toolkit: Chat, Fotoanalyse, Wetter, Geräte-Einblicke, Tech-Trends, Analysen und mehr.",
+    "getStarted": "Loslegen",
+    "discoverFeatures": "Funktionen entdecken"
+  },
+
+  "features": {
+    "title": "Leistungsstarke Funktionen",
+    "realTimeChat": "Echtzeit-Chat",
+    "realTimeChatDesc": "Verbinden Sie sich sofort mit Freunden.",
+    "photoAnalyzer": "Foto-Analyzer",
+    "photoAnalyzerDesc": "KI-gestützte Bildanalysen.",
+    "weatherDashboard": "Wetter-Dashboard",
+    "weatherDashboardDesc": "Genaue lokale Vorhersagen.",
+    "deviceInspector": "Geräte-Inspektor",
+    "deviceInspectorDesc": "Überwachen Sie den Zustand Ihres Geräts.",
+    "techTrends": "Tech-Trends",
+    "techTrendsDesc": "Bleiben Sie am Puls der Zeit.",
+    "analytics": "Analysen",
+    "analyticsDesc": "Tiefgehende Einblicke ins Nutzerverhalten."
+  },
+
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "q": "Wie melde ich mich an?",
+        "a": "Klicken Sie auf „Registrieren“, füllen Sie das Formular aus und legen Sie los."
+      },
+      {
+        "q": "Gibt es einen kostenlosen Tarif?",
+        "a": "Ja, die Basisfunktionen sind kostenlos. Premium bietet erweiterte Analysen."
+      },
+      {
+        "q": "Kann ich das Design wechseln?",
+        "a": "Verwenden Sie das Sonnen-/Mond-Symbol, um zwischen Hell- und Dunkelmodus umzuschalten."
+      },
+      {
+        "q": "Wie sicher sind meine Daten?",
+        "a": "Wir verwenden Verschlüsselung und teilen Ihre persönlichen Daten niemals."
+      }
+    ]
+  },
+
+  "about": {
+    "why": {
+      "title": "Warum wir es gebaut haben",
+      "text": "Genervt von verstreuten KI-Tools und fragmentierten Dashboards, machte sich unser Gründer Alex daran, eine einheitliche, intuitive Erfahrung zu schaffen. Synapse bündelt Chat, Analysen, Bild-Insights und mehr—damit Sie sich auf das Wesentliche konzentrieren können."
+    },
+    "metrics": {
+      "title": "Unser Einfluss",
+      "activeUsers": "Aktive Nutzer",
+      "photosAnalyzed": "Analysierte Fotos",
+      "apiCalls": "API-Aufrufe / Monat",
+      "uptime": "Verfügbarkeit"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "jane": {
+        "quote": "Die Echtzeit-Analysen von Synapse haben unser Engagement in nur zwei Wochen verdoppelt!"
+      },
+      "carlos": {
+        "quote": "Der KI-gestützte Foto-Analyzer ist magisch—unser Marketingteam liebt ihn."
+      },
+      "aisha": {
+        "quote": "Zuverlässig, schnell und einfach zu bedienen. Ein Muss-Toolkit."
+      }
+    },
+    "team": {
+      "title": "Lerne das Team kennen",
+      "alex": {
+        "role": "Gründer & CEO",
+        "bio": "Hat Synapse aus einer Garage heraus aufgebaut—liebt sauberen Code & starken Kaffee."
+      },
+      "maya": {
+        "role": "Leitende Ingenieurin",
+        "bio": "Architektin unserer Microservices & React-Expertin."
+      },
+      "ravi": {
+        "role": "KI-Forscher",
+        "bio": "Entwirft unsere ML-Modelle—PhD in neuronalen Netzen."
+      }
+    }
+  },
+
+  "footer": {
+    "copy": "© {{year}} Synapse. Alle Rechte vorbehalten."
+  }
+}

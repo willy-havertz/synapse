@@ -1,0 +1,104 @@
+{
+  "appName": "Synapse",
+
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "faq": "FAQ",
+    "about": "About",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+
+  "hero": {
+    "welcome": "Welcome to {{appName}}",
+    "tagline": "Your all-in-one AI toolkit: chat, photo analysis, weather, device insights, tech trends, analytics—and more.",
+    "getStarted": "Get Started",
+    "discoverFeatures": "Discover Features"
+  },
+
+  "features": {
+    "title": "Powerful Features",
+    "realTimeChat": "Real-time Chat",
+    "realTimeChatDesc": "Connect instantly with friends.",
+    "photoAnalyzer": "Photo Analyzer",
+    "photoAnalyzerDesc": "AI-powered image insights.",
+    "weatherDashboard": "Weather Dashboard",
+    "weatherDashboardDesc": "Accurate local forecasts.",
+    "deviceInspector": "Device Inspector",
+    "deviceInspectorDesc": "Monitor your device health.",
+    "techTrends": "Tech Trends",
+    "techTrendsDesc": "Stay ahead of the curve.",
+    "analytics": "Analytics",
+    "analyticsDesc": "Deep engagement insights."
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "How do I sign up?",
+        "a": "Click Sign Up, fill the form, and start exploring."
+      },
+      {
+        "q": "Is there a free tier?",
+        "a": "Yes, core features are free. Premium adds advanced analytics."
+      },
+      {
+        "q": "Can I switch themes?",
+        "a": "Use the sun/mood icon to toggle light/dark modes."
+      },
+      {
+        "q": "How secure is my data?",
+        "a": "We use encryption and never share your personal info."
+      }
+    ]
+  },
+
+  "about": {
+    "why": {
+      "title": "Why We Built It",
+      "text": "Tired of scattered AI tools and fragmented dashboards, our founder Alex set out to create one unified, intuitive experience. Synapse bundles chat, analytics, image insights, and more—so you can focus on building without the hassle."
+    },
+    "metrics": {
+      "title": "Our Impact",
+      "activeUsers": "Active Users",
+      "photosAnalyzed": "Photos Analyzed",
+      "apiCalls": "API Calls / mo",
+      "uptime": "Uptime"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "jane": {
+        "quote": "Synapse's real-time analytics helped us double our engagement in just two weeks!"
+      },
+      "carlos": {
+        "quote": "The AI-powered photo analyzer is magical—our marketing team loves it."
+      },
+      "aisha": {
+        "quote": "Reliable, fast, and easy to use. A must-have toolkit."
+      }
+    },
+    "team": {
+      "title": "Meet the Team",
+      "alex": {
+        "role": "Founder & CEO",
+        "bio": "Built Synapse out of a garage—loves clean code & strong coffee."
+      },
+      "maya": {
+        "role": "Lead Engineer",
+        "bio": "Architect of our micro-services & React wizard."
+      },
+      "ravi": {
+        "role": "AI Researcher",
+        "bio": "Designing our ML models—PhD in neural networks."
+      }
+    }
+  },
+
+  "footer": {
+    "copy": "© {{year}} Synapse. All rights reserved."
+  }
+}

@@ -11,7 +11,7 @@ export default function AuthProvider({ children }) {
   const fetchProfile = async () => {
     try {
       const { data } = await api.get("/auth/profile");
-      // data: { name, email, avatarUrl }
+      // data: { name, email, avatarUrl, ... }
       setUser(data);
     } catch (err) {
       console.error("Failed to fetch profile:", err);
@@ -25,7 +25,6 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // set axios header
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       fetchProfile().finally(() => setLoading(false));
     } else {
@@ -34,19 +33,32 @@ export default function AuthProvider({ children }) {
   }, []);
 
   // Login: save token, set header, fetch profile
-  const login = async (email, password) => {
-    const { data } = await api.post("/auth/login", { email, password });
+  const login = async (email, password, remember = false, recaptchaToken) => {
+    const payload = { email, password, remember, recaptchaToken };
+    console.log("🔵 AuthProvider.login payload:", payload);
+
+    const { data } = await api.post("/auth/login", payload);
     localStorage.setItem("token", data.token);
     api.defaults.headers.common.Authorization = `Bearer ${data.token}`;
     await fetchProfile();
   };
 
-  // Signup: same flow
-  const signup = async (name, email, password) => {
-    const { data } = await api.post("/auth/signup", { name, email, password });
+  // Signup: save token, set header, fetch profile
+  const signup = async (name, email, password, recaptchaToken) => {
+    const payload = { name, email, password, recaptchaToken };
+    console.log("🔵 AuthProvider.signup payload:", payload);
+
+    const { data } = await api.post("/auth/signup", payload);
     localStorage.setItem("token", data.token);
     api.defaults.headers.common.Authorization = `Bearer ${data.token}`;
     await fetchProfile();
+  };
+
+  // Send password reset email
+  const sendResetEmail = async (email, recaptchaToken) => {
+    const payload = { email, recaptchaToken };
+
+    await api.post("/auth/reset-password", payload);
   };
 
   // Logout: clear everything
@@ -55,14 +67,14 @@ export default function AuthProvider({ children }) {
     delete api.defaults.headers.common.Authorization;
     setUser(null);
   };
-
-  // Delay rendering until we've checked for token & tried fetching
   if (loading) {
-    return null; // or a <Spinner/> component
+    return null;
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, signup, sendResetEmail, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

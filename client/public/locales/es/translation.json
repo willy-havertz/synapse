@@ -1,0 +1,105 @@
+
+{
+  "appName": "Synapse",
+
+  "nav": {
+    "home": "Inicio",
+    "features": "Funciones",
+    "faq": "Preguntas Frecuentes",
+    "about": "Acerca de",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "signIn": "Iniciar sesión",
+    "signUp": "Regístrate"
+  },
+
+  "hero": {
+    "welcome": "Bienvenido a {{appName}}",
+    "tagline": "Tu conjunto de herramientas IA todo-en-uno: chat, análisis de fotos, clima, visión de dispositivo, tendencias tech, analíticas—y más.",
+    "getStarted": "Comenzar",
+    "discoverFeatures": "Descubrir Funciones"
+  },
+
+  "features": {
+    "title": "Funciones Poderosas",
+    "realTimeChat": "Chat en tiempo real",
+    "realTimeChatDesc": "Conéctate instantáneamente con amigos.",
+    "photoAnalyzer": "Analizador de Fotos",
+    "photoAnalyzerDesc": "Información de imagen impulsada por IA.",
+    "weatherDashboard": "Panel Meteorológico",
+    "weatherDashboardDesc": "Pronósticos locales precisos.",
+    "deviceInspector": "Inspector de Dispositivos",
+    "deviceInspectorDesc": "Monitorea la salud de tu dispositivo.",
+    "techTrends": "Tendencias Tech",
+    "techTrendsDesc": "Mantente a la vanguardia.",
+    "analytics": "Analíticas",
+    "analyticsDesc": "Información profunda de participación."
+  },
+
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "q": "¿Cómo me registro?",
+        "a": "Haz clic en 'Regístrate', completa el formulario y comienza a explorar."
+      },
+      {
+        "q": "¿Hay un plan gratuito?",
+        "a": "Sí, las funciones básicas son gratis. Premium ofrece analíticas avanzadas."
+      },
+      {
+        "q": "¿Puedo cambiar de tema?",
+        "a": "Usa el ícono sol/luna para alternar claro/oscuro."
+      },
+      {
+        "q": "¿Qué tan seguidos están mis datos?",
+        "a": "Usamos cifrado y nunca compartimos tu información personal."
+      }
+    ]
+  },
+
+  "about": {
+    "why": {
+      "title": "Por qué lo creamos",
+      "text": "Cansado de herramientas de IA dispersas y paneles fragmentados, nuestro fundador Alex decidió crear una experiencia unificada e intuitiva. Synapse agrupa chat, analíticas, visión de imágenes y más—para que te concentres en construir sin complicaciones."
+    },
+    "metrics": {
+      "title": "Nuestro Impacto",
+      "activeUsers": "Usuarios Activos",
+      "photosAnalyzed": "Fotos Analizadas",
+      "apiCalls": "Llamadas API / mes",
+      "uptime": "Disponibilidad"
+    },
+    "testimonials": {
+      "title": "Testimonios",
+      "jane": {
+        "quote": "¡Las analíticas en tiempo real de Synapse nos ayudaron a duplicar nuestro engagement en solo dos semanas!"
+      },
+      "carlos": {
+        "quote": "El analizador de fotos con IA es mágico—al equipo de marketing le encanta."
+      },
+      "aisha": {
+        "quote": "Confiable, rápido y fácil de usar. Un conjunto imprescindible."
+      }
+    },
+    "team": {
+      "title": "Conoce al Equipo",
+      "alex": {
+        "role": "Fundador y CEO",
+        "bio": "Construyó Synapse desde un garaje—ama el código limpio y el café fuerte."
+      },
+      "maya": {
+        "role": "Ingeniera Líder",
+        "bio": "Arquitecta de nuestros microservicios y maga de React."
+      },
+      "ravi": {
+        "role": "Investigador IA",
+        "bio": "Diseñando nuestros modelos ML—PhD en redes neuronales."
+      }
+    }
+  },
+
+  "footer": {
+    "copy": "© {{year}} Synapse. Todos los derechos reservados."
+  }
+}

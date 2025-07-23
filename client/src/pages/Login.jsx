@@ -1,3 +1,4 @@
+
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
@@ -23,13 +24,13 @@ function calcPasswordStrength(pw) {
   return score;
 }
 
-export default function Login() {
+export default function Login({ initialMode = "login" }) {
   const { user, login, signup, sendResetEmail } = useContext(AuthContext);
   const navigate = useNavigate();
   const formTop = useRef(null);
   const recaptchaRef = useRef(null);
 
-  const [mode, setMode] = useState("login"); // "login" | "signup" | "reset"
+  const [mode, setMode] = useState(initialMode);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -53,7 +54,7 @@ export default function Login() {
     formTop.current?.scrollIntoView({ behavior: "smooth" });
     setErrors({});
     setRecaptchaToken(null);
-    recaptchaRef.current?.reset();
+    if (recaptchaRef.current) recaptchaRef.current.reset();
   }, [mode]);
 
   const handleChange = (e) => {
@@ -81,9 +82,15 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) return;
-    setLoading(true);
 
+    if (!recaptchaRef.current) {
+      toast.error("reCAPTCHA is still loading—please wait a moment.");
+      return;
+    }
+
+    if (!validate()) return;
+
+    setLoading(true);
     try {
       if (mode === "login") {
         await login(form.email, form.password, form.remember, recaptchaToken);
@@ -105,7 +112,7 @@ export default function Login() {
       );
     } finally {
       setLoading(false);
-      recaptchaRef.current?.reset();
+      if (recaptchaRef.current) recaptchaRef.current.reset();
       setRecaptchaToken(null);
     }
   };
@@ -267,7 +274,7 @@ export default function Login() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !recaptchaRef.current || !recaptchaToken}
             className={`w-full flex items-center justify-center py-2 text-white font-semibold rounded-lg transition ${
               loading
                 ? "bg-gray-600 cursor-not-allowed"
