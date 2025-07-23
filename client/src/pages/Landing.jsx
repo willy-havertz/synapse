@@ -97,6 +97,7 @@ export default function Landing() {
 
   return (
     <div
+      id="landing-root"
       className={`
         ${dark ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"}
         min-h-screen flex flex-col overflow-y-scroll snap-y snap-mandatory

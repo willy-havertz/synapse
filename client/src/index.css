@@ -42,3 +42,11 @@ main {
 .dark main {
   scrollbar-color: #7e22ce;
 }
+
+#landing-root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#landing-root::-webkit-scrollbar {
+  display: none;
+}

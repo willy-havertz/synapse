@@ -4,7 +4,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const setupCors = require("./config/cors");
 const helmet = require("./config/helmet");
-const upload = require("./config/multer"); // ← our new in-memory multer
+const upload = require("./config/multer");
 const setupSocket = require("./config/socket");
 
 const Conversation = require("./models/Conversation");
@@ -30,15 +30,13 @@ app.use(express.json());
 // 4) ROUTES
 app.use("/api/weather", weatherRouter);
 app.use("/api/auth", authRoutes);
-console.log("Auth routes mounted at /api/auth");
+
 app.use("/api/user", authRoutes); // also expose /api/user/profile
 app.use("/api/trends", trendsRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
 // 5) PHOTO ANALYSIS (uses same in-memory multer)
 app.post("/api/photo/analyze", upload.single("photo"), async (req, res) => {
-  // Your req.file.buffer is here
-  // …do analysis…
   res.json({
     success: true,
     analysis: {

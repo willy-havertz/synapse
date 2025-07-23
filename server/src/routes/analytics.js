@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const AnalyticsEvent = require("../models/AnalyticsEvent");
 
-// POST /api/analytics/event
-// Record a single event
 router.post("/event", async (req, res) => {
   const { eventType, path, referrer, timestamp } = req.body;
   // Basic validation
@@ -28,8 +26,7 @@ router.post("/event", async (req, res) => {
   }
 });
 
-// GET /api/analytics/overview?start=YYYY-MM-DD&end=YYYY-MM-DD
-// Returns counts of each eventType, total events, etc.
+
 router.get("/overview", async (req, res) => {
   const { start, end } = req.query;
   const startDate = new Date(start);
@@ -63,8 +60,7 @@ router.get("/overview", async (req, res) => {
   }
 });
 
-// GET /api/analytics/visitors?start=…&end=…
-// Return time-series of pageview counts per day
+
 router.get("/visitors", async (req, res) => {
   const { start, end } = req.query;
   const startDate = new Date(start);
@@ -101,8 +97,7 @@ router.get("/visitors", async (req, res) => {
   }
 });
 
-// GET /api/analytics/top-pages?start=…&end=…
-// Return top N pages by pageview count
+
 router.get("/top-pages", async (req, res) => {
   const { start, end, limit = 5 } = req.query;
   const startDate = new Date(start);
@@ -138,8 +133,7 @@ router.get("/top-pages", async (req, res) => {
   }
 });
 
-// GET /api/analytics/sources?start=…&end=…
-// Return distribution of referrers
+
 router.get("/sources", async (req, res) => {
   const { start, end } = req.query;
   const startDate = new Date(start);

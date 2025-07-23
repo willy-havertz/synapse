@@ -35,7 +35,6 @@ export default function AuthProvider({ children }) {
   // Login: save token, set header, fetch profile
   const login = async (email, password, remember = false, recaptchaToken) => {
     const payload = { email, password, remember, recaptchaToken };
-    console.log("🔵 AuthProvider.login payload:", payload);
 
     const { data } = await api.post("/auth/login", payload);
     localStorage.setItem("token", data.token);
@@ -46,7 +45,6 @@ export default function AuthProvider({ children }) {
   // Signup: save token, set header, fetch profile
   const signup = async (name, email, password, recaptchaToken) => {
     const payload = { name, email, password, recaptchaToken };
-    console.log("🔵 AuthProvider.signup payload:", payload);
 
     const { data } = await api.post("/auth/signup", payload);
     localStorage.setItem("token", data.token);

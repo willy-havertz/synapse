@@ -1,3 +1,4 @@
+// src/pages/Analytics.jsx
 
 import React, { useState, useEffect, useCallback } from "react";
 import api from "../services/api";
@@ -24,16 +25,19 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
 } from "recharts";
 
+// quick ranges for the date buttons
 const QUICK_RANGES = [
   { label: "7 d", days: 7 },
   { label: "30 d", days: 30 },
   { label: "90 d", days: 90 },
 ];
 
-// helper to shift date
+// colors for your Pie slices
+const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#8dd1e1"];
+
+// helper to shift date by N days ago, formatted YYYY‑MM‑DD
 function shiftDate(daysAgo = 0) {
   const d = new Date();
   d.setDate(d.getDate() - daysAgo);
@@ -53,7 +57,7 @@ export default function Analytics() {
     end: shiftDate(0),
   });
 
-  // fetch all analytics
+  // fetch analytics from backend
   const fetchAnalytics = useCallback(async () => {
     setLoading(true);
     setError("");
@@ -79,7 +83,7 @@ export default function Analytics() {
     fetchAnalytics();
   }, [fetchAnalytics]);
 
-  // CSV export (overview or timeseries)
+  // CSV export helper
   const downloadCSV = (rows, filename, headers) => {
     const csv = [
       headers.join(","),
@@ -100,7 +104,6 @@ export default function Analytics() {
       `overview_${range.start}_to_${range.end}.csv`,
       ["metric", "value"]
     );
-
   const onExportVisitors = () =>
     downloadCSV(timeSeries, `visitors_${range.start}_to_${range.end}.csv`, [
       "date",
@@ -198,7 +201,7 @@ export default function Analytics() {
         </div>
       </div>
 
-      {/* Summary Cards or Skeleton */}
+      {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {loading || !stats
           ? Array.from({ length: 4 }).map((_, i) => (
@@ -278,10 +281,7 @@ export default function Analytics() {
                 />
                 <YAxis stroke="#888" tick={{ fontSize: 12 }} />
                 <ReTooltip
-                  contentStyle={{
-                    backgroundColor: "#2a2a2a",
-                    border: "none",
-                  }}
+                  contentStyle={{ backgroundColor: "#2a2a2a", border: "none" }}
                   itemStyle={{ color: "#fff" }}
                 />
                 <Bar dataKey="views" fill="#8884d8" barSize={30} />
@@ -290,7 +290,7 @@ export default function Analytics() {
           )}
         </div>
 
-        {/* Traffic Sources */}
+        {/* Traffic Sources (custom legend with paths) */}
         <div className="bg-gray-800 p-4 rounded-lg min-h-[220px]">
           <h2 className="text-lg font-semibold mb-2 text-white">
             Traffic Sources
@@ -298,41 +298,71 @@ export default function Analytics() {
           {loading ? (
             <div className="h-40 bg-gray-700 animate-pulse rounded" />
           ) : (
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie
-                  data={sourcesData}
-                  dataKey="value"
-                  nameKey="source"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={60}
-                  label
-                >
-                  {sourcesData.map((_, idx) => (
-                    <Cell
-                      key={`cell-${idx}`}
-                      fill={
-                        ["#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#8dd1e1"][
-                          idx % 5
-                        ]
+            <>
+              <ResponsiveContainer width="100%" height={200}>
+                <PieChart>
+                  <Pie
+                    data={sourcesData}
+                    dataKey="value"
+                    nameKey="source"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={60}
+                    label={false}
+                    labelLine={false}
+                  >
+                    {sourcesData.map((item, idx) => (
+                      <Cell
+                        key={`cell-${idx}`}
+                        fill={COLORS[idx % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <ReTooltip
+                    formatter={(value, name) => {
+                      let path;
+                      try {
+                        path = new URL(name).pathname;
+                      } catch {
+                        path = name;
                       }
-                    />
-                  ))}
-                </Pie>
-                <Legend
-                  verticalAlign="bottom"
-                  wrapperStyle={{ color: "#ccc", fontSize: 12 }}
-                />
-                <ReTooltip
-                  contentStyle={{
-                    backgroundColor: "#2a2a2a",
-                    border: "none",
-                  }}
-                  itemStyle={{ color: "#fff" }}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+                      return [value, path];
+                    }}
+                    contentStyle={{
+                      backgroundColor: "#2a2a2a",
+                      border: "none",
+                    }}
+                    itemStyle={{ color: "#fff" }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+
+              {/* custom legend */}
+              <div className="mt-4 flex flex-wrap">
+                {sourcesData.map((item, idx) => {
+                  let path;
+                  try {
+                    path = new URL(item.source).pathname;
+                  } catch {
+                    path = item.source;
+                  }
+                  return (
+                    <div
+                      key={path + idx}
+                      className="flex items-center mr-6 mb-2"
+                    >
+                      <span
+                        className="w-3 h-3 inline-block mr-2 rounded-sm"
+                        style={{
+                          backgroundColor: COLORS[idx % COLORS.length],
+                        }}
+                      />
+                      <span className="text-gray-300 text-sm">{path}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
       </div>
