@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import api from "../services/api"; // axios instance, baseURL=http://localhost:5000/api
+import API from "../services/api"; // axios instance with photoAnalyze helper
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCamera,
@@ -13,11 +13,13 @@ import {
 export default function PhotoAnalyzer() {
   const fileInputRef = useRef();
   const [imageSrc, setImageSrc] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState(null);
 
   const handleFile = (file) => {
+    setImageFile(file);
     const reader = new FileReader();
     reader.onload = (e) => {
       setImageSrc(e.target.result);
@@ -36,28 +38,20 @@ export default function PhotoAnalyzer() {
     if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
   };
 
-  const dataURLtoBlob = (dataurl) => {
-    const [hdr, b64] = dataurl.split(",");
-    const bin = atob(b64);
-    const arr = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
-    return new Blob([arr], { type: hdr.match(/:(.*?);/)[1] });
-  };
-
   const analyze = async () => {
-    if (!imageSrc) return;
+    if (!imageFile) return;
     setAnalyzing(true);
-    const form = new FormData();
-    form.append("file", dataURLtoBlob(imageSrc));
-
     try {
-      const { data } = await api.post("/photo/analyze", form, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const { data } = await API.photoAnalyze(imageFile);
       setResults(data);
     } catch (err) {
       console.error("Analysis error:", err);
-      alert("Analysis failed. Check console for details.");
+      if (!err.response) {
+        alert("Analysis failed: network error. Please check your connection.");
+      } else {
+        const msg = err.response.data?.error || err.message;
+        alert(`Analysis failed: ${msg}`);
+      }
     } finally {
       setAnalyzing(false);
     }
@@ -65,6 +59,7 @@ export default function PhotoAnalyzer() {
 
   const reset = () => {
     setImageSrc(null);
+    setImageFile(null);
     setResults(null);
     setAnalyzing(false);
   };

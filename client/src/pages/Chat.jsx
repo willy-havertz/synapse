@@ -27,6 +27,7 @@ import {
   faUsers,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -64,3 +64,29 @@ Dockerfile*
 # Misc
 *.tgz
 *.log
+# Virtual environments
+venv/
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# DeepFace cache (local model weights)
+C:/Users/*/.deepface/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS artifacts
+.DS_Store
+Thumbs.db
