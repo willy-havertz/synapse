@@ -48,6 +48,46 @@
       }
     ]
   },
+  "about": {
+    "why": {
+      "title": "Why We Built It",
+      "text": "We noticed that AI tools are scattered across a dozen different apps—so we created Synapse to bring chat, image analysis, weather, device health, and analytics together under one roof."
+    },
+    "metrics": {
+      "title": "Core Metrics",
+      "activeUsers": "Active Users",
+      "photosAnalyzed": "Photos Analyzed",
+      "apiCalls": "API Calls",
+      "uptime": "Uptime"
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "jane": {
+        "quote": "Synapse revolutionized how I share photos—its AI analysis is spot on!"
+      },
+      "carlos": {
+        "quote": "I love having chat, weather, and device insights all in one place."
+      },
+      "aisha": {
+        "quote": "The analytics dashboard gave me deep insights into my community growth."
+      }
+    },
+    "team": {
+      "title": "Meet the Team",
+      "wiltord": {
+        "role": "Founder & CEO",
+        "bio": "Willy is passionate about merging AI with social connectivity to build tomorrow’s community platforms."
+      },
+      "hope": {
+        "role": "CTO",
+        "bio": "Hope leads our engineering efforts, ensuring Synapse scales securely and reliably."
+      },
+      "daniel": {
+        "role": "Product Lead",
+        "bio": "Daniel crafts the user experience and roadmaps our next-generation features."
+      }
+    }
+  },
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdated": "July 24, 2025",
@@ -119,8 +159,63 @@
       "ipRights": {
         "heading": "5. Intellectual Property Rights",
         "text": "All content—text, graphics, logos, images, audio clips, and software—on Synapse is the property of Synapse or our licensors and protected by copyright, trademark, and other laws. You may not reproduce, distribute, modify, or create derivative works without our express written permission."
-      },  
-      
+      },
+      "ugcLicense": {
+        "heading": "6. User-Generated Content License",
+        "text": "When you upload or submit content to Synapse, you grant Synapse a worldwide, non-exclusive, royalty-free license to host, store, use, reproduce, modify, publish, create derivative works from, and display such content in connection with operating, promoting, and improving the Service."
+      },
+      "privacyReference": {
+        "heading": "7. Privacy and Data Practices",
+        "text": "Your privacy is important to us. We collect and process personal data in accordance with our Privacy Policy, which explains what data we collect, how we use it, and your rights regarding that data. By using Synapse, you consent to the collection and use of information as described in the Privacy Policy."
+      },
+      "availability": {
+        "heading": "8. Service Availability & Updates",
+        "text": "While we aim for 99.9% uptime, we cannot guarantee uninterrupted access to the platform. Maintenance, updates, or unforeseen technical issues may cause temporary outages. We will attempt to notify you in advance for any planned maintenance but reserve the right to make emergency repairs without prior notice."
+      },
+      "fees": {
+        "heading": "9. Fees, Subscriptions & Payments",
+        "text": "Certain premium features may require payment of subscription fees. All fees are listed on our pricing page and charged in U.S. dollars unless otherwise indicated. By selecting a premium plan and providing your payment details, you authorize Synapse to charge your chosen payment method at the beginning of each billing cycle until you cancel."
+      },
+      "cancellation": {
+        "heading": "10. Cancellation & Account Termination",
+        "text": "You may cancel your subscription at any time through your account dashboard. Cancellation takes effect at the end of your current billing period. We reserve the right to suspend or terminate your account for any reason, including breach of these Terms or inactivity."
+      },
+      "disclaimers": {
+        "heading": "11. Disclaimers",
+        "text": "THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. SYNAPSE AND ITS AFFILIATES DISCLAIM ALL WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT."
+      },
+      "liabilityLimitation": {
+        "heading": "12. Limitation of Liability",
+        "text": "TO THE FULLEST EXTENT PERMITTED BY LAW, SYNAPSE AND ITS AFFILIATES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, WHETHER FORESEEABLE OR NOT."
+      },
+      "indemnification": {
+        "heading": "13. Indemnification",
+        "text": "You agree to indemnify, defend, and hold harmless Synapse, its officers, directors, employees, and agents from any claims, liabilities, damages, losses, and expenses arising out of your use of the Service or violation of these Terms."
+      },
+      "thirdParty": {
+        "heading": "14. Third-Party Links & Integrations",
+        "text": "The Service may contain links to third-party websites or services that are not owned or controlled by Synapse. We are not responsible for their content, privacy policies, or practices."
+      },
+      "support": {
+        "heading": "15. Support & Feedback",
+        "text": "Feedback and support requests can be sent to support@synapse.com. While we strive to respond promptly, we cannot guarantee specific response times or outcomes."
+      },
+      "modifications": {
+        "heading": "16. Modifications to the Service",
+        "text": "We may update, enhance, or discontinue features at our discretion, with or without notice. Your continued use of the Service following any changes constitutes acceptance of those changes."
+      },
+      "termsChanges": {
+        "heading": "17. Changes to Terms",
+        "text": "We may revise these Terms at any time, with revisions becoming effective upon posting. The “Last Updated” date will reflect any changes. Continued use constitutes acceptance."
+      },
+      "governingLaw": {
+        "heading": "18. Governing Law & Dispute Resolution",
+        "text": "These Terms are governed by the laws of the jurisdiction where Synapse is headquartered. Any dispute shall be resolved exclusively in the appropriate courts located there."
+      },
+      "severability": {
+        "heading": "19. Severability",
+        "text": "If any provision is held invalid, the remaining provisions will remain in full force and effect, and the invalid provision will be replaced by one that closely matches its intent."
+      },
       "entireAgreement": {
         "heading": "20. Entire Agreement",
         "text": "These Terms, together with the Privacy Policy, constitute the entire agreement between you and Synapse regarding the Service and supersede all prior agreements."

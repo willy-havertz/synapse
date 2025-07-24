@@ -1,4 +1,3 @@
-
 {
   "appName": "Synapse",
   "nav": {
@@ -13,24 +12,81 @@
   },
   "hero": {
     "welcome": "Willkommen bei {{appName}}",
-    "tagline": "Ihr All-in-One-KI-Toolkit: Chat, Fotoanalyse, Wetter, Geräte-Insights, Technologietrends, Analysen und mehr.",
+    "tagline": "Ihr All‑in‑One‑KI‑Toolkit: Chat, Fotoanalyse, Wetter, Geräte‑Insights, Technologietrends, Analysen und mehr.",
     "getStarted": "Synapse ausprobieren",
     "discoverFeatures": "Funktionen entdecken"
   },
   "features": {
     "title": "Leistungsstarke Funktionen",
-    "realTimeChat": "Echtzeit-Chat",
+    "realTimeChat": "Echtzeit‑Chat",
     "realTimeChatDesc": "Verbinde dich sofort mit Freunden.",
-    "photoAnalyzer": "Foto-Analyzer",
-    "photoAnalyzerDesc": "KI-gestützte Bildanalysen.",
-    "weatherDashboard": "Wetter-Dashboard",
+    "photoAnalyzer": "Foto‑Analyzer",
+    "photoAnalyzerDesc": "KI‑gestützte Bildanalysen.",
+    "weatherDashboard": "Wetter‑Dashboard",
     "weatherDashboardDesc": "Genau lokale Vorhersagen.",
-    "deviceInspector": "Geräte-Inspektor",
+    "deviceInspector": "Geräte‑Inspektor",
     "deviceInspectorDesc": "Überwache die Gesundheit deines Geräts.",
-    "techTrends": "Technologie-Trends",
+    "techTrends": "Technologie‑Trends",
     "techTrendsDesc": "Bleibe der Innovation voraus.",
     "analytics": "Analysen",
     "analyticsDesc": "Tiefgehende Einblicke in das Nutzerverhalten."
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "q": "Was ist Synapse?",
+        "a": "Synapse ist Ihr All‑in‑One‑KI‑Toolkit – mit Chat, Fotoanalyse, Wettervorhersagen und mehr."
+      },
+      {
+        "q": "Wie erstelle ich ein Konto?",
+        "a": "Klicken Sie auf „Registrieren“, geben Sie Ihre E‑Mail und ein Passwort ein – und schon kann es losgehen!"
+      },
+      {
+        "q": "Sind meine Daten sicher?",
+        "a": "Ja. Wir nutzen TLS‑Verschlüsselung während der Übertragung und AES‑256 im Ruhezustand sowie regelmäßige Sicherheits‑Audits."
+      }
+    ]
+  },
+  "about": {
+    "why": {
+      "title": "Warum wir es gebaut haben",
+      "text": "Wir haben festgestellt, dass KI‑Tools über Dutzende von Apps verstreut sind – deshalb haben wir Synapse entwickelt, um Chat, Bildanalyse, Wetter, Geräte‑Insights und Analysen unter einem Dach zu vereinen."
+    },
+    "metrics": {
+      "title": "Kernmetriken",
+      "activeUsers": "Aktive Nutzer",
+      "photosAnalyzed": "Analysierte Fotos",
+      "apiCalls": "API‑Aufrufe",
+      "uptime": "Verfügbarkeit"
+    },
+    "testimonials": {
+      "title": "Das sagen unsere Nutzer",
+      "jane": {
+        "quote": "Synapse hat revolutioniert, wie ich Fotos teile – die KI‑Analyse ist einfach präzise!"
+      },
+      "carlos": {
+        "quote": "Ich liebe es, Chat, Wetter und Geräte‑Insights an einem Ort zu haben."
+      },
+      "aisha": {
+        "quote": "Das Analytics‑Dashboard hat mir tiefe Einblicke in das Wachstum meiner Community gegeben."
+      }
+    },
+    "team": {
+      "title": "Lernen Sie das Team kennen",
+      "wiltord": {
+        "role": "Gründer & CEO",
+        "bio": "Willy brennt dafür, KI und soziale Vernetzung zu verbinden und Community‑Plattformen von morgen zu bauen."
+      },
+      "hope": {
+        "role": "CTO",
+        "bio": "Hope leitet unsere Technik‑Teams und sorgt dafür, dass Synapse sicher und skalierbar bleibt."
+      },
+      "daniel": {
+        "role": "Produktmanager",
+        "bio": "Daniel gestaltet die Benutzererfahrung und plant unsere nächsten Funktionen."
+      }
+    }
   },
   "privacy": {
     "title": "Datenschutzrichtlinie",
@@ -39,15 +95,15 @@
     "sections": {
       "infoCollect": {
         "heading": "1. Erhobene Informationen",
-        "text": "Wir erheben Informationen, die Sie uns direkt geben, wenn Sie Ihr Profil erstellen oder aktualisieren – wie Name, E-Mail-Adresse und Avatarbild – sowie alle Inhalte, die Sie einreichen (Nachrichten, Fotos, Kommentare). Zusätzlich sammeln wir automatisch technische Daten über Ihr Gerät und Ihre Nutzung (IP-Adresse, Browsertyp- und version, Betriebssystem, besuchte Seiten/Funktionen, Zeitstempel, Fehlerprotokolle). Mit Ihrer Zustimmung können wir auch externe Konten (z. B. Google, Facebook) verknüpfen, um das Einloggen zu erleichtern. Diese Daten helfen uns, den Service zu personalisieren, Missbrauch zu erkennen und die Funktionalität zu verbessern."
+        "text": "Wir erheben Informationen, die Sie uns direkt geben, wenn Sie Ihr Profil erstellen oder aktualisieren – wie Name, E‑Mail‑Adresse und Avatarbild – sowie alle Inhalte, die Sie einreichen (Nachrichten, Fotos, Kommentare). Zusätzlich sammeln wir automatisch technische Daten über Ihr Gerät und Ihre Nutzung (IP‑Adresse, Browsertyp‑ und version, Betriebssystem, besuchte Seiten/Funktionen, Zeitstempel, Fehlerprotokolle). Mit Ihrer Zustimmung können wir auch externe Konten (z. B. Google, Facebook) verknüpfen, um das Einloggen zu erleichtern. Diese Daten helfen uns, den Service zu personalisieren, Missbrauch zu erkennen und die Funktionalität zu verbessern."
       },
       "useOfData": {
         "heading": "2. Verwendung Ihrer Daten",
-        "text": "Ihre Daten ermöglichen zentrale Synapse-Funktionen: Chat-Nachrichten, Fotoanalyse, lokale Wettervorhersagen und Analytics-Dashboards. Wir werten außerdem aggregierte, anonymisierte Nutzungsdaten aus, um Feature-Adoption zu verstehen, Fehler zu beheben und unsere Produktentwicklung zu steuern. Gelegentlich senden wir Ihnen dienstliche Hinweise oder Sicherheitswarnungen. Marketing-E-Mails können Sie jederzeit in Ihren Kontoeinstellungen abbestellen – kritische und transaktionale Nachrichten erhalten Sie jedoch weiterhin."
+        "text": "Ihre Daten ermöglichen zentrale Synapse‑Funktionen: Chat‑Nachrichten, Fotoanalyse, lokale Wettervorhersagen und Analytics‑Dashboards. Wir werten außerdem aggregierte, anonymisierte Nutzungsdaten aus, um Feature‑Adoption zu verstehen, Fehler zu beheben und unsere Produktentwicklung zu steuern. Gelegentlich senden wir Ihnen dienstliche Hinweise oder Sicherheitswarnungen. Marketing‑E‑Mails können Sie jederzeit in Ihren Kontoeinstellungen abbestellen – kritische und transaktionale Nachrichten erhalten Sie jedoch weiterhin."
       },
       "cookies": {
-        "heading": "3. Cookies & Tracking-Technologien",
-        "text": "Synapse verwendet Cookies, Local Storage und ähnliche Technologien, um Ihre Einstellungen (Thema, Sprache) zu speichern, Ihre Sitzung aufrechtzuerhalten und Sie sicher zu authentifizieren. Wir arbeiten mit vertrauenswürdigen Analyseanbietern zusammen, um anonyme Nutzungsstatistiken zu erfassen (z. B. tägliche aktive Nutzer, Interaktionsraten, Performance-Kennzahlen), damit der Service schnell und zuverlässig bleibt. Sie können Cookies über Ihre Browsereinstellungen deaktivieren oder löschen – dies kann jedoch die Funktionalität beeinträchtigen (z. B. müssen Sie sich bei jedem Besuch erneut anmelden)."
+        "heading": "3. Cookies & Tracking‑Technologien",
+        "text": "Synapse verwendet Cookies, Local Storage und ähnliche Technologien, um Ihre Einstellungen (Thema, Sprache) zu speichern, Ihre Sitzung aufrechtzuerhalten und Sie sicher zu authentifizieren. Wir arbeiten mit vertrauenswürdigen Analyseanbietern zusammen, um anonyme Nutzungsstatistiken zu erfassen (z. B. tägliche aktive Nutzer, Interaktionsraten, Performance‑Kennzahlen), damit der Service schnell und zuverlässig bleibt. Sie können Cookies über Ihre Browsereinstellungen deaktivieren oder löschen – dies kann jedoch die Funktionalität beeinträchtigen (z. B. müssen Sie sich bei jedem Besuch erneut anmelden)."
       },
       "dataSharing": {
         "heading": "4. Weitergabe von Daten",
@@ -55,7 +111,7 @@
       },
       "security": {
         "heading": "5. Sicherheitsmaßnahmen",
-        "text": "Wir setzen branchenübliche Sicherheitsvorkehrungen ein, um Ihre Daten im Ruhezustand und bei der Übertragung zu schützen: TLS/SSL-Verschlüsselung, AES-256-Verschlüsselung sensibler Daten, sichere Passwort-Hashes und regelmäßige Penetrationstests. Der Zugriff ist auf Mitarbeiter und Auftragnehmer beschränkt, die ihn zur Erfüllung ihrer Aufgaben benötigen. Bitte schützen Sie auch Ihre Anmeldedaten und aktivieren Sie, falls verfügbar, die Zwei-Faktor-Authentifizierung."
+        "text": "Wir setzen branchenübliche Sicherheitsvorkehrungen ein, um Ihre Daten im Ruhezustand und bei der Übertragung zu schützen: TLS/SSL‑Verschlüsselung, AES‑256‑Verschlüsselung sensibler Daten, sichere Passwort‑Hashes und regelmäßige Penetrationstests. Der Zugriff ist auf Mitarbeiter und Auftragnehmer beschränkt, die ihn zur Erfüllung ihrer Aufgaben benötigen. Bitte schützen Sie auch Ihre Anmeldedaten und aktivieren Sie, falls verfügbar, die Zwei‑Faktor‑Authentifizierung."
       },
       "userRights": {
         "heading": "6. Ihre Rechte",
@@ -75,7 +131,7 @@
       },
       "updates": {
         "heading": "10. Änderungen dieser Richtlinie",
-        "text": "Wir passen diese Richtlinie an geänderte Praxis oder rechtliche Vorgaben an. Bei wesentlichen Änderungen aktualisieren wir das „Zuletzt aktualisiert“-Datum und informieren Sie ggf. aktiv. Ihre fortgesetzte Nutzung gilt als Zustimmung."
+        "text": "Wir passen diese Richtlinie an geänderte Praxis oder rechtliche Vorgaben an. Bei wesentlichen Änderungen aktualisieren wir das „Zuletzt aktualisiert“‑Datum und informieren Sie ggf. aktiv. Ihre fortgesetzte Nutzung gilt als Zustimmung."
       }
     }
   },
@@ -98,15 +154,15 @@
       },
       "userConduct": {
         "heading": "4. Verhaltensregeln",
-        "text": "Es ist untersagt, Synapse für rechtswidrige oder schädliche Zwecke zu nutzen – etwa Malware-Verbreitung, Urheberrechtsverletzung oder Belästigung. Wir können Konten bei Regelverstößen sperren oder löschen."
+        "text": "Es ist untersagt, Synapse für rechtswidrige oder schädliche Zwecke zu nutzen – etwa Malware‑Verbreitung, Urheberrechtsverletzung oder Belästigung. Wir können Konten bei Regelverstößen sperren oder löschen."
       },
       "ipRights": {
         "heading": "5. geistige Eigentumsrechte",
-        "text": "Alle Inhalte auf Synapse (Texte, Grafiken, Logos, Software) sind Eigentum von Synapse oder Lizenzgebern und durch Urheber- und Markenrechte geschützt. Jeder unautorisierte Gebrauch ist untersagt."
+        "text": "Alle Inhalte auf Synapse (Texte, Grafiken, Logos, Software) sind Eigentum von Synapse oder Lizenzgebern und durch Urheber‑ und Markenrechte geschützt. Jeder unautorisierte Gebrauch ist untersagt."
       },
       "ugcLicense": {
         "heading": "6. Lizenz für nutzergenerierte Inhalte",
-        "text": "Mit dem Hochladen von Inhalten gewähren Sie Synapse eine weltweite, nicht-exklusive, gebührenfreie Lizenz zur Nutzung, Vervielfältigung, Bearbeitung und Veröffentlichung im Zusammenhang mit dem Betrieb und der Verbesserung des Services."
+        "text": "Mit dem Hochladen von Inhalten gewähren Sie Synapse eine weltweite, nicht‑exklusive, gebührenfreie Lizenz zur Nutzung, Vervielfältigung, Bearbeitung und Veröffentlichung im Zusammenhang mit dem Betrieb und der Verbesserung des Services."
       },
       "privacyReference": {
         "heading": "7. Datenschutzverweis",
@@ -137,12 +193,12 @@
         "text": "Sie stellen Synapse und dessen Vertreter von allen Ansprüchen frei, die aus Ihrer Nutzung oder Verletzung dieser Bedingungen entstehen."
       },
       "thirdParty": {
-        "heading": "14. Dritt-Links",
-        "text": "Synapse kann Links zu Dritt-Anbietern enthalten. Wir sind nicht verantwortlich für deren Inhalte oder Praktiken."
+        "heading": "14. Dritt‑Links",
+        "text": "Synapse kann Links zu Dritt‑Anbietern enthalten. Wir sind nicht verantwortlich für deren Inhalte oder Praktiken."
       },
       "support": {
         "heading": "15. Support & Feedback",
-        "text": "Anfragen und Feedback richten Sie bitte über das Kontaktformular oder per E-Mail an support@synapse.com."
+        "text": "Anfragen und Feedback richten Sie bitte über das Kontaktformular oder per E‑Mail an support@synapse.com."
       },
       "modifications": {
         "heading": "16. Änderungen am Service",
