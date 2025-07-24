@@ -1,35 +1,52 @@
+// routes/trends.js
 const router = require("express").Router();
 const axios = require("axios");
 
-const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
-const NEWSAPI = "https://newsapi.org/v2/everything";
+const KEY = process.env.NEWSDATA_API_KEY;
+if (!KEY) console.error("Missing NEWSDATA_API_KEY");
+
+const LATEST_URL = "https://newsdata.io/api/1/latest";
 
 router.get("/", async (req, res) => {
-  const { cat, start, end } = req.query;
-  if (!cat) return res.status(400).json({ error: "Missing cat" });
+  const { q = "general", from_date, to_date } = req.query;
+
+  const params = {
+    apikey: KEY,
+    q,
+    language: "en",
+  };
+  if (from_date) params.from_date = from_date;
+  if (to_date) params.to_date = to_date;
+
+  console.log("→ Newsdata.io /latest params:", params);
+
   try {
-    const { data } = await axios.get(NEWSAPI, {
-      params: {
-        apiKey: NEWSAPI_KEY,
-        q: cat,
-        from: start,
-        to: end,
-        sortBy: "popularity",
-        language: "en",
-      },
+    const { data } = await axios.get(LATEST_URL, {
+      params,
+      timeout: 5000,
     });
-    const trends = data.articles.map((a, i) => ({
-      id: i,
-      title: a.title,
-      summary: a.description || "",
-      published: a.publishedAt,
-      url: a.url,
-      source: a.source.name,
+
+    const trends = (data.results || []).map((item, idx) => ({
+      id: String(idx),
+      title: item.title,
+      summary: item.description || item.content || "",
+      published: item.pubDate,
+      url: item.link,
+      source: item.source_id,
     }));
+
     res.json(trends);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "News fetch failed" });
+    console.error(
+      "Newsdata.io /latest error:",
+      err.response?.data || err.message
+    );
+    if (err.response) {
+      return res
+        .status(err.response.status)
+        .json({ error: err.response.data?.message || "Newsdata error" });
+    }
+    res.status(500).json({ error: "Failed to fetch trends" });
   }
 });
 
