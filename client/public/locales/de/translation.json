@@ -1,104 +1,180 @@
+
 {
   "appName": "Synapse",
-
   "nav": {
-    "home": "Start",
+    "home": "Startseite",
     "features": "Funktionen",
     "faq": "FAQ",
-    "about": "Über",
-    "terms": "Nutzungsbedingungen",
-    "privacy": "Datenschutz",
+    "about": "Über uns",
+    "terms": "Allgemeine Geschäftsbedingungen",
+    "privacy": "Datenschutzrichtlinie",
     "signIn": "Anmelden",
     "signUp": "Registrieren"
   },
-
   "hero": {
     "welcome": "Willkommen bei {{appName}}",
-    "tagline": "Ihr All-in-One KI-Toolkit: Chat, Fotoanalyse, Wetter, Geräte-Einblicke, Tech-Trends, Analysen und mehr.",
-    "getStarted": "Teste Synapse",
+    "tagline": "Ihr All-in-One-KI-Toolkit: Chat, Fotoanalyse, Wetter, Geräte-Insights, Technologietrends, Analysen und mehr.",
+    "getStarted": "Synapse ausprobieren",
     "discoverFeatures": "Funktionen entdecken"
   },
-
   "features": {
     "title": "Leistungsstarke Funktionen",
     "realTimeChat": "Echtzeit-Chat",
-    "realTimeChatDesc": "Verbinden Sie sich sofort mit Freunden.",
+    "realTimeChatDesc": "Verbinde dich sofort mit Freunden.",
     "photoAnalyzer": "Foto-Analyzer",
     "photoAnalyzerDesc": "KI-gestützte Bildanalysen.",
     "weatherDashboard": "Wetter-Dashboard",
-    "weatherDashboardDesc": "Genaue lokale Vorhersagen.",
+    "weatherDashboardDesc": "Genau lokale Vorhersagen.",
     "deviceInspector": "Geräte-Inspektor",
-    "deviceInspectorDesc": "Überwachen Sie den Zustand Ihres Geräts.",
-    "techTrends": "Tech-Trends",
-    "techTrendsDesc": "Bleiben Sie am Puls der Zeit.",
+    "deviceInspectorDesc": "Überwache die Gesundheit deines Geräts.",
+    "techTrends": "Technologie-Trends",
+    "techTrendsDesc": "Bleibe der Innovation voraus.",
     "analytics": "Analysen",
-    "analyticsDesc": "Tiefgehende Einblicke ins Nutzerverhalten."
+    "analyticsDesc": "Tiefgehende Einblicke in das Nutzerverhalten."
   },
-
-  "faq": {
-    "title": "Häufig gestellte Fragen",
-    "items": [
-      {
-        "q": "Wie melde ich mich an?",
-        "a": "Klicken Sie auf „Registrieren“, füllen Sie das Formular aus und legen Sie los."
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "lastUpdated": "24. Juli 2025",
+    "intro": "Bei Synapse hat Ihre Privatsphäre oberste Priorität. Wir haben diese Richtlinie erstellt, um Ihnen Transparenz darüber zu geben, wie wir Ihre Daten erheben, verwenden und schützen, damit Sie unsere Plattform mit Vertrauen nutzen können.",
+    "sections": {
+      "infoCollect": {
+        "heading": "1. Erhobene Informationen",
+        "text": "Wir erheben Informationen, die Sie uns direkt geben, wenn Sie Ihr Profil erstellen oder aktualisieren – wie Name, E-Mail-Adresse und Avatarbild – sowie alle Inhalte, die Sie einreichen (Nachrichten, Fotos, Kommentare). Zusätzlich sammeln wir automatisch technische Daten über Ihr Gerät und Ihre Nutzung (IP-Adresse, Browsertyp- und version, Betriebssystem, besuchte Seiten/Funktionen, Zeitstempel, Fehlerprotokolle). Mit Ihrer Zustimmung können wir auch externe Konten (z. B. Google, Facebook) verknüpfen, um das Einloggen zu erleichtern. Diese Daten helfen uns, den Service zu personalisieren, Missbrauch zu erkennen und die Funktionalität zu verbessern."
       },
-      {
-        "q": "Gibt es einen kostenlosen Tarif?",
-        "a": "Ja, die Basisfunktionen sind kostenlos. Premium bietet erweiterte Analysen."
+      "useOfData": {
+        "heading": "2. Verwendung Ihrer Daten",
+        "text": "Ihre Daten ermöglichen zentrale Synapse-Funktionen: Chat-Nachrichten, Fotoanalyse, lokale Wettervorhersagen und Analytics-Dashboards. Wir werten außerdem aggregierte, anonymisierte Nutzungsdaten aus, um Feature-Adoption zu verstehen, Fehler zu beheben und unsere Produktentwicklung zu steuern. Gelegentlich senden wir Ihnen dienstliche Hinweise oder Sicherheitswarnungen. Marketing-E-Mails können Sie jederzeit in Ihren Kontoeinstellungen abbestellen – kritische und transaktionale Nachrichten erhalten Sie jedoch weiterhin."
       },
-      {
-        "q": "Kann ich das Design wechseln?",
-        "a": "Verwenden Sie das Sonnen-/Mond-Symbol, um zwischen Hell- und Dunkelmodus umzuschalten."
+      "cookies": {
+        "heading": "3. Cookies & Tracking-Technologien",
+        "text": "Synapse verwendet Cookies, Local Storage und ähnliche Technologien, um Ihre Einstellungen (Thema, Sprache) zu speichern, Ihre Sitzung aufrechtzuerhalten und Sie sicher zu authentifizieren. Wir arbeiten mit vertrauenswürdigen Analyseanbietern zusammen, um anonyme Nutzungsstatistiken zu erfassen (z. B. tägliche aktive Nutzer, Interaktionsraten, Performance-Kennzahlen), damit der Service schnell und zuverlässig bleibt. Sie können Cookies über Ihre Browsereinstellungen deaktivieren oder löschen – dies kann jedoch die Funktionalität beeinträchtigen (z. B. müssen Sie sich bei jedem Besuch erneut anmelden)."
       },
-      {
-        "q": "Wie sicher sind meine Daten?",
-        "a": "Wir verwenden Verschlüsselung und teilen Ihre persönlichen Daten niemals."
-      }
-    ]
-  },
-
-  "about": {
-    "why": {
-      "title": "Warum wir es gebaut haben",
-      "text": "Genervt von verstreuten KI-Tools und fragmentierten Dashboards, machte sich unser Gründer Wiltord daran, eine einheitliche, intuitive Erfahrung zu schaffen. Synapse bündelt Chat, Analysen, Bild-Insights und mehr—damit Sie sich auf das Wesentliche konzentrieren können."
-    },
-    "metrics": {
-      "title": "Unser Einfluss",
-      "activeUsers": "Aktive Nutzer",
-      "photosAnalyzed": "Analysierte Fotos",
-      "apiCalls": "API-Aufrufe / Monat",
-      "uptime": "Verfügbarkeit"
-    },
-    "testimonials": {
-      "title": "Testimonials",
-      "jane": {
-        "quote": "Die Echtzeit-Analysen von Synapse haben unser Engagement in nur zwei Wochen verdoppelt!"
+      "dataSharing": {
+        "heading": "4. Weitergabe von Daten",
+        "text": "Wir verkaufen oder vermieten keine personenbezogenen Daten. Wir geben Ihre Informationen nur an Dienstleister weiter, die uns beim Betrieb unterstützen (z. B. Hosting, Zahlungsabwicklung, Analytics). Diese Partner sind vertraglich verpflichtet, Ihre Daten nur für den Zweck von Synapse zu verwenden. Eine Offenlegung erfolgt auch, wenn dies gesetzlich erforderlich ist (z. B. Gerichtsbeschluss) oder zum Schutz unserer Rechte und Sicherheit."
       },
-      "carlos": {
-        "quote": "Der KI-gestützte Foto-Analyzer ist magisch—unser Marketingteam liebt ihn."
+      "security": {
+        "heading": "5. Sicherheitsmaßnahmen",
+        "text": "Wir setzen branchenübliche Sicherheitsvorkehrungen ein, um Ihre Daten im Ruhezustand und bei der Übertragung zu schützen: TLS/SSL-Verschlüsselung, AES-256-Verschlüsselung sensibler Daten, sichere Passwort-Hashes und regelmäßige Penetrationstests. Der Zugriff ist auf Mitarbeiter und Auftragnehmer beschränkt, die ihn zur Erfüllung ihrer Aufgaben benötigen. Bitte schützen Sie auch Ihre Anmeldedaten und aktivieren Sie, falls verfügbar, die Zwei-Faktor-Authentifizierung."
       },
-      "aisha": {
-        "quote": "Zuverlässig, schnell und einfach zu bedienen. Ein Muss-Toolkit."
-      }
-    },
-    "team": {
-      "title": "Lerne das Team kennen",
-      "alex": {
-        "role": "Gründer & CEO",
-        "bio": "Hat Synapse aus einer geschaffen heraus aufgebaut—liebt sauberen Code & starken Kaffee."
+      "userRights": {
+        "heading": "6. Ihre Rechte",
+        "text": "Je nach Rechtsprechung haben Sie das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Viele Einstellungen können Sie direkt in Ihrem Profil ändern. Für Löschanfragen, die über die Benutzeroberfläche hinausgehen (z. B. Backups), kontaktieren Sie bitte privacy@synapse.com. Wir beantworten Anfragen gemäß geltendem Datenschutzrecht und können zur Identitätsprüfung auffordern."
       },
-      "maya": {
-        "role": "Leitende Ingenieurin",
-        "bio": "Architektin unserer Microservices & React-Expertin."
+      "children": {
+        "heading": "7. Datenschutz von Kindern",
+        "text": "Synapse richtet sich an ein allgemeines Publikum und nicht an Kinder unter 13 Jahren. Wir erheben nicht wissentlich Daten von Minderjährigen. Falls uns dies versehentlich passiert, löschen wir diese Daten umgehend. Hinweise an privacy@synapse.com."
       },
-      "ravi": {
-        "role": "KI-Forscher",
-        "bio": "Entwirft unsere ML-Modelle—PhD in neuronalen Netzen."
+      "international": {
+        "heading": "8. Internationale Datenübermittlungen",
+        "text": "Unsere Server und Dienstleister können sich außerhalb Ihres Landes, z. B. in den USA, befinden. Wenn Sie in der EU oder anderen Regionen mit Datenschutzgesetzen leben, nutzen wir Standardvertragsklauseln und weitere Maßnahmen, um ein angemessenes Schutzniveau zu gewährleisten."
+      },
+      "retention": {
+        "heading": "9. Aufbewahrung",
+        "text": "Wir speichern Ihre Daten so lange, wie es zur Erbringung unserer Dienste, zur Erfüllung gesetzlicher Pflichten oder zur Durchsetzung unserer Rechte erforderlich ist. Nach Löschung bleiben Backups für kurze Zeit bestehen, bevor sie endgültig entfernt werden. Anonyme Analysedaten können wir unbegrenzt für Produktverbesserungen speichern."
+      },
+      "updates": {
+        "heading": "10. Änderungen dieser Richtlinie",
+        "text": "Wir passen diese Richtlinie an geänderte Praxis oder rechtliche Vorgaben an. Bei wesentlichen Änderungen aktualisieren wir das „Zuletzt aktualisiert“-Datum und informieren Sie ggf. aktiv. Ihre fortgesetzte Nutzung gilt als Zustimmung."
       }
     }
   },
-
+  "terms": {
+    "title": "Allgemeine Geschäftsbedingungen",
+    "lastUpdated": "24. Juli 2025",
+    "intro": "Willkommen bei Synapse. Diese Geschäftsbedingungen regeln Ihre Nutzung unserer Website, Apps und Services. Durch die Registrierung oder Nutzung stimmen Sie diesen Bedingungen zu; andernfalls beenden Sie die Nutzung.",
+    "sections": {
+      "acceptance": {
+        "heading": "1. Zustimmung",
+        "text": "Mit dem Zugriff auf Synapse bestätigen Sie, dass Sie diese Bedingungen und unsere Datenschutzrichtlinie gelesen, verstanden und akzeptiert haben. Wenn nicht, nutzen Sie den Service bitte nicht."
+      },
+      "eligibility": {
+        "heading": "2. Zulässigkeit",
+        "text": "Sie müssen mindestens 13 Jahre alt sein (oder älter, falls gesetzlich vorgeschrieben), um ein Konto zu erstellen. Wir behalten uns das Recht vor, Konten zu sperren oder zu löschen, die gegen diese Anforderung verstoßen."
+      },
+      "accountSecurity": {
+        "heading": "3. Konto & Sicherheit",
+        "text": "Sie sind verantwortlich für die Geheimhaltung Ihrer Zugangsdaten und alle Aktivitäten unter Ihrem Konto. Bei unbefugtem Zugriff ändern Sie bitte sofort Ihr Passwort und benachrichtigen support@synapse.com."
+      },
+      "userConduct": {
+        "heading": "4. Verhaltensregeln",
+        "text": "Es ist untersagt, Synapse für rechtswidrige oder schädliche Zwecke zu nutzen – etwa Malware-Verbreitung, Urheberrechtsverletzung oder Belästigung. Wir können Konten bei Regelverstößen sperren oder löschen."
+      },
+      "ipRights": {
+        "heading": "5. geistige Eigentumsrechte",
+        "text": "Alle Inhalte auf Synapse (Texte, Grafiken, Logos, Software) sind Eigentum von Synapse oder Lizenzgebern und durch Urheber- und Markenrechte geschützt. Jeder unautorisierte Gebrauch ist untersagt."
+      },
+      "ugcLicense": {
+        "heading": "6. Lizenz für nutzergenerierte Inhalte",
+        "text": "Mit dem Hochladen von Inhalten gewähren Sie Synapse eine weltweite, nicht-exklusive, gebührenfreie Lizenz zur Nutzung, Vervielfältigung, Bearbeitung und Veröffentlichung im Zusammenhang mit dem Betrieb und der Verbesserung des Services."
+      },
+      "privacyReference": {
+        "heading": "7. Datenschutzverweis",
+        "text": "Unsere Datenverarbeitung richtet sich nach der Datenschutzrichtlinie. Durch die Nutzung stimmen Sie dieser zu."
+      },
+      "availability": {
+        "heading": "8. Verfügbarkeit",
+        "text": "Wir streben 99,9 % Verfügbarkeit an, garantieren sie jedoch nicht. Wartungen oder unvorhergesehene Probleme können zu Ausfällen führen."
+      },
+      "fees": {
+        "heading": "9. Gebühren & Zahlungen",
+        "text": "Einige Funktionen sind kostenpflichtig. Preise und Abrechnungsdetails werden vor dem Kauf klar angezeigt. Nichtzahlung kann zur Sperrung führen."
+      },
+      "cancellation": {
+        "heading": "10. Kündigung",
+        "text": "Sie können Ihr Konto jederzeit kündigen. Wir dürfen Konten bei Verstößen oder Inaktivität sperren oder löschen. Nach Kündigung verlieren Sie den Zugriff auf Daten und Funktionen."
+      },
+      "disclaimers": {
+        "heading": "11. Haftungsausschluss",
+        "text": "Synapse wird „wie besehen“ angeboten, ohne jegliche Gewährleistungen. Wir übernehmen keine Garantie für Fehlerfreiheit, Sicherheit oder Eignung."
+      },
+      "liabilityLimitation": {
+        "heading": "12. Haftungsbeschränkung",
+        "text": "Unsere Haftung ist auf den Betrag begrenzt, den Sie in den letzten 12 Monaten an uns gezahlt haben. Keine Haftung für indirekte oder Folgeschäden."
+      },
+      "indemnification": {
+        "heading": "13. Entschädigung",
+        "text": "Sie stellen Synapse und dessen Vertreter von allen Ansprüchen frei, die aus Ihrer Nutzung oder Verletzung dieser Bedingungen entstehen."
+      },
+      "thirdParty": {
+        "heading": "14. Dritt-Links",
+        "text": "Synapse kann Links zu Dritt-Anbietern enthalten. Wir sind nicht verantwortlich für deren Inhalte oder Praktiken."
+      },
+      "support": {
+        "heading": "15. Support & Feedback",
+        "text": "Anfragen und Feedback richten Sie bitte über das Kontaktformular oder per E-Mail an support@synapse.com."
+      },
+      "modifications": {
+        "heading": "16. Änderungen am Service",
+        "text": "Wir können Funktionen jederzeit ändern, hinzufügen oder entfernen. Wesentliche Änderungen kommunizieren wir angemessen."
+      },
+      "termsChanges": {
+        "heading": "17. Änderungen der Bedingungen",
+        "text": "Diese Bedingungen können aktualisiert werden. Ihre fortgesetzte Nutzung gilt als Zustimmung. Bitte prüfen Sie sie regelmäßig."
+      },
+      "governingLaw": {
+        "heading": "18. Anwendbares Recht",
+        "text": "Es gilt das Recht des Landes, in dem Synapse registriert ist. Zuständige Gerichte sind ausschließlich dafür zuständig."
+      },
+      "severability": {
+        "heading": "19. Salvatorische Klausel",
+        "text": "Sollte eine Bestimmung unwirksam sein, bleiben die übrigen Bestimmungen voll wirksam."
+      },
+      "entireAgreement": {
+        "heading": "20. Gesamte Vereinbarung",
+        "text": "Diese Bedingungen und die Datenschutzrichtlinie bilden die gesamte Vereinbarung zwischen Ihnen und Synapse."
+      }
+    }
+  },
   "footer": {
-    "copy": "© {{year}} Synapse. Alle Rechte vorbehalten."
+    "copy": "© {{year}} Synapse. Alle Rechte vorbehalten.",
+    "quickLinksLabel": "Schnellzugriff",
+    "legalLinksLabel": "Rechtliches",
+    "legalHeading": "Datenschutz & AGB",
+    "stayUpdated": "Bleiben Sie auf dem Laufenden",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Ihre E-Mail-Adresse",
+    "subscribeButton": "Abonnieren",
+    "subscribedMessage": "Sie haben erfolgreich mit {{email}} abonniert!"
   }
 }

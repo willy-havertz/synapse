@@ -1,12 +1,12 @@
-
+// src/components/Footer.jsx
 import React, { useContext, useState } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
-// Inline “X” (formerly Twitter) logo SVG
 const XIcon = (props) => (
   <svg
     {...props}
@@ -23,27 +23,26 @@ const XIcon = (props) => (
 
 export default function Footer() {
   const { dark } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    alert(`Subscribed ${email}!`);
+    alert(t("footer.subscribedMessage", { email }));
     setEmail("");
   };
 
   return (
     <footer
-      className={`${
+      className={`relative ${
         dark ? "bg-gray-900 text-gray-300" : "bg-gray-50 text-gray-700"
-      } border-t ${dark ? "border-gray-800" : "border-gray-200"} pt-10`}
+      } border-t ${dark ? "border-gray-800" : "border-gray-200"} pt-10 pb-20`}
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Branding & Contact */}
         <div>
-          <h3 className="text-xl font-bold mb-2">Synapse</h3>
-          <p className="text-sm mb-4">
-            Building next‑gen real‑time chat & analytics.
-          </p>
+          <h3 className="text-xl font-bold mb-2">{t("appName")}</h3>
+          <p className="text-sm mb-4">{t("hero.tagline")}</p>
           <p className="flex items-center text-sm mb-1">
             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             <a href="mailto:support@synapse.com" className="hover:underline">
@@ -57,34 +56,34 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <nav aria-label="Quick links">
-          <h4 className="font-semibold mb-2">Quick Links</h4>
+        <nav aria-label={t("footer.quickLinksLabel")}>
+          <h4 className="font-semibold mb-2">{t("nav.features")}</h4>
           <ul className="space-y-1 text-sm">
             <li>
               <Link to="/features" className="hover:text-purple-600 transition">
-                Features
+                {t("nav.features")}
               </Link>
             </li>
             <li>
               <Link to="/about" className="hover:text-purple-600 transition">
-                About
+                {t("nav.about")}
               </Link>
             </li>
           </ul>
         </nav>
 
         {/* Legal */}
-        <nav aria-label="Legal">
-          <h4 className="font-semibold mb-2">Legal</h4>
+        <nav aria-label={t("footer.legalLinksLabel")}>
+          <h4 className="font-semibold mb-2">{t("footer.legalHeading")}</h4>
           <ul className="space-y-1 text-sm">
             <li>
               <Link to="/privacy" className="hover:text-purple-600 transition">
-                Privacy Policy
+                {t("nav.privacy")}
               </Link>
             </li>
             <li>
               <Link to="/terms" className="hover:text-purple-600 transition">
-                Terms of Service
+                {t("nav.terms")}
               </Link>
             </li>
           </ul>
@@ -92,13 +91,13 @@ export default function Footer() {
 
         {/* Newsletter & Social */}
         <div className="space-y-4">
-          <h4 className="font-semibold mb-2">Stay Updated</h4>
+          <h4 className="font-semibold mb-2">{t("footer.stayUpdated")}</h4>
           <form
             onSubmit={handleSubscribe}
             className="flex flex-col sm:flex-row gap-2"
           >
             <label htmlFor="footer-email" className="sr-only">
-              Email address
+              {t("footer.emailLabel")}
             </label>
             <input
               id="footer-email"
@@ -106,7 +105,7 @@ export default function Footer() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder={t("footer.emailPlaceholder")}
               className={`flex-1 px-3 py-2 rounded border ${
                 dark
                   ? "bg-gray-800 border-gray-700"
@@ -117,7 +116,7 @@ export default function Footer() {
               type="submit"
               className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white transition"
             >
-              Subscribe
+              {t("footer.subscribeButton")}
             </button>
           </form>
           <div className="flex space-x-4 text-lg">
@@ -154,12 +153,13 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div
-        className={`mt-10 border-t ${
-          dark ? "border-gray-800" : "border-gray-200"
-        }
-                      text-center py-4 text-xs`}
+        className={`absolute bottom-0 inset-x-0 ${
+          dark
+            ? "border-t border-gray-800 bg-gray-900 text-gray-300"
+            : "border-t border-gray-200 bg-gray-50 text-gray-700"
+        } text-center py-4 text-xs`}
       >
-        © {new Date().getFullYear()} Synapse. All rights reserved.
+        {t("footer.copy", { year: new Date().getFullYear() })}
       </div>
     </footer>
   );

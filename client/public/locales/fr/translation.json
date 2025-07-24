@@ -1,103 +1,180 @@
 
 {
   "appName": "Synapse",
-
   "nav": {
     "home": "Accueil",
     "features": "Fonctionnalités",
     "faq": "FAQ",
     "about": "À propos",
-    "terms": "Conditions",
-    "privacy": "Confidentialité",
+    "terms": "Conditions Générales",
+    "privacy": "Politique de Confidentialité",
     "signIn": "Connexion",
     "signUp": "Inscription"
   },
-
   "hero": {
     "welcome": "Bienvenue sur {{appName}}",
-    "tagline": "Votre boîte à outils IA tout-en-un : chat, analyse de photos, météo, aperçu de l'appareil, tendances tech, analyses — et plus encore.",
+    "tagline": "Votre boîte à outils IA tout-en-un : chat, analyse photo, météo, santé de l'appareil, tendances tech, analytics et plus.",
     "getStarted": "Essayez Synapse",
-    "discoverFeatures": "Découvrir les fonctionnalités"
+    "discoverFeatures": "Découvrir les Fonctionnalités"
   },
-
   "features": {
-    "title": "Fonctionnalités puissantes",
-    "realTimeChat": "Chat en temps réel",
+    "title": "Fonctionnalités Puissantes",
+    "realTimeChat": "Chat en Temps Réel",
     "realTimeChatDesc": "Connectez-vous instantanément avec vos amis.",
-    "photoAnalyzer": "Analyseur de photos",
-    "photoAnalyzerDesc": "Insights alimentés par l'IA.",
-    "weatherDashboard": "Tableau météo",
+    "photoAnalyzer": "Analyseur de Photos",
+    "photoAnalyzerDesc": "Insights d'images pilotés par IA.",
+    "weatherDashboard": "Tableau de Bord Météo",
     "weatherDashboardDesc": "Prévisions locales précises.",
-    "deviceInspector": "Inspecteur d'appareil",
-    "deviceInspectorDesc": "Surveillez l'état de votre appareil.",
-    "techTrends": "Tendances tech",
-    "techTrendsDesc": "Restez à la pointe.",
-    "analytics": "Analytique",
-    "analyticsDesc": "Insights profonds sur l'engagement."
+    "deviceInspector": "Inspecteur d'Appareil",
+    "deviceInspectorDesc": "Surveillez la santé de votre appareil.",
+    "techTrends": "Tendances Tech",
+    "techTrendsDesc": "Restez à la pointe de l'innovation.",
+    "analytics": "Analyses",
+    "analyticsDesc": "Aperçus profonds sur le comportement utilisateur."
   },
-
-  "faq": {
-    "title": "Questions fréquentes",
-    "items": [
-      {
-        "q": "Comment m'inscrire ?",
-        "a": "Cliquez sur « Inscription », remplissez le formulaire et commencez à explorer."
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "24 juillet 2025",
+    "intro": "Chez Synapse, votre vie privée est primordiale. Cette politique explique comment nous collectons, utilisons et protégeons vos informations, pour que vous puissiez utiliser notre plateforme en toute confiance.",
+    "sections": {
+      "infoCollect": {
+        "heading": "1. Informations Collectées",
+        "text": "Nous collectons les informations que vous fournissez directement en créant ou mettant à jour votre profil : nom, e-mail, avatar, ainsi que tout contenu soumis (messages, photos, commentaires). Nous recueillons également automatiquement des données techniques : adresse IP, type et version de navigateur, système d'exploitation, pages visitées, horodatages et journaux d'erreurs. Avec votre consentement, nous pouvons lier des comptes externes (Google, Facebook) pour simplifier la connexion. Ces données nous aident à personnaliser le service, détecter les abus et améliorer la fonctionnalité."
       },
-      {
-        "q": "Y a-t-il un plan gratuit ?",
-        "a": "Oui, les fonctionnalités de base sont gratuites. Premium offre des analyses avancées."
+      "useOfData": {
+        "heading": "2. Utilisation de Vos Données",
+        "text": "Vos données alimentent les fonctions principales de Synapse : envoi de messages, analyse de photos, prévisions météo, et tableaux de bord analytiques. Nous analysons aussi les données d'usage agrégées et anonymisées pour comprendre l'adoption des fonctionnalités, corriger les bugs, et orienter notre feuille de route. Nous pouvons occasionnellement envoyer des annonces de service ou alertes de sécurité non promotionnelles. Vous pouvez vous désabonner des communications marketing à tout moment dans vos paramètres, mais les messages transactionnels ou critiques continueront d'être envoyés."
       },
-      {
-        "q": "Puis-je changer de thème ?",
-        "a": "Utilisez l'icône soleil/lune pour basculer clair/sombre."
+      "cookies": {
+        "heading": "3. Cookies et Technologies de Suivi",
+        "text": "Synapse utilise des cookies, le stockage local et des technologies similaires pour mémoriser vos préférences (thème, langue), maintenir votre session et vous authentifier en toute sécurité. Nous collaborons avec des fournisseurs d'analyses fiables pour recueillir des métriques anonymes (utilisateurs actifs quotidiens, taux d'interaction, statistiques de performance), afin de garantir un service rapide et fiable. Vous pouvez désactiver ou supprimer les cookies dans votre navigateur, mais cela peut affecter certaines fonctionnalités (nécessité de se reconnecter à chaque visite)."
       },
-      {
-        "q": "Mes données sont-elles sécurisées ?",
-        "a": "Nous utilisons le chiffrement et ne partageons jamais vos données personnelles."
-      }
-    ]
-  },
-
-  "about": {
-    "why": {
-      "title": "Pourquoi nous l'avons créé",
-      "text": "Fatigué des outils IA éparpillés et des tableaux de bord fragmentés, notre fondateur Wiltord a voulu créer une expérience unifiée et intuitive. Synapse regroupe chat, analyses, insights d'image et plus encore — pour que vous puissiez vous concentrer sur la création sans tracas."
-    },
-    "metrics": {
-      "title": "Notre impact",
-      "activeUsers": "Utilisateurs actifs",
-      "photosAnalyzed": "Photos analysées",
-      "apiCalls": "Appels API / mois",
-      "uptime": "Disponibilité"
-    },
-    "testimonials": {
-      "title": "Témoignages",
-      "jane": {
-        "quote": "Les analyses en temps réel de Synapse nous ont permis de doubler notre engagement en deux semaines !"
+      "dataSharing": {
+        "heading": "4. Partage des Données",
+        "text": "Nous ne vendons ni ne louons vos données personnelles. Nous pouvons partager vos informations avec des prestataires de services sous accord de confidentialité (hébergement, paiement, analytics). Ces prestataires ne peuvent utiliser vos données que pour les services fournis à Synapse. Nous pouvons aussi divulguer des données si la loi l'exige ou pour prévenir fraude et abus."
       },
-      "carlos": {
-        "quote": "L'analyseur de photos IA est magique — notre équipe marketing l'adore."
+      "security": {
+        "heading": "5. Mesures de Sécurité",
+        "text": "Nous mettons en œuvre des mesures techniques et organisationnelles robustes : chiffrement TLS/SSL, AES-256 pour les données sensibles, restrictions d'accès, firewalls et audits réguliers. Aucun système n'est infaillible, mais nous travaillons activement à la protection de vos informations."
       },
-      "aisha": { "quote": "Fiable, rapide et facile à utiliser. Un must-have." }
-    },
-    "team": {
-      "title": "Rencontrez l'équipe",
-      "alex": {
-        "role": "Fondateur & PDG",
-        "bio": "J'ai créé Synapse à partir d'un rêve : j'adore le code propre et le café corsé."
+      "userRights": {
+        "heading": "6. Vos Droits",
+        "text": "Selon votre juridiction, vous pouvez accéder, corriger ou supprimer vos données. Vous pouvez demander une copie ou la rectification de vos informations. Pour exercer vos droits (RGPD, etc.), contactez notre support."
       },
-      "maya": {
-        "role": "Ingénieure principale",
-        "bio": "Architecte de nos microservices & magicienne React."
+      "children": {
+        "heading": "7. Confidentialité des Enfants",
+        "text": "Synapse n'est pas destiné aux enfants de moins de 13 ans. Nous ne collectons pas sciemment leurs données. Si c'est le cas, nous les supprimerons immédiatement."
       },
-      "ravi": {
-        "role": "Chercheur IA",
-        "bio": "Conçoit nos modèles ML—PhD en réseaux neuronaux."
+      "international": {
+        "heading": "8. Transferts Internationaux",
+        "text": "Vos données peuvent être transférées et stockées hors de votre pays, y compris dans des pays n'ayant pas le même niveau de protection. Nous prenons les mesures légales nécessaires (clauses contractuelles types)."
+      },
+      "retention": {
+        "heading": "9. Conservation des Données",
+        "text": "Nous conservons vos données le temps nécessaire aux finalités décrites. Lorsque ce n'est plus nécessaire, elles sont supprimées ou anonymisées. Les données agrégées peuvent être conservées indéfiniment pour l'amélioration du service."
+      },
+      "updates": {
+        "heading": "10. Mises à Jour de la Politique",
+        "text": "Cette politique peut évoluer. Nous mettrons à jour la date de « Dernière mise à jour » et vous informerons des changements significatifs. Votre utilisation continue vaut acceptation."
       }
     }
   },
-
+  "terms": {
+    "title": "Conditions Générales",
+    "lastUpdated": "24 juillet 2025",
+    "intro": "Veuillez lire attentivement ces conditions avant d'utiliser Synapse. En accédant à notre plateforme, vous acceptez d'y être lié.",
+    "sections": {
+      "acceptance": {
+        "heading": "1. Acceptation",
+        "text": "En accédant ou utilisant Synapse, vous confirmez avoir lu, compris et accepté ces conditions et notre politique de confidentialité. Dans le cas contraire, merci de ne pas utiliser le service."
+      },
+      "eligibility": {
+        "heading": "2. Admissibilité",
+        "text": "Vous devez avoir au moins 13 ans et être capable de conclure un contrat. Si vous accédez pour le compte d'une organisation, vous garantissez avoir l'autorité nécessaire."
+      },
+      "accountSecurity": {
+        "heading": "3. Compte & Sécurité",
+        "text": "Vous êtes responsable de la confidentialité de vos identifiants et de toute activité sur votre compte. En cas d'accès non autorisé, modifiez votre mot de passe et contactez support@synapse.com."
+      },
+      "userConduct": {
+        "heading": "4. Utilisation Acceptable",
+        "text": "Il est interdit d'utiliser Synapse à des fins illicites ou nuisibles : malware, atteinte aux droits d'auteur, harcèlement. Nous pouvons suspendre ou supprimer les comptes en cas de violation."
+      },
+      "ipRights": {
+        "heading": "5. Propriété Intellectuelle",
+        "text": "Tous les contenus (textes, logos, logiciels) sont la propriété de Synapse ou de ses licenciés et sont protégés par le droit d'auteur et les marques. Toute utilisation non autorisée est interdite."
+      },
+      "ugcLicense": {
+        "heading": "6. Licence de Contenu Utilisateur",
+        "text": "En téléchargeant du contenu, vous accordez à Synapse une licence mondiale, non exclusive et gratuite pour utiliser, afficher, modifier et distribuer votre contenu."
+      },
+      "privacyReference": {
+        "heading": "7. Politique de Confidentialité",
+        "text": "L'utilisation de vos données personnelles est régie par notre Politique de Confidentialité. En utilisant Synapse, vous consentez à ces pratiques."
+      },
+      "availability": {
+        "heading": "8. Disponibilité",
+        "text": "Nous visons une disponibilité de 99,9 % mais ne pouvons la garantir. Des maintenances ou incidents peuvent entraîner des interruptions."
+      },
+      "fees": {
+        "heading": "9. Tarifs & Paiements",
+        "text": "Certaines fonctionnalités sont payantes. Les prix et politiques de remboursement sont clairement affichés avant tout achat. Le non-paiement peut restreindre l'accès."
+      },
+      "cancellation": {
+        "heading": "10. Résiliation",
+        "text": "Vous pouvez résilier votre compte à tout moment. Nous pouvons suspendre ou supprimer les comptes pour non-respect de ces conditions. Après résiliation, l'accès aux données et fonctionnalités est supprimé."
+      },
+      "disclaimers": {
+        "heading": "11. Exclusions de Garantie",
+        "text": "Synapse est fourni « tel quel » sans aucune garantie. Nous ne garantissons pas l'absence d'erreurs, la sécurité ou l'adéquation."
+      },
+      "liabilityLimitation": {
+        "heading": "12. Limitation de Responsabilité",
+        "text": "Notre responsabilité maximale se limite aux montants payés au cours des 12 derniers mois, le cas échéant. Pas de responsabilité pour dommages indirects."
+      },
+      "indemnification": {
+        "heading": "13. Indemnisation",
+        "text": "Vous indemnisez Synapse et ses représentants contre toute réclamation ou dommage découlant de votre utilisation ou de la violation de ces conditions."
+      },
+      "thirdParty": {
+        "heading": "14. Liens Tiers",
+        "text": "Synapse peut contenir des liens vers des services tiers. Nous ne sommes pas responsables de leur contenu ou pratiques."
+      },
+      "support": {
+        "heading": "15. Support & Feedback",
+        "text": "Les demandes de support et retours se font via le formulaire de contact ou à support@synapse.com."
+      },
+      "modifications": {
+        "heading": "16. Modifications du Service",
+        "text": "Nous pouvons ajouter, modifier ou supprimer des fonctionnalités sans préavis. Les changements majeurs seront communiqués."
+      },
+      "termsChanges": {
+        "heading": "17. Changements des Conditions",
+        "text": "Ces conditions peuvent être mises à jour périodiquement. L'utilisation continue vaut acceptation. Veuillez les consulter régulièrement."
+      },
+      "governingLaw": {
+        "heading": "18. Droit Applicable",
+        "text": "Le droit du pays où Synapse est enregistré s'applique. Les tribunaux de cette juridiction sont seuls compétents."
+      },
+      "severability": {
+        "heading": "19. Divisibilité",
+        "text": "Si une clause est jugée invalide, le reste demeure en vigueur."
+      },
+      "entireAgreement": {
+        "heading": "20. Accord Complet",
+        "text": "Ces conditions et notre Politique de Confidentialité constituent l'intégralité de l'accord entre vous et Synapse."
+      }
+    }
+  },
   "footer": {
-    "copy": "© {{year}} Synapse. Tous droits réservés."
+    "copy": "© {{year}} Synapse. Tous droits réservés.",
+    "quickLinksLabel": "Liens Rapides",
+    "legalLinksLabel": "Mentions Légales",
+    "legalHeading": "Confidentialité & CGU",
+    "stayUpdated": "Restez Informé",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "subscribeButton": "S'abonner",
+    "subscribedMessage": "Vous vous êtes abonné avec succès via {{email}} !"
   }
 }

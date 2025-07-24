@@ -1,104 +1,141 @@
 {
   "appName": "Synapse",
-
   "nav": {
     "home": "Home",
     "features": "Features",
     "faq": "FAQ",
     "about": "About",
-    "terms": "Terms",
-    "privacy": "Privacy",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
     "signIn": "Sign In",
     "signUp": "Sign Up"
   },
-
   "hero": {
     "welcome": "Welcome to {{appName}}",
-    "tagline": "Your all-in-one AI toolkit: chat, photo analysis, weather, device insights, tech trends, analytics—and more.",
+    "tagline": "Your all-in-one AI toolkit: Chat, photo analysis, weather, device insights, tech trends, analytics, and more.",
     "getStarted": "Try Synapse",
     "discoverFeatures": "Discover Features"
   },
-
   "features": {
     "title": "Powerful Features",
-    "realTimeChat": "Real-time Chat",
-    "realTimeChatDesc": "Connect instantly with friends.",
+    "realTimeChat": "Real-Time Chat",
+    "realTimeChatDesc": "Connect with friends instantly.",
     "photoAnalyzer": "Photo Analyzer",
     "photoAnalyzerDesc": "AI-powered image insights.",
     "weatherDashboard": "Weather Dashboard",
     "weatherDashboardDesc": "Accurate local forecasts.",
     "deviceInspector": "Device Inspector",
-    "deviceInspectorDesc": "Monitor your device health.",
+    "deviceInspectorDesc": "Monitor your device's health.",
     "techTrends": "Tech Trends",
-    "techTrendsDesc": "Stay ahead of the curve.",
+    "techTrendsDesc": "Stay ahead of innovation.",
     "analytics": "Analytics",
-    "analyticsDesc": "Deep engagement insights."
+    "analyticsDesc": "Deep insights into user behavior."
   },
-
   "faq": {
-    "title": "Frequently Asked Questions",
+    "title": "FAQ",
     "items": [
       {
-        "q": "How do I sign up?",
-        "a": "Click Sign Up, fill the form, and start exploring."
+        "q": "What is Synapse?",
+        "a": "Synapse is your all-in-one AI toolkit—offering chat, photo analysis, weather forecasts, and more."
       },
       {
-        "q": "Is there a free tier?",
-        "a": "Yes, core features are free. Premium adds advanced analytics."
+        "q": "How do I create an account?",
+        "a": "Just click Sign Up, fill in your email and password, and you’re good to go!"
       },
       {
-        "q": "Can I switch themes?",
-        "a": "Use the sun/mood icon to toggle light/dark modes."
-      },
-      {
-        "q": "How secure is my data?",
-        "a": "We use encryption and never share your personal info."
+        "q": "Is my data secure?",
+        "a": "Yes. We use TLS encryption in transit and AES‑256 at rest, plus regular security audits."
       }
     ]
   },
-
-  "about": {
-    "why": {
-      "title": "Why We Built It",
-      "text": "Tired of scattered AI tools and fragmented dashboards, our founder Wiltord set out to create one unified, intuitive experience. Synapse bundles chat, analytics, image insights, and more—so you can focus on building without the hassle."
-    },
-    "metrics": {
-      "title": "Our Impact",
-      "activeUsers": "Active Users",
-      "photosAnalyzed": "Photos Analyzed",
-      "apiCalls": "API Calls / mo",
-      "uptime": "Uptime"
-    },
-    "testimonials": {
-      "title": "Testimonials",
-      "jane": {
-        "quote": "Synapse's real-time analytics helped us double our engagement in just two weeks!"
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "July 24, 2025",
+    "intro": "At Synapse, your privacy is paramount. We've crafted this policy to give you transparency into how we collect, use, and protect your information, so you can use our platform with confidence.",
+    "sections": {
+      "infoCollect": {
+        "heading": "1. Information We Collect",
+        "text": "We collect information you provide directly when you create or update your account profile—such as your name, email address, and avatar image—as well as any content you submit (messages, photos, comments). Additionally, we automatically gather technical data about your device and usage, including your IP address, browser type and version, operating system, pages or features accessed, timestamps, and error logs. Finally, with your consent we may link external accounts (e.g., Google, Facebook) to streamline your login experience. Together, this data helps us personalize the service, detect misuse, and improve functionality over time."
       },
-      "carlos": {
-        "quote": "The AI-powered photo analyzer is magical—our marketing team loves it."
+      "useOfData": {
+        "heading": "2. How We Use Your Data",
+        "text": "Your data enables core Synapse features: we deliver chat messages, generate photo analysis results, provide localized weather forecasts, and power analytics dashboards. We also analyze aggregated, de-identified usage patterns to understand feature adoption, troubleshoot bugs, and shape our product roadmap. From time to time, we may send you non-promotional service announcements or security alerts. You can opt out of marketing communications at any time via your account settings—however, transactional messages related to your account or critical updates will still reach you."
       },
-      "aisha": {
-        "quote": "Reliable, fast, and easy to use. A must-have toolkit."
-      }
-    },
-    "team": {
-      "title": "Meet the Team",
-      "alex": {
-        "role": "Founder & CEO",
-        "bio": "Built Synapse out of a dream—loves clean code & strong coffee."
+      "cookies": {
+        "heading": "3. Cookies & Tracking Technologies",
+        "text": "Synapse uses cookies, local storage, and similar technologies to remember your preferences (theme choice, language), maintain your session, and authenticate you securely. We partner with trusted analytics providers to collect anonymous usage metrics—such as daily active users, feature interaction rates, and performance statistics—to ensure the service is fast and reliable. You may disable or clear cookies through your browser settings, but doing so could break functionality (you might need to log in on every visit, for instance)."
       },
-      "maya": {
-        "role": "Lead Engineer",
-        "bio": "Architect of our micro-services & React wizard."
+      "dataSharing": {
+        "heading": "4. Data Sharing and Disclosure",
+        "text": "We value your trust and do not sell or rent personal information to third parties. We may share your data with service providers under strict confidentiality agreements—for example, hosting infrastructure, payment processors, and analytics platforms. These providers are only permitted to use your data as necessary to perform services for Synapse. We may also disclose information if required by law, regulation, or valid legal process (such as a subpoena), or when we believe in good faith that disclosure is necessary to protect our rights, safety, or property, or that of our users."
       },
-      "ravi": {
-        "role": "AI Researcher",
-        "bio": "Designing our ML models—PhD in neural networks."
+      "security": {
+        "heading": "5. Security Measures",
+        "text": "We implement industry-standard security safeguards to protect your information both at rest and in transit. This includes TLS/SSL encryption for data transmission, AES-256 encryption for stored sensitive data, secure hashing of passwords, and regular penetration testing by independent auditors. Access to your personal data within our organization is restricted to employees and contractors who need it to perform their job functions, and they are bound by confidentiality obligations. While we strive for strong security, no system is infallible—please also safeguard your login credentials and enable two-factor authentication when available."
+      },
+      "userRights": {
+        "heading": "6. Your Rights and Choices",
+        "text": "Depending on your jurisdiction, you may have the right to access, correct, update, or delete your personal data. You can review or modify most account information directly from your profile settings. To request deletion of data we cannot remove through the interface (for example, residual backups), please contact privacy@synapse.com. You may also object to or restrict certain processing activities, such as marketing or analytics. We will respond to valid requests in accordance with applicable data protection laws and may require identity verification before processing sensitive actions."
+      },
+      "children": {
+        "heading": "7. Children's Privacy",
+        "text": "Synapse is intended for a general audience and is not directed at children under 13. We do not knowingly collect personal data from individuals below the minimum age in their country of residence. If we learn that we have inadvertently collected data from a child under 13 without verifiable parental consent, we will delete it as soon as possible. If you believe we may have any information from or about a child under 13, please contact us immediately at privacy@synapse.com."
+      },
+      "international": {
+        "heading": "8. International Data Transfers",
+        "text": "Our servers and service providers may be located in countries outside your own, including the United States. If you reside in the European Economic Area or other regions with data protection regulations, please be aware that your information may be transferred internationally. We take steps—such as EU Standard Contractual Clauses—to ensure that your personal data receives an adequate level of protection when moved across borders, consistent with applicable laws."
+      },
+      "retention": {
+        "heading": "9. Retention of Data",
+        "text": "We retain your personal data for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. Account deletion requests will remove your profile data and make your content inaccessible to others, though residual copies may remain in backup storage for a limited time before permanent erasure. Aggregated, anonymized analytics data may be retained indefinitely to help us improve and maintain the Synapse platform."
+      },
+      "updates": {
+        "heading": "10. Changes to This Privacy Policy",
+        "text": "We may update this Privacy Policy periodically to reflect changes in our practices, technology, legal requirements, or business operations. When substantive changes occur, we will post the revised policy with a new “Last Updated” date at the top. We encourage you to review the policy whenever you revisit the service. Continued use of Synapse after modifications constitutes acceptance of the updated terms."
       }
     }
   },
-
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "July 24, 2025",
+    "intro": "Welcome to Synapse. These Terms & Conditions govern your use of our website, applications, and services supplied by Synapse. By creating an account or using our platform in any way, you agree to abide by these Terms. If you do not agree, please discontinue use immediately.",
+    "sections": {
+      "acceptance": {
+        "heading": "1. Acceptance of Terms",
+        "text": "By accessing or using Synapse, you confirm that you have read, understood, and agree to be bound by these Terms & Conditions and our Privacy Policy. These Terms constitute a binding legal agreement between you and Synapse. If you do not agree to all provisions, please do not use or access our services."
+      },
+      "eligibility": {
+        "heading": "2. Eligibility",
+        "text": "To register for an account, you must be at least 13 years old (or older if your local law requires a higher age). By creating an account, you represent that you meet this minimum age requirement. We reserve the right to suspend or terminate accounts that do not comply with this requirement."
+      },
+      "accountSecurity": {
+        "heading": "3. Account Registration & Security",
+        "text": "You may register by providing accurate personal information, including a valid email address. You are responsible for maintaining the confidentiality of your credentials and for all activities that occur under your account. If you suspect unauthorized access, you should change your password immediately and notify us via support@synapse.com."
+      },
+      "userConduct": {
+        "heading": "4. User Conduct and Prohibitions",
+        "text": "You agree not to engage in any activity that could harm Synapse or other users. Prohibited behaviors include posting abusive or obscene content, distributing malware, impersonating others, attempting to reverse-engineer our systems, or using the service for unauthorized commercial purposes."
+      },
+      "ipRights": {
+        "heading": "5. Intellectual Property Rights",
+        "text": "All content—text, graphics, logos, images, audio clips, and software—on Synapse is the property of Synapse or our licensors and protected by copyright, trademark, and other laws. You may not reproduce, distribute, modify, or create derivative works without our express written permission."
+      },  
+      
+      "entireAgreement": {
+        "heading": "20. Entire Agreement",
+        "text": "These Terms, together with the Privacy Policy, constitute the entire agreement between you and Synapse regarding the Service and supersede all prior agreements."
+      }
+    }
+  },
   "footer": {
-    "copy": "© {{year}} Synapse. All rights reserved."
+    "copy": "© {{year}} Synapse. All rights reserved.",
+    "quickLinksLabel": "Quick Links",
+    "legalLinksLabel": "Legal",
+    "legalHeading": "Privacy Policy & Terms and Conditions",
+    "stayUpdated": "Stay Updated",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Your email address",
+    "subscribeButton": "Subscribe",
+    "subscribedMessage": "You've successfully subscribed with {{email}}!"
   }
 }
