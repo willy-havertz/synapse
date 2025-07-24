@@ -16,7 +16,7 @@
   "hero": {
     "welcome": "Bienvenue sur {{appName}}",
     "tagline": "Votre boîte à outils IA tout-en-un : chat, analyse de photos, météo, aperçu de l'appareil, tendances tech, analyses — et plus encore.",
-    "getStarted": "Commencer",
+    "getStarted": "Essayez Synapse",
     "discoverFeatures": "Découvrir les fonctionnalités"
   },
 
@@ -61,7 +61,7 @@
   "about": {
     "why": {
       "title": "Pourquoi nous l'avons créé",
-      "text": "Fatigué des outils IA éparpillés et des tableaux de bord fragmentés, notre fondateur Alex a voulu créer une expérience unifiée et intuitive. Synapse regroupe chat, analyses, insights d'image et plus encore — pour que vous puissiez vous concentrer sur la création sans tracas."
+      "text": "Fatigué des outils IA éparpillés et des tableaux de bord fragmentés, notre fondateur Wiltord a voulu créer une expérience unifiée et intuitive. Synapse regroupe chat, analyses, insights d'image et plus encore — pour que vous puissiez vous concentrer sur la création sans tracas."
     },
     "metrics": {
       "title": "Notre impact",
@@ -84,7 +84,7 @@
       "title": "Rencontrez l'équipe",
       "alex": {
         "role": "Fondateur & PDG",
-        "bio": "A construit Synapse dans un garage—adore le code propre & le café fort."
+        "bio": "J'ai créé Synapse à partir d'un rêve : j'adore le code propre et le café corsé."
       },
       "maya": {
         "role": "Ingénieure principale",

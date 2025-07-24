@@ -1,45 +1,53 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useEffect, useRef, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ThemeContext from "../contexts/ThemeContext";
 import ThemeToggle from "../contexts/ThemeToggle";
+import Footer from "../components/Footer";
+
+import aishaImg from "../assets/aisha.jpg";
+import carlosImg from "../assets/carlos.jpg";
+import janeImg from "../assets/jane.jpg";
+import willyImg from "../assets/willy.jpg";
+import hopeImg from "../assets/hope.jpg";
+import danieliImg from "../assets/daniel.jpg";
 
 const TESTIMONIALS = [
   {
     name: "Jane Smith",
     quoteKey: "about.testimonials.jane.quote",
-    avatar: "/testimonials/jane.jpg",
+    avatar: janeImg,
   },
   {
     name: "Carlos Ruiz",
     quoteKey: "about.testimonials.carlos.quote",
-    avatar: "/testimonials/carlos.jpg",
+    avatar: carlosImg,
   },
   {
     name: "Aisha Khan",
     quoteKey: "about.testimonials.aisha.quote",
-    avatar: "/testimonials/aisha.jpg",
+    avatar: aishaImg,
   },
 ];
 
 const TEAM = [
   {
-    name: "Alex Carter",
+    name: "Wiltord Ichingwa",
     roleKey: "about.team.alex.role",
     bioKey: "about.team.alex.bio",
-    avatar: "/team/alex.jpg",
+    avatar: willyImg,
   },
   {
-    name: "Maya Liu",
+    name: "Hope Grace",
     roleKey: "about.team.maya.role",
     bioKey: "about.team.maya.bio",
-    avatar: "/team/maya.jpg",
+    avatar: hopeImg,
   },
   {
-    name: "Ravi Patel",
+    name: "Daniel Kinyanjui",
     roleKey: "about.team.ravi.role",
     bioKey: "about.team.ravi.bio",
-    avatar: "/team/ravi.jpg",
+    avatar: danieliImg,
   },
 ];
 
@@ -53,40 +61,42 @@ const METRICS = [
 export default function About() {
   const { dark } = useContext(ThemeContext);
   const { t } = useTranslation();
-  const containerRef = useRef();
+  const containerRef = useRef(null);
 
-  // scroll‑reveal setup
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("opacity-100", "translate-y-0");
-          obs.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    containerRef.current.querySelectorAll(".reveal").forEach((el) => {
-      el.classList.add(
-        "opacity-0",
-        "translate-y-6",
-        "transition-all",
-        "duration-700"
-      );
-      obs.observe(el);
-    });
-
-    return () => obs.disconnect();
-  }, []);
-
-  // dynamic classes
+  // Dynamic theme classes
   const bg = dark ? "bg-gray-900" : "bg-gray-50";
   const text = dark ? "text-gray-100" : "text-gray-900";
   const cardBg = dark ? "bg-gray-800" : "bg-white";
   const subtext = dark ? "text-gray-400" : "text-gray-600";
   const border = dark ? "border-gray-700" : "border-gray-200";
   const linkHover = dark ? "hover:text-purple-300" : "hover:text-purple-600";
+
+  // Scroll‑reveal effect
+  useEffect(() => {
+    const els = Array.from(containerRef.current.querySelectorAll(".reveal"));
+    els.forEach((el, i) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(1rem)";
+      el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+      el.dataset.delay = String(i * 100);
+    });
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = Number(el.dataset.delay);
+          el.style.transitionDelay = `${delay}ms`;
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+          obs.unobserve(el);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div className={`${bg} ${text} min-h-screen`}>
@@ -137,7 +147,7 @@ export default function About() {
             {METRICS.map((m, i) => (
               <div
                 key={i}
-                className={`${cardBg} p-6 rounded-xl shadow hover:shadow-lg transition`}
+                className={`${cardBg} p-6 rounded-xl shadow hover:shadow-lg transition reveal`}
               >
                 <p className="text-4xl font-extrabold text-purple-500">
                   {m.value}
@@ -157,7 +167,7 @@ export default function About() {
             {TESTIMONIALS.map((u, i) => (
               <div
                 key={i}
-                className={`${cardBg} flex items-start space-x-4 p-6 rounded-2xl shadow hover:shadow-xl transition`}
+                className={`${cardBg} flex items-start space-x-4 p-6 rounded-2xl shadow hover:shadow-xl transition reveal`}
               >
                 <img
                   src={u.avatar}
@@ -182,7 +192,7 @@ export default function About() {
             {TEAM.map((p, i) => (
               <div
                 key={i}
-                className={`${cardBg} flex flex-col items-center text-center p-6 rounded-2xl shadow hover:shadow-xl transition`}
+                className={`${cardBg} flex flex-col items-center text-center p-6 rounded-2xl shadow hover:shadow-xl transition reveal`}
               >
                 <img
                   src={p.avatar}
@@ -200,9 +210,8 @@ export default function About() {
         </section>
       </main>
 
-      <footer className={`py-6 text-center text-sm border-t ${border}`}>
-        {t("footer.copy", { year: new Date().getFullYear() })}
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

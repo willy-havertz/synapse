@@ -1,92 +1,89 @@
+# ==============================
+# Environment & Secrets
+# ==============================
+*.env
+*.env.local
+*.env.*.local
 server/ga4-service-account.json
-# Node dependencies
+
+# ==============================
+# Node / JavaScript
+# ==============================
 node_modules/
 **/node_modules/
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Vite cache
+node_modules/.vite/
 
 # Build outputs
 dist/
 build/
 public/build/
 
-# Env files
-.env
-.env.*.local
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
+# ==============================
+# Logs & Debug
+# ==============================
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.log
 
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE/editor settings
+# ==============================
+# IDE / Editor
+# ==============================
 .vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.sublime-project
+*.sublime-workspace
 
-# Vite cache
-node_modules/.vite/
+# ==============================
+# OS / System
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# Coverage
+# ==============================
+# Docker
+# ==============================
+Dockerfile*
+.dockerignore
+docker-compose.override.yml
+
+# ==============================
+# Test Coverage
+# ==============================
 coverage/
 *.lcov
 
-# Runtime files
+# ==============================
+# Runtime / Process
+# ==============================
 pids/
 *.pid
-*.seed
 *.pid.lock
+*.seed
 
-# Yarn
-yarn.lock
-
-# npm
-package-lock.json
-.pnpm-debug.log
-
-# Docker
-docker-compose.override.yml
-Dockerfile*
-.dockerignore
-
-# Misc
-*.tgz
-*.log
-# Virtual environments
-venv/
+# ==============================
+# Python / Virtualenv
+# ==============================
 .venv/
-
-# Python bytecode
+venv/
 __pycache__/
 *.py[cod]
 *$py.class
 
-# DeepFace cache (local model weights)
-C:/Users/*/.deepface/
-
-# Logs and temp files
-*.log
+# ==============================
+# Misc
+# ==============================
+*.tgz
 *.tmp
 *.temp
-
-# IDE/editor folders
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# OS artifacts
-.DS_Store
-Thumbs.db

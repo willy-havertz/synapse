@@ -1,4 +1,3 @@
-
 {
   "appName": "Synapse",
 
@@ -16,7 +15,7 @@
   "hero": {
     "welcome": "Willkommen bei {{appName}}",
     "tagline": "Ihr All-in-One KI-Toolkit: Chat, Fotoanalyse, Wetter, Geräte-Einblicke, Tech-Trends, Analysen und mehr.",
-    "getStarted": "Loslegen",
+    "getStarted": "Teste Synapse",
     "discoverFeatures": "Funktionen entdecken"
   },
 
@@ -61,7 +60,7 @@
   "about": {
     "why": {
       "title": "Warum wir es gebaut haben",
-      "text": "Genervt von verstreuten KI-Tools und fragmentierten Dashboards, machte sich unser Gründer Alex daran, eine einheitliche, intuitive Erfahrung zu schaffen. Synapse bündelt Chat, Analysen, Bild-Insights und mehr—damit Sie sich auf das Wesentliche konzentrieren können."
+      "text": "Genervt von verstreuten KI-Tools und fragmentierten Dashboards, machte sich unser Gründer Wiltord daran, eine einheitliche, intuitive Erfahrung zu schaffen. Synapse bündelt Chat, Analysen, Bild-Insights und mehr—damit Sie sich auf das Wesentliche konzentrieren können."
     },
     "metrics": {
       "title": "Unser Einfluss",
@@ -86,7 +85,7 @@
       "title": "Lerne das Team kennen",
       "alex": {
         "role": "Gründer & CEO",
-        "bio": "Hat Synapse aus einer Garage heraus aufgebaut—liebt sauberen Code & starken Kaffee."
+        "bio": "Hat Synapse aus einer geschaffen heraus aufgebaut—liebt sauberen Code & starken Kaffee."
       },
       "maya": {
         "role": "Leitende Ingenieurin",

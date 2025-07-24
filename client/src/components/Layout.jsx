@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import NavBar from "./Navbar";
-import Footer from "./Footer";
 import ThemeContext from "../contexts/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -66,8 +65,6 @@ export default function Layout({ children }) {
             overflow-y-auto 
             scroll-smooth 
             p-8 
-
-            /* Tailwind scrollbar classes, requires scrollbar plugin */
             scrollbar-thin 
             scrollbar-thumb-purple-600 
             scrollbar-track-gray-800 
@@ -86,8 +83,6 @@ export default function Layout({ children }) {
             </button>
           )}
         </main>
-
-        <Footer />
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import {
   faBars,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../components/Footer";
 
 const FEATURES = [
   {
@@ -386,15 +387,7 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer
-        className={`${
-          dark ? "bg-gray-800" : "bg-gray-100"
-        } py-6 text-center text-sm ${
-          dark ? "text-gray-500" : "text-gray-600"
-        } snap-start`}
-      >
-        {t("footer.copy", { year: new Date().getFullYear() })}
-      </footer>
+      <Footer />
 
       <style>{`
         @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-20px)}100%{transform:translateY(0)}}

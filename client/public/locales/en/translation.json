@@ -15,7 +15,7 @@
   "hero": {
     "welcome": "Welcome to {{appName}}",
     "tagline": "Your all-in-one AI toolkit: chat, photo analysis, weather, device insights, tech trends, analytics—and more.",
-    "getStarted": "Get Started",
+    "getStarted": "Try Synapse",
     "discoverFeatures": "Discover Features"
   },
 
@@ -60,7 +60,7 @@
   "about": {
     "why": {
       "title": "Why We Built It",
-      "text": "Tired of scattered AI tools and fragmented dashboards, our founder Alex set out to create one unified, intuitive experience. Synapse bundles chat, analytics, image insights, and more—so you can focus on building without the hassle."
+      "text": "Tired of scattered AI tools and fragmented dashboards, our founder Wiltord set out to create one unified, intuitive experience. Synapse bundles chat, analytics, image insights, and more—so you can focus on building without the hassle."
     },
     "metrics": {
       "title": "Our Impact",
@@ -85,7 +85,7 @@
       "title": "Meet the Team",
       "alex": {
         "role": "Founder & CEO",
-        "bio": "Built Synapse out of a garage—loves clean code & strong coffee."
+        "bio": "Built Synapse out of a dream—loves clean code & strong coffee."
       },
       "maya": {
         "role": "Lead Engineer",

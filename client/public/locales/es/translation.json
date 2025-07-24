@@ -16,7 +16,7 @@
   "hero": {
     "welcome": "Bienvenido a {{appName}}",
     "tagline": "Tu conjunto de herramientas IA todo-en-uno: chat, análisis de fotos, clima, visión de dispositivo, tendencias tech, analíticas—y más.",
-    "getStarted": "Comenzar",
+    "getStarted": "Prueba Synapse",
     "discoverFeatures": "Descubrir Funciones"
   },
 
@@ -61,7 +61,7 @@
   "about": {
     "why": {
       "title": "Por qué lo creamos",
-      "text": "Cansado de herramientas de IA dispersas y paneles fragmentados, nuestro fundador Alex decidió crear una experiencia unificada e intuitiva. Synapse agrupa chat, analíticas, visión de imágenes y más—para que te concentres en construir sin complicaciones."
+      "text": "Cansado de herramientas de IA dispersas y paneles fragmentados, nuestro fundador Wiltord decidió crear una experiencia unificada e intuitiva. Synapse agrupa chat, analíticas, visión de imágenes y más—para que te concentres en construir sin complicaciones."
     },
     "metrics": {
       "title": "Nuestro Impacto",
@@ -86,7 +86,7 @@
       "title": "Conoce al Equipo",
       "alex": {
         "role": "Fundador y CEO",
-        "bio": "Construyó Synapse desde un garaje—ama el código limpio y el café fuerte."
+        "bio": "Construyó Synapse desde un sueño—ama el código limpio y el café fuerte."
       },
       "maya": {
         "role": "Ingeniera Líder",
