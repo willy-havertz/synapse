@@ -223,14 +223,14 @@
     }
   },
   "footer": {
-    "copy": "© {{year}} Synapse. Tous droits réservés.",
+    "copy": "© {{year}} Synapse. Tous droits réservés. Wiltord",
     "quickLinksLabel": "Liens Rapides",
     "legalLinksLabel": "Mentions Légales",
     "legalHeading": "Confidentialité & CGU",
     "stayUpdated": "Restez Informé",
     "emailLabel": "Adresse e-mail",
     "emailPlaceholder": "Votre adresse e-mail",
-    "subscribeButton": "S’abonner",
-    "subscribedMessage": "Vous vous êtes abonné avec succès via {{email}} !"
+    "subscribeButton": "S'abonner",
+    "subscribedMessage": "Vous vous êtes abonné avec succès via {{email}} !"
   }
 }
