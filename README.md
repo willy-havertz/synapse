@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:15px; " />
+  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:15px;" />
 </p>
 
 ## Welcome to *Synapse*
