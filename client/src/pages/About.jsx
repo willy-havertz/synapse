@@ -1,4 +1,4 @@
-// src/pages/About.jsx
+
 import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,15 +6,15 @@ import ThemeContext from "../contexts/ThemeContext";
 import ThemeToggle from "../contexts/ThemeToggle";
 import Footer from "../components/Footer";
 
-// Testimonial avatars live in src/assets/testimonials/
-import janeImg from "../assets/testimonials/jane.jpg";
-import carlosImg from "../assets/testimonials/carlos.jpg";
-import aishaImg from "../assets/testimonials/aisha.jpg";
 
-// Team avatars live in src/assets/team/
-import willyImg from "../assets/team/willy.jpg";
-import hopeImg from "../assets/team/hope.jpg";
-import danieliImg from "../assets/team/daniel.jpg";
+import janeImg from "../assets/testimonials/jane.JPG";
+import carlosImg from "../assets/testimonials/carlos.JPG";
+import aishaImg from "../assets/testimonials/aisha.JPG";
+
+
+import willyImg from "../assets/team/willy.JPG";
+import hopeImg from "../assets/team/hope.JPG";
+import danieliImg from "../assets/team/daniel.JPG";
 
 const TESTIMONIALS = [
   {
