@@ -1,6 +1,4 @@
 
-
-```markdown
 # Synapse
 
 <p align="center">
@@ -10,167 +8,109 @@
 </p>
 
 <p align="center">
-  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:8px;"/>
+  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:8px;" />
 </p>
 
-<section>
-  <h2 align="center">Welcome to <em>Synapse</em></h2>
-  <p align="center">Synapse bridges connections with real‑time chat, AI‑powered photo analysis, trend insights, and personalized analytics—all wrapped in a sleek, responsive interface. Dive in to experience seamless communication, intelligent interactions, and data‑driven decisions.</p>
-</section>
+## Welcome to *Synapse*
+
+Synapse bridges connections with real‑time chat, AI‑powered photo analysis, trend insights, and personalized analytics—all wrapped in a sleek, responsive interface. Dive in to experience seamless communication, intelligent interactions, and data‑driven decisions.
 
 <details open>
   <summary>📑 Table of Contents</summary>
-  1. [Features](#-features)  
-  2. [Tech Stack](#-tech-stack)  
-  3. [Demo](#-demo)   
-  4. [Installation](#-installation)  
-  5. [Env Variables](#-env-variables)  
-  6. [Running the App](#-running-the-app)  
-  7. [Folder Structure](#-folder-structure)  
-  8. [Contributing](#-contributing)  
-  9. [License](#-license)  
+
+  1. [Features](#🚀-features)  
+  2. [Tech Stack](#🛠-tech-stack)  
+  3. [Demo](#🎬-demo)   
+  4. [Installation](#⚙️-installation)  
+  5. [Env Variables](#env-variables)  
+  6. [Running the App](#running-the-app)  
+  7. [Folder Structure](#folder-structure)  
+  8. [Contributing](#contributing)  
+  9. [License](#license)  
 </details>
 
 ---
 
 ## 🚀 Features
 
-<ul>
-  <li>🔐 <strong>Secure Auth</strong>: JWT + Google reCAPTCHA v2</li>
-  <li>💬 <strong>Real‑time Chat</strong>: 1:1 & group via Socket.io</li>
-  <li>🤖 <strong>AI Chatbot</strong>: GPT‑powered contextual conversations</li>
-  <li>🖼️ <strong>DeepFace Analysis</strong>: Photo face recognition & attributes</li>
-  <li>📈 <strong>Analytics</strong>: Recharts dashboard</li>
-  <li>🌐 <strong>i18n</strong>: Multi‑language via i18next</li>
-  <li>🎨 <strong>Theme Toggle</strong>: Persistent dark/light mode</li>
-  <li>📬 <strong>Password Reset</strong>: Email workflow</li>
-  <li>⚡️ <strong>PWA Ready</strong>: Offline caching & SEO</li>
-</ul>
+- 🔐 **Secure Auth**: JWT + Google reCAPTCHA v2  
+- 💬 **Real‑time Chat**: 1:1 & group via Socket.io  
+- 🤖 **AI Chatbot**: GPT‑powered contextual conversations  
+- 🖼️ **DeepFace Analysis**: Photo face recognition & attributes  
+- 📈 **Analytics**: Recharts dashboard  
+- 🌐 **i18n**: Multi‑language via i18next  
+- 🎨 **Theme Toggle**: Persistent dark/light mode  
+- 📬 **Password Reset**: Email workflow  
+- ⚡️ **PWA Ready**: Offline caching & SEO  
 
 ---
 
 ## 🛠 Tech Stack
 
-<table>
-  <tr><th>Layer</th><th>Technology</th></tr>
-  <tr><td>Frontend</td><td>React · Tailwind · Vite · Axios · react-hot-toast · Framer Motion · FontAwesome</td></tr>
-  <tr><td>Backend</td><td>Node.js · Express · Socket.io</td></tr>
-  <tr><td>AI</td><td>OpenAI GPT · DeepFace.js</td></tr>
-  <tr><td>DB</td><td>MongoDB · Mongoose</td></tr>
-  <tr><td>Auth</td><td>JWT · Google reCAPTCHA</td></tr>
-  <tr><td>Charts</td><td>Recharts · react-countup</td></tr>
-  <tr><td>i18n</td><td>i18next · react-i18next</td></tr>
-  <tr><td>Deploy</td><td>Vercel · Render</td></tr>
-</table>
+| Layer     | Technology                                                                 |
+|-----------|----------------------------------------------------------------------------|
+| Frontend  | React · Tailwind · Vite · Axios · react-hot-toast · Framer Motion · FontAwesome |
+| Backend   | Node.js · Express · Socket.io                                               |
+| AI        | OpenAI GPT · DeepFace.js                                                    |
+| DB        | MongoDB · Mongoose                                                          |
+| Auth      | JWT · Google reCAPTCHA                                                      |
+| Charts    | Recharts · react-countup                                                    |
+| i18n      | i18next · react-i18next                                                     |
+| Deploy    | Vercel · Render                                                             |
 
 ---
 
 ## 🎬 Demo
 
 <p align="center">
-  <a href="https://synapse-gold.vercel.app">Synapse Live Demo</a>
+  <a href="https://synapse-gold.vercel.app">🔗 Synapse Live Demo</a>
 </p>
 
 <p align="center">
-  <img src="./assets/demo.gif" alt="Demo" width="80%" style="border:1px solid #ddd;border-radius:4px;"/>
+  <img src="./assets/demo.gif" alt="Demo" width="80%" style="border:1px solid #ddd; border-radius:4px;" />
 </p>
 
 ---
 
 ## 📸 Screenshots
 
-Here are snapshots of the Synapse web interface:
+| Home Dashboard                                   | Landing Page                                   |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/home.png"   width="200" height="120" alt="Home Dashboard" />   | <img src="./client/src/assets/screenshots/LandingPage.png" width="200" height="120" alt="Landing Page" /> |
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/home.png" width="200" height="120" alt="Home Dashboard"/><br/>
-      <strong>Home Dashboard</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/LandingPage.png" width="200" height="120" alt="Chat Window"/><br/>
-      <strong>Landing Page</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/login.png" width="200" height="120" alt="User Profile"/><br/>
-      <strong>Login</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/signUp.png" width="200" height="120" alt="Analytics"/><br/>
-      <strong>Analytics</strong>
-    </td>
-  </tr>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/reset.png" width="200" height="120" alt="User Profile"/><br/>
-      <strong>Reset</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/footer.png" width="200" height="120" alt="Analytics"/><br/>
-      <strong>Footer</strong>
-    </td>
-  </tr>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/about.png" width="200" height="120" alt="User Profile"/><br/>
-      <strong>About</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/team.png" width="200" height="120" alt="Analytics"/><br/>
-      <strong>The team</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/photoAnalyzer.png" width="200" height="120" alt="Photo Analysis"/><br/>
-      <strong>Photo Analysis</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/settings.png" width="200" height="120" alt="Settings"/><br/>
-      <strong>Settings</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/deviceInspector.png" width="200" height="120" alt="AI Chatbot"/><br/>
-      <strong>Device Inspector</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/weather.png" width="200" height="120" alt="Weather Widget"/><br/>
-      <strong>Weather Widget</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/techTrends.png" width="200" height="120" alt="Dark Mode"/><br/>
-      <strong>Tech Trends</strong>
-    </td>
-    <td align="center">
-      <img src="./client/src/assets/screenshots/language.png" width="200" height="120" alt="Language Switcher"/><br/>
-      <strong>Language Switcher</strong>
-    </td>
-  </tr>
-</table>
+| Login                                            | Analytics                                      |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/login.png" width="200" height="120" alt="Login" />            | <img src="./client/src/assets/screenshots/signUp.png" width="200" height="120" alt="Analytics" /> |
+
+| Reset                                            | Footer                                         |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/reset.png" width="200" height="120" alt="Reset" />            | <img src="./client/src/assets/screenshots/footer.png" width="200" height="120" alt="Footer" /> |
+
+| About                                            | The Team                                       |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/about.png" width="200" height="120" alt="About" />            | <img src="./client/src/assets/screenshots/team.png" width="200" height="120" alt="Team" /> |
+
+| Photo Analysis                                   | Settings                                       |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/photoAnalyzer.png" width="200" height="120" alt="Photo Analysis" /> | <img src="./client/src/assets/screenshots/settings.png" width="200" height="120" alt="Settings" /> |
+
+| Device Inspector                                 | Weather Widget                                 |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/deviceInspector.png" width="200" height="120" alt="Device Inspector" /> | <img src="./client/src/assets/screenshots/weather.png" width="200" height="120" alt="Weather Widget" /> |
+
+| Tech Trends                                      | Language Switcher                              |
+|:------------------------------------------------:|:-----------------------------------------------:|
+| <img src="./client/src/assets/screenshots/techTrends.png" width="200" height="120" alt="Tech Trends" /> | <img src="./client/src/assets/screenshots/language.png" width="200" height="120" alt="Language Switcher" /> |
 
 ---
 
 ## ⚙️ Installation
 
-Follow these steps to set up each component:
-
-<details>
-<summary>1. Clone the repository</summary>
-
 ```bash
-# from project root
+# Clone the repository
 git clone https://github.com/your-username/synapse.git
 cd synapse
-```
-</details>
+
 
 <details>
 <summary>2. Install and run <strong>Server</strong> (Node.js + Express)</summary>
