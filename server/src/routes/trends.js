@@ -4,7 +4,7 @@ const axios = require("axios");
 const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 if (!NEWSAPI_KEY) {
   console.error("Missing environment variable: NEWSAPI_KEY");
-  // If your app can’t start without it, you might even throw here:
+  // Optionally throw here:
   // throw new Error("NEWSAPI_KEY is required");
 }
 
@@ -34,17 +34,19 @@ router.get("/", async (req, res) => {
   }
 
   try {
-    // 3. Fetch from NewsAPI
+    // 3. Fetch from NewsAPI, sending key in header to bypass Cloudflare challenge
     const response = await axios.get(NEWSAPI, {
       params: {
-        apiKey: NEWSAPI_KEY,
-        q: encodeURIComponent(cat),
+        q: cat,
         from: start,
         to: end,
         sortBy: "popularity",
         language: "en",
       },
-      timeout: 5000, // e.g. fail fast if NewsAPI is unresponsive
+      headers: {
+        "X-Api-Key": NEWSAPI_KEY,
+      },
+      timeout: 5000, // fail fast if NewsAPI is unresponsive
     });
 
     // 4. Transform and return
