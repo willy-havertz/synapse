@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:8px;" />
+  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:15px; " />
 </p>
 
 ## Welcome to *Synapse*
@@ -74,33 +74,79 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
 
 ## 📸 Screenshots
 
-| Home Dashboard                                   | Landing Page                                   |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/home.png"   width="200" height="120" alt="Home Dashboard" />   | <img src="./client/src/assets/screenshots/LandingPage.png" width="200" height="120" alt="Landing Page" /> |
+<table>
+  <tr>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/home.png" width="240" height="160" alt="Home Dashboard" /><br/>
+      <strong>Home Dashboard</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/LandingPage.png" width="240" height="160" alt="Landing Page" /><br/>
+      <strong>Landing Page</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/login.png" width="240" height="160" alt="Login" /><br/>
+      <strong>Login</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/signUp.png" width="240" height="160" alt="Analytics" /><br/>
+      <strong>Analytics</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/reset.png" width="240" height="160" alt="Reset" /><br/>
+      <strong>Reset</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/footer.png" width="240" height="160" alt="Footer" /><br/>
+      <strong>Footer</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/about.png" width="240" height="160" alt="About" /><br/>
+      <strong>About</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/team.png" width="240" height="160" alt="The Team" /><br/>
+      <strong>The Team</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/photoAnalyzer.png" width="240" height="160" alt="Photo Analysis" /><br/>
+      <strong>Photo Analysis</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/settings.png" width="240" height="160" alt="Settings" /><br/>
+      <strong>Settings</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/deviceInspector.png" width="240" height="160" alt="Device Inspector" /><br/>
+      <strong>Device Inspector</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/weather.png" width="240" height="160" alt="Weather Widget" /><br/>
+      <strong>Weather Widget</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/techTrends.png" width="240" height="160" alt="Tech Trends" /><br/>
+      <strong>Tech Trends</strong>
+    </td>
+    <td align="center">
+      <img src="./client/src/assets/screenshots/language.png" width="240" height="160" alt="Language Switcher" /><br/>
+      <strong>Language Switcher</strong>
+    </td>
+    <td align="center">
+      &mdash;
+    </td>
+  </tr>
+</table>
 
-| Login                                            | Analytics                                      |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/login.png" width="200" height="120" alt="Login" />            | <img src="./client/src/assets/screenshots/signUp.png" width="200" height="120" alt="Analytics" /> |
 
-| Reset                                            | Footer                                         |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/reset.png" width="200" height="120" alt="Reset" />            | <img src="./client/src/assets/screenshots/footer.png" width="200" height="120" alt="Footer" /> |
-
-| About                                            | The Team                                       |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/about.png" width="200" height="120" alt="About" />            | <img src="./client/src/assets/screenshots/team.png" width="200" height="120" alt="Team" /> |
-
-| Photo Analysis                                   | Settings                                       |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/photoAnalyzer.png" width="200" height="120" alt="Photo Analysis" /> | <img src="./client/src/assets/screenshots/settings.png" width="200" height="120" alt="Settings" /> |
-
-| Device Inspector                                 | Weather Widget                                 |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/deviceInspector.png" width="200" height="120" alt="Device Inspector" /> | <img src="./client/src/assets/screenshots/weather.png" width="200" height="120" alt="Weather Widget" /> |
-
-| Tech Trends                                      | Language Switcher                              |
-|:------------------------------------------------:|:-----------------------------------------------:|
-| <img src="./client/src/assets/screenshots/techTrends.png" width="200" height="120" alt="Tech Trends" /> | <img src="./client/src/assets/screenshots/language.png" width="200" height="120" alt="Language Switcher" /> |
 
 ---
 
