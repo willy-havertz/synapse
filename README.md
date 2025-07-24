@@ -63,11 +63,8 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
 ## 🎬 Demo
 
 <p align="center">
-  <a href="https://synapse-gold.vercel.app">🔗 Synapse Live Demo<img src="./client/src/assets/screenshots/banner.png" style="border-radius:50%; border:3px solid purple" height="200px" width="200px"></a>
-</p>
-
-<p align="center">
-  <img src="./assets/demo.gif" alt="Demo" width="80%" style="border:1px solid #ddd; border-radius:4px;" />
+Click the image to see the live site
+  <a href="https://synapse-gold.vercel.app"><img src="./client/src/assets/screenshots/banner.png" style="border-radius:50%; border:3px solid purple" height="200px" width="200px"></a>
 </p>
 
 ---
