@@ -156,10 +156,12 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
 # Clone the repository
 git clone https://github.com/your-username/synapse.git
 cd synapse
+```
 
+---
 
 <details>
-<summary>2. Install and run <strong>Server</strong> (Node.js + Express)</summary>
+<summary>2. Install and run <strong>Server</strong> (Node.js + Express) </summary>
 
 ```bash
 cd server
@@ -168,6 +170,15 @@ npm start   # starts backend on configured PORT
 ```
 </details>
 
+<details>
+<summary>2. Install and run <strong>Server/strong> (Node.js + Express)</summary>
+
+```bash
+cd server
+npm install   
+npm start
+```
+</details>
 <details>
 <summary>3. Install and run <strong>Chatbot</strong> (Python)</summary>
 
