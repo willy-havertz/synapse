@@ -18,10 +18,10 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
 <details open>
   <summary>📑 Table of Contents</summary>
 
-  1. [Features](#🚀-features)  
-  2. [Tech Stack](#🛠-tech-stack)  
-  3. [Demo](#🎬-demo)   
-  4. [Installation](#⚙️-installation)  
+  1. [Features](#features)  
+  2. [Tech Stack](#tech-stack)  
+  3. [Demo](#demo)  
+  4. [Installation](#installation)  
   5. [Env Variables](#env-variables)  
   6. [Running the App](#running-the-app)  
   7. [Folder Structure](#folder-structure)  
