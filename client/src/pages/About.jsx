@@ -1,16 +1,20 @@
-import React, { useContext, useEffect, useRef, Suspense } from "react";
+// src/pages/About.jsx
+import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ThemeContext from "../contexts/ThemeContext";
 import ThemeToggle from "../contexts/ThemeToggle";
 import Footer from "../components/Footer";
 
-import aishaImg from "../assets/aisha.jpg";
-import carlosImg from "../assets/carlos.jpg";
-import janeImg from "../assets/jane.jpg";
-import willyImg from "../assets/willy.jpg";
-import hopeImg from "../assets/hope.jpg";
-import danieliImg from "../assets/daniel.jpg";
+// Testimonial avatars live in src/assets/testimonials/
+import janeImg from "../assets/testimonials/jane.jpg";
+import carlosImg from "../assets/testimonials/carlos.jpg";
+import aishaImg from "../assets/testimonials/aisha.jpg";
+
+// Team avatars live in src/assets/team/
+import willyImg from "../assets/team/willy.jpg";
+import hopeImg from "../assets/team/hope.jpg";
+import danieliImg from "../assets/team/daniel.jpg";
 
 const TESTIMONIALS = [
   {
@@ -33,20 +37,20 @@ const TESTIMONIALS = [
 const TEAM = [
   {
     name: "Wiltord Ichingwa",
-    roleKey: "about.team.alex.role",
-    bioKey: "about.team.alex.bio",
+    roleKey: "about.team.wiltord.role",
+    bioKey: "about.team.wiltord.bio",
     avatar: willyImg,
   },
   {
     name: "Hope Grace",
-    roleKey: "about.team.maya.role",
-    bioKey: "about.team.maya.bio",
+    roleKey: "about.team.hope.role",
+    bioKey: "about.team.hope.bio",
     avatar: hopeImg,
   },
   {
     name: "Daniel Kinyanjui",
-    roleKey: "about.team.ravi.role",
-    bioKey: "about.team.ravi.bio",
+    roleKey: "about.team.daniel.role",
+    bioKey: "about.team.daniel.bio",
     avatar: danieliImg,
   },
 ];
@@ -63,7 +67,7 @@ export default function About() {
   const { t } = useTranslation();
   const containerRef = useRef(null);
 
-  // Dynamic theme classes
+  // Theme classes
   const bg = dark ? "bg-gray-900" : "bg-gray-50";
   const text = dark ? "text-gray-100" : "text-gray-900";
   const cardBg = dark ? "bg-gray-800" : "bg-white";
@@ -71,7 +75,7 @@ export default function About() {
   const border = dark ? "border-gray-700" : "border-gray-200";
   const linkHover = dark ? "hover:text-purple-300" : "hover:text-purple-600";
 
-  // Scroll‑reveal effect
+  // Scroll‑reveal
   useEffect(() => {
     const els = Array.from(containerRef.current.querySelectorAll(".reveal"));
     els.forEach((el, i) => {
