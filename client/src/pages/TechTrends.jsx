@@ -1,6 +1,7 @@
-
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import api from "../services/api";
+import Select from "react-select";
+import { getCodeList } from "country-list";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSyncAlt,
@@ -28,16 +29,42 @@ function timeAgo(dateString) {
   return `${days}d ago`;
 }
 
+// convert country code to emoji flag
+function flagEmoji(code) {
+  return code
+    .toUpperCase()
+    .split("")
+    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
+    .join("");
+}
+
 export default function TechTrends() {
   const categories = [
-    "Cybersecurity",
-    "Engineering",
-    "Nursing",
-    "Agriculture",
-    "Education",
+    "business",
+    "entertainment",
+    "general",
+    "health",
+    "science",
+    "sports",
+    "technology",
   ];
 
+  // build country options once
+  const countryOptions = useMemo(() => {
+    const codes = getCodeList(); // { "KE": "Kenya", ... }
+    return Object.entries(codes)
+      .map(([code, name]) => ({
+        value: code.toLowerCase(),
+        label: `${flagEmoji(code)}  ${name}`,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, []);
+
+  // state
   const [cat, setCat] = useState(categories[0]);
+  const [country, setCountry] = useState(
+    countryOptions.find((o) => o.value === "ke")
+  );
   const [trends, setTrends] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
@@ -58,11 +85,14 @@ export default function TechTrends() {
   const [showFavs, setShowFavs] = useState(false);
   const [modalTrend, setModalTrend] = useState(null);
 
+  // fetch data
   const fetchTrends = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const { data } = await api.get("/trends", { params: { cat } });
+      const { data } = await api.get("/trends", {
+        params: { cat, country: country.value },
+      });
       setTrends(data);
       setPage(1);
     } catch (err) {
@@ -75,27 +105,26 @@ export default function TechTrends() {
     } finally {
       setLoading(false);
     }
-  }, [cat]);
+  }, [cat, country]);
 
-  // fetch on category change
   useEffect(() => {
     fetchTrends();
   }, [fetchTrends]);
 
-  // filter/search/sort
+  // filter, sort, favorites
   useEffect(() => {
     let arr = trends.filter((t) =>
       t.title.toLowerCase().includes(search.toLowerCase())
     );
+    if (showFavs) arr = arr.filter((t) => favorites.includes(t.id));
     arr.sort((a, b) =>
       sortAsc
         ? new Date(a.published) - new Date(b.published)
         : new Date(b.published) - new Date(a.published)
     );
-    if (showFavs) arr = arr.filter((t) => favorites.includes(t.id));
     setFiltered(arr);
     setPage(1);
-  }, [search, sortAsc, trends, showFavs, favorites]);
+  }, [trends, search, sortAsc, showFavs, favorites]);
 
   // persist favorites
   useEffect(() => {
@@ -123,9 +152,26 @@ export default function TechTrends() {
     }
   };
 
+  // react-select styles for dark theme
+  const selectStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: "#1f2937",
+      borderColor: "#374151",
+    }),
+    menu: (base) => ({ ...base, backgroundColor: "#1f2937" }),
+    singleValue: (base) => ({ ...base, color: "#f9fafb" }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isFocused ? "#374151" : "#1f2937",
+      color: "#f9fafb",
+    }),
+    placeholder: (base) => ({ ...base, color: "#9ca3af" }),
+  };
+
   return (
     <div className="space-y-6">
-      {/* Header + Categories + Fav/Refresh */}
+      {/* Header + Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="text-3xl font-bold flex items-center">
           Tech Trends
@@ -140,16 +186,30 @@ export default function TechTrends() {
           {categories.map((c) => (
             <button
               key={c}
-              onClick={() => setCat(c)}
+              onClick={() => {
+                setCat(c);
+                setSearch("");
+                setShowFavs(false);
+              }}
               className={`px-3 py-1 rounded-full text-sm font-medium transition ${
                 c === cat
                   ? "bg-purple-400 text-white"
                   : "bg-gray-700 text-gray-300 hover:bg-gray-600"
               }`}
             >
-              {c}
+              {c.charAt(0).toUpperCase() + c.slice(1)}
             </button>
           ))}
+          <div className="w-48">
+            <Select
+              options={countryOptions}
+              value={country}
+              onChange={setCountry}
+              styles={selectStyles}
+              isSearchable
+              placeholder="Select country..."
+            />
+          </div>
           <button
             onClick={() => setShowFavs((f) => !f)}
             className="p-2 rounded-full bg-gray-700 text-gray-300 hover:bg-gray-600 transition"
@@ -211,7 +271,6 @@ export default function TechTrends() {
       {error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : loading ? (
-        // shimmer skeleton
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
             <div
@@ -240,17 +299,19 @@ export default function TechTrends() {
               >
                 <div>
                   <div className="flex items-center space-x-2 mb-2">
+                    {/* category badge */}
                     <span className="px-2 py-0.5 bg-purple-600 text-xs rounded">
-                      {t.category}
+                      {cat.charAt(0).toUpperCase() + cat.slice(1)}
                     </span>
+                    {/* clickable source name */}
                     {t.source && (
                       <a
-                        href={t.source}
+                        href={t.url}
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         className="text-xs text-gray-400 hover:underline"
                       >
-                        source
+                        {t.source}
                       </a>
                     )}
                   </div>
@@ -262,7 +323,6 @@ export default function TechTrends() {
                   </h3>
                   <p className="text-gray-400 line-clamp-3 mt-2">{t.summary}</p>
                 </div>
-
                 <div className="mt-4 flex items-center justify-between text-gray-400 text-sm">
                   <span>{timeAgo(t.published)}</span>
                   <div className="flex items-center space-x-3">
@@ -297,8 +357,6 @@ export default function TechTrends() {
               </div>
             ))}
           </div>
-
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex items-center justify-center space-x-4 mt-6">
               <button
