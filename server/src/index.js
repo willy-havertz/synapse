@@ -7,6 +7,8 @@ const helmet = require("./config/helmet");
 const upload = require("./config/multer");
 const setupSocket = require("./config/socket");
 
+const http = require("http");
+const setupCallSignaling = require("./services/callRouter");
 const Conversation = require("./models/Conversation");
 const Message = require("./models/Message");
 
@@ -17,6 +19,7 @@ const weatherRouter = require("./routes/weather");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const server = http.createServer(app);
 
 // 1) SECURITY HEADERS
 app.use(helmet);
@@ -61,6 +64,7 @@ app.get("/api/chat/conversations/:userId", async (req, res) => {
 app.get("/api/chat/messages/:conversationId", async (req, res) => {
   /* … */
 });
+setupCallSignaling(server);
 
 (async () => {
   await connectDB(process.env.MONGO_URI);

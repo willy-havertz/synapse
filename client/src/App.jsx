@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import AuthContext from "./contexts/AuthContext";
+import ThemeContext from "./contexts/ThemeContext";
 import api from "./services/api";
 
 import Landing from "./pages/Landing";
@@ -26,7 +27,6 @@ import Home from "./pages/Home";
 
 import Layout from "./components/Layout";
 
-// Track pageviews (unchanged)
 function AnalyticsTracker() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -42,114 +42,112 @@ function AnalyticsTracker() {
   return null;
 }
 
-// Only allows through if user is logged in
 function ProtectedRoute({ children }) {
   const { user } = useContext(AuthContext);
   return user ? children : <Navigate to="/login" replace />;
 }
 
 export default function App() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <BrowserRouter>
-      <AnalyticsTracker />
+    <div className={theme === "dark" ? "dark" : ""}>
+      <BrowserRouter>
+        <AnalyticsTracker />
 
-      <Routes>
-        {/* ─── PUBLIC ─────────────────────────────────────────── */}
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login initialMode="login" />} />
-        <Route path="/signup" element={<Login initialMode="signup" />} />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login initialMode="login" />} />
+          <Route path="/signup" element={<Login initialMode="signup" />} />
 
-        <Route path="/about" element={<About />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/privacy" element={<Privacy />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
 
-        {/* ─── PROTECTED ─────────────────────────────────────── */}
-        {/* Wrap Layout+page in ProtectedRoute */}
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Home />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/chat"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Chat />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Settings />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/photo-analyzer"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <PhotoAnalyzer />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/weather"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Weather />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/device-inspector"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <DeviceInspector />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/tech-trends"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <TechTrends />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/analytics"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Analytics />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Home />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Chat />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Settings />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/photo-analyzer"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <PhotoAnalyzer />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/weather"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Weather />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/device-inspector"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <DeviceInspector />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tech-trends"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <TechTrends />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/analytics"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Analytics />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
 
-        {/* ─── FALLBACK ───────────────────────────────────────── */}
-        {/* Anything else (including after logout) goes to Landing */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
