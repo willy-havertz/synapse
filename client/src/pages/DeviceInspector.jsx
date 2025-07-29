@@ -1,11 +1,8 @@
 
-import React, { useState, useEffect } from "react";
-
-
+import React, { useState, useEffect, useContext } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDesktop,
@@ -21,11 +18,12 @@ import {
   faTachometerAlt,
   faCopy,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ThemeContext from "../contexts/ThemeContext";
 
 export default function DeviceInspector() {
+  const { dark } = useContext(ThemeContext);
   const [info, setInfo] = useState({
     ua: "",
     platform: "",
@@ -51,20 +49,20 @@ export default function DeviceInspector() {
     toast.success("Device report copied!", {
       position: "top-right",
       autoClose: 3000,
-      theme: "dark",
+      theme: dark ? "dark" : "light",
       transition: Slide,
     });
   };
 
   const formatTime = (seconds) => {
-    if (seconds === Infinity || seconds == null) return "Unknown";
+    if (!seconds || seconds === Infinity) return "Unknown";
     const hrs = Math.floor(seconds / 3600);
     const mins = Math.floor((seconds % 3600) / 60);
     return `${hrs}h ${mins}m`;
   };
 
   useEffect(() => {
-    // Basic info
+    // Populate basic info
     setInfo((i) => ({
       ...i,
       ua: navigator.userAgent,
@@ -76,13 +74,13 @@ export default function DeviceInspector() {
       memory: navigator.deviceMemory || null,
     }));
 
-    // Online/offline
+    // Online/offline listener
     const updateOnline = () =>
       setInfo((i) => ({ ...i, online: navigator.onLine }));
     window.addEventListener("online", updateOnline);
     window.addEventListener("offline", updateOnline);
 
-    // Battery Prediction
+    // Battery API
     if (navigator.getBattery) {
       navigator.getBattery().then((batt) => {
         const updateBatt = () =>
@@ -94,14 +92,16 @@ export default function DeviceInspector() {
             chargingTime: batt.chargingTime,
           }));
         updateBatt();
-        batt.addEventListener("levelchange", updateBatt);
-        batt.addEventListener("chargingchange", updateBatt);
-        batt.addEventListener("dischargingtimechange", updateBatt);
-        batt.addEventListener("chargingtimechange", updateBatt);
+        [
+          "levelchange",
+          "chargingchange",
+          "dischargingtimechange",
+          "chargingtimechange",
+        ].forEach((evt) => batt.addEventListener(evt, updateBatt));
       });
     }
 
-    // Network
+    // Network API
     const navConn =
       navigator.connection ||
       navigator.mozConnection ||
@@ -153,14 +153,20 @@ export default function DeviceInspector() {
   }, []);
 
   const Card = ({ icon, label, value, wrap = false }) => (
-    <div className="bg-[#1f1f1f] rounded-lg p-4 flex items-start space-x-4 shadow-md">
-      <div className="p-3 rounded-md bg-black">
-        <FontAwesomeIcon icon={icon} className="text-[#8312ed]" size="lg" />
+    <div
+      className={`rounded-lg p-4 flex items-start space-x-4 shadow-md ${
+        dark ? "bg-gray-800" : "bg-gray-100"
+      }`}
+    >
+      <div className={`${dark ? "bg-gray-700" : "bg-gray-200"} p-3 rounded-md`}>
+        <FontAwesomeIcon icon={icon} className="text-purple-400" size="lg" />
       </div>
       <div className="flex-1">
-        <p className="text-gray-400 text-sm">{label}</p>
+        <p className={`text-sm ${dark ? "text-gray-400" : "text-gray-600"}`}>
+          {label}
+        </p>
         <p
-          className={`text-white font-semibold ${
+          className={`font-semibold ${dark ? "text-white" : "text-gray-900"} ${
             wrap ? "whitespace-normal break-words" : "truncate"
           }`}
           title={value}
@@ -172,41 +178,36 @@ export default function DeviceInspector() {
   );
 
   return (
-    <div className="min-h-screen p-6 bg-[#101010] text-white font-sans space-y-6">
+    <div
+      className={`${
+        dark ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+      } min-h-screen p-6 space-y-6 font-sans`}
+    >
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Device Inspector</h1>
         <button
           onClick={copyReport}
-          className="flex items-center space-x-2 bg-[#2a2a2a] hover:bg-[#3b3b3b] px-4 py-2 rounded-md transition"
+          className={`flex items-center space-x-2 px-4 py-2 rounded-md transition ${
+            dark
+              ? "bg-gray-700 hover:bg-gray-600 text-white"
+              : "bg-gray-200 hover:bg-gray-300 text-black"
+          }`}
         >
-          <FontAwesomeIcon icon={faCopy} className="text-white" />
+          <FontAwesomeIcon icon={faCopy} />
           <span>Copy Report</span>
         </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-          icon={faDesktop}
-          label="User Agent"
-          value={info.ua}
-          wrap
-        />
-        <Card
-          icon={faMobileAlt}
-          label="Platform"
-          value={info.platform}
-        />
-        <Card
-          icon={faGlobe}
-          label="Language"
-          value={info.language}
-        />
+        <Card icon={faDesktop} label="User Agent" value={info.ua} wrap />
+        <Card icon={faMobileAlt} label="Platform" value={info.platform} />
+        <Card icon={faGlobe} label="Language" value={info.language} />
         <Card
           icon={faNetworkWired}
           label="Network"
           value={
             info.network
-              ? `${info.network.type} / ${info.network.downlink}Mbps / ${info.network.rtt}ms`
+              ? `${info.network.type} / ${info.network.downlink} Mbps / ${info.network.rtt} ms`
               : "Unknown"
           }
         />
@@ -217,17 +218,13 @@ export default function DeviceInspector() {
             value={`${info.geo.lat}, ${info.geo.lon}`}
           />
         )}
-        <Card
-          icon={faClock}
-          label="Time Zone"
-          value={info.timezone}
-        />
+        <Card icon={faClock} label="Time Zone" value={info.timezone} />
         <Card
           icon={faTachometerAlt}
           label="Paint Metrics"
           value={
             info.paint
-              ? `FP: ${info.paint["first-paint"]} ms, FCP: ${info.paint["first-contentful-paint"]} ms`
+              ? `FP: ${info.paint["first-paint"]}ms, FCP: ${info.paint["first-contentful-paint"]}ms`
               : "N/A"
           }
         />
@@ -255,16 +252,8 @@ export default function DeviceInspector() {
           label="Screen Resolution"
           value={`${info.screen.width}×${info.screen.height}`}
         />
-        <Card
-          icon={faDesktop}
-          label="Pixel Ratio"
-          value={info.pixelRatio}
-        />
-        <Card
-          icon={faMicrochip}
-          label="CPU Cores"
-          value={info.cores}
-        />
+        <Card icon={faDesktop} label="Pixel Ratio" value={info.pixelRatio} />
+        <Card icon={faMicrochip} label="CPU Cores" value={info.cores} />
         <Card
           icon={faMemory}
           label="Device Memory"

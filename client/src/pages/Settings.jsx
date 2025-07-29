@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
+import ThemeContext from "../contexts/ThemeContext";
 import api from "../services/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserEdit, faImage, faSave } from "@fortawesome/free-solid-svg-icons";
 
 export default function Settings() {
   const { user } = useContext(AuthContext);
+  const { dark } = useContext(ThemeContext);
 
   const [name, setName] = useState("");
   const [avatarFile, setAvatarFile] = useState(null);
@@ -17,21 +19,20 @@ export default function Settings() {
   const [toast, setToast] = useState({ visible: false, message: "" });
   const fileInputRef = useRef();
 
+  // Initialize form with user data
   useEffect(() => {
     if (!user) return;
     setName(user.name || "");
     setAvatarPreview(user.avatarUrl || null);
   }, [user]);
 
+  // Track whether changes have been made
   useEffect(() => {
-    if (!user) {
-      setDirty(false);
-      return;
-    }
+    if (!user) return setDirty(false);
     setDirty(name.trim() !== (user.name || "") || Boolean(avatarFile));
   }, [name, avatarFile, user]);
 
-  // Generate avatar preview
+  // Generate avatar preview on file select
   useEffect(() => {
     if (!avatarFile) return;
     const reader = new FileReader();
@@ -39,8 +40,8 @@ export default function Settings() {
     reader.readAsDataURL(avatarFile);
   }, [avatarFile]);
 
-  const showToast = (msg) => {
-    setToast({ visible: true, message: msg });
+  const showToast = (message) => {
+    setToast({ visible: true, message });
     setTimeout(() => setToast({ visible: false, message: "" }), 3000);
   };
 
@@ -63,52 +64,66 @@ export default function Settings() {
   };
 
   if (!user) {
-    return <div className="text-white p-6">Loading account…</div>;
+    return <div className="p-6 text-center">Loading account…</div>;
   }
 
   return (
-    <div className="relative space-y-8 max-w-3xl mx-auto p-6">
+    <div
+      className={`${
+        dark ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+      } min-h-screen p-6 space-y-8`}
+    >
       {/* Toast */}
       {toast.visible && (
-        <div className="fixed top-5 right-5 bg-gray-800 text-white px-4 py-2 rounded shadow-lg">
+        <div className="fixed top-5 right-5 rounded-md bg-gray-800 px-4 py-2 text-white shadow-lg">
           {toast.message}
         </div>
       )}
 
-      <h1 className="text-3xl font-bold text-white">Account Settings</h1>
+      <h1 className="text-3xl font-bold">Account Settings</h1>
 
       <form
         onSubmit={handleSave}
-        className="bg-[#1f1f1f] p-6 rounded-lg space-y-6"
+        className={`${
+          dark ? "bg-gray-800" : "bg-gray-100"
+        } space-y-6 rounded-lg p-6`}
       >
         {/* Name & Email */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {/* Name */}
           <div>
-            <label className="block text-gray-300 mb-2">Name</label>
-            <div className="flex items-center bg-[#2a2a2a] rounded-lg px-3 py-2">
+            <label className="block mb-2 text-sm font-medium">Name</label>
+            <div
+              className={`${
+                dark ? "bg-gray-700" : "bg-white"
+              } flex items-center rounded-lg px-3 py-2`}
+            >
               <FontAwesomeIcon
                 icon={faUserEdit}
-                className="text-purple-400 mr-3"
+                className="mr-3 text-purple-400"
               />
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-transparent text-white outline-none placeholder-gray-500"
                 placeholder="Your Name"
+                className="w-full bg-transparent outline-none"
               />
             </div>
           </div>
-          {/* Email (read‑only) */}
+          {/* Email (read-only) */}
           <div>
-            <label className="block text-gray-300 mb-2">Email</label>
-            <div className="flex items-center bg-[#2a2a2a] rounded-lg px-3 py-2 opacity-70">
+            <label className="block mb-2 text-sm font-medium">Email</label>
+            <div
+              className={`${
+                dark ? "bg-gray-700 opacity-70" : "bg-gray-200"
+              } flex items-center rounded-lg px-3 py-2`}
+            >
               <input
                 type="email"
                 value={user.email}
                 readOnly
-                className="w-full bg-transparent text-gray-400 cursor-not-allowed"
+                className="w-full bg-transparent cursor-not-allowed text-gray-500"
               />
             </div>
           </div>
@@ -116,28 +131,38 @@ export default function Settings() {
 
         {/* Avatar Upload */}
         <div>
-          <label className="block text-gray-300 mb-2">Avatar</label>
+          <label className="block mb-2 text-sm font-medium">Avatar</label>
           <div className="flex items-center space-x-6">
-            <div className="w-24 h-24 bg-[#2a2a2a] rounded-full overflow-hidden">
+            <div
+              className={`w-24 h-24 overflow-hidden rounded-full ${
+                dark ? "bg-gray-700" : "bg-gray-200"
+              }`}
+            >
               {avatarPreview ? (
                 <img
                   src={avatarPreview}
                   alt="Avatar preview"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex items-center justify-center h-full text-gray-500">
-                  <FontAwesomeIcon icon={faImage} />
-                </div>
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="m-auto text-gray-500"
+                  size="2x"
+                />
               )}
             </div>
             <button
               type="button"
               onClick={() => fileInputRef.current.click()}
-              className="flex items-center bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
+              className={`${
+                dark
+                  ? "bg-gray-700 hover:bg-gray-600"
+                  : "bg-gray-200 hover:bg-gray-300"
+              } flex items-center space-x-2 rounded-full px-4 py-2 transition`}
             >
-              <FontAwesomeIcon icon={faImage} className="mr-2" />
-              Choose Avatar
+              <FontAwesomeIcon icon={faImage} />
+              <span>Choose Avatar</span>
             </button>
             <input
               ref={fileInputRef}
@@ -155,23 +180,23 @@ export default function Settings() {
         <button
           type="submit"
           disabled={!dirty || saving}
-          className={`flex items-center justify-center w-full max-w-xs mx-auto px-6 py-3 rounded-md text-white transition ${
+          className={`mx-auto flex items-center space-x-2 rounded-md px-6 py-3 text-white transition ${
             dirty && !saving
               ? "bg-purple-500 hover:bg-purple-600"
-              : "bg-gray-700 cursor-not-allowed"
+              : "bg-gray-600 cursor-not-allowed"
           }`}
         >
-          <FontAwesomeIcon icon={faSave} className="mr-2" />
-          {saving ? "Saving..." : "Save Changes"}
+          <FontAwesomeIcon icon={faSave} />
+          <span>{saving ? "Saving..." : "Save Changes"}</span>
         </button>
       </form>
 
       {/* Privacy & Terms */}
-      <div className="flex justify-between text-gray-400 px-2">
-        <Link to="/privacy" className="hover:text-white">
+      <div className="flex justify-between px-2 text-sm">
+        <Link to="/privacy" className="hover:underline">
           Privacy Policy
         </Link>
-        <Link to="/terms" className="hover:text-white">
+        <Link to="/terms" className="hover:underline">
           Terms of Service
         </Link>
       </div>
@@ -179,36 +204,39 @@ export default function Settings() {
       {/* Sign Out */}
       <button
         onClick={() => setShowModal(true)}
-        className="w-full max-w-xs bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md transition"
+        className={`${
+          dark
+            ? "bg-gray-700 hover:bg-gray-600"
+            : "bg-gray-200 hover:bg-gray-300"
+        } w-full max-w-xs rounded-md px-6 py-3 transition`}
       >
         Sign Out
       </button>
 
       {/* Confirmation Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-[#1f1f1f] rounded-lg p-6 max-w-sm w-full space-y-4">
-            <h2 className="text-xl text-white font-semibold">
-              Confirm Sign Out
-            </h2>
-            <p className="text-gray-300">Are you sure you want to sign out?</p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div
+            className={`${
+              dark ? "bg-gray-800" : "bg-white"
+            } max-w-sm space-y-4 rounded-lg p-6`}
+          >
+            <h2 className="text-xl font-semibold">Confirm Sign Out</h2>
+            <p className="text-gray-400">Are you sure you want to sign out?</p>
             <div className="flex justify-end space-x-3">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-white"
+                className="rounded-md px-4 py-2 hover:underline"
               >
                 Cancel
               </button>
               <button
                 onClick={() => {
-                  setShowModal(false);
-
                   localStorage.removeItem("token");
                   delete api.defaults.headers.common.Authorization;
-
                   window.location.replace("/");
                 }}
-                className="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white"
+                className="rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700"
               >
                 Yes, Sign Out
               </button>

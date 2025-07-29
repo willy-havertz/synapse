@@ -37,8 +37,8 @@ export default function Layout({ children }) {
 
   return (
     <div
-      className={`fixed inset-0 flex bg-[#1f1f1f] text-gray-100 ${
-        dark ? "dark" : ""
+      className={`fixed inset-0 flex ${
+        dark ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
       }`}
     >
       <NavBar
@@ -49,7 +49,11 @@ export default function Layout({ children }) {
       {!sidebarOpen && (
         <button
           onClick={openSidebar}
-          className="fixed top-4 left-4 z-40 p-2 bg-gray-800 text-gray-200 rounded-md md:hidden"
+          className={`fixed top-4 left-4 z-40 p-2 rounded-md md:hidden ${
+            dark
+              ? "bg-gray-800 text-gray-200 hover:bg-gray-700"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
           aria-label="Open menu"
         >
           <FontAwesomeIcon icon={faBars} className="w-6 h-6" />
@@ -60,16 +64,12 @@ export default function Layout({ children }) {
         <main
           ref={mainRef}
           tabIndex={-1}
-          className="
-            flex-1 
-            overflow-y-auto 
-            scroll-smooth 
-            p-8 
-            scrollbar-thin 
-            scrollbar-thumb-purple-600 
-            scrollbar-track-gray-800 
-            dark:scrollbar-track-gray-300
-          "
+          className={`flex-1 overflow-y-auto scroll-smooth p-8 scrollbar-thin
+            ${
+              dark
+                ? "scrollbar-thumb-purple-600 scrollbar-track-gray-800 bg-gray-900"
+                : "scrollbar-thumb-purple-600 scrollbar-track-gray-300 bg-white"
+            }`}
         >
           {children}
 
