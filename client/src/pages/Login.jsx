@@ -1,7 +1,10 @@
-
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
+import ThemeContext from "../contexts/ThemeContext";
+import ReCAPTCHA from "react-google-recaptcha";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -10,9 +13,6 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import ReCAPTCHA from "react-google-recaptcha";
-import { ToastContainer, toast, Slide } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const strengthLabels = ["Too Short", "Weak", "Fair", "Strong", "Very Strong"];
 function calcPasswordStrength(pw) {
@@ -26,9 +26,11 @@ function calcPasswordStrength(pw) {
 
 export default function Login({ initialMode = "login" }) {
   const { user, login, signup, sendResetEmail } = useContext(AuthContext);
+  const { dark } = useContext(ThemeContext);
   const navigate = useNavigate();
   const formTop = useRef(null);
   const recaptchaRef = useRef(null);
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const [mode, setMode] = useState(initialMode);
   const [form, setForm] = useState({
@@ -43,26 +45,22 @@ export default function Login({ initialMode = "login" }) {
   const [pwFocused, setPwFocused] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
 
-  // Vite env var for site key
-  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-
+  // Redirect if already logged in
   useEffect(() => {
     if (user) navigate("/home", { replace: true });
   }, [user, navigate]);
 
+  // Reset on mode change
   useEffect(() => {
     formTop.current?.scrollIntoView({ behavior: "smooth" });
     setErrors({});
     setRecaptchaToken(null);
-    if (recaptchaRef.current) recaptchaRef.current.reset();
+    recaptchaRef.current?.reset();
   }, [mode]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setForm((f) => ({
-      ...f,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
   };
 
   const validate = () => {
@@ -82,37 +80,31 @@ export default function Login({ initialMode = "login" }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!recaptchaRef.current) {
-      toast.error("reCAPTCHA is still loading—please wait a moment.");
+      toast.error("reCAPTCHA loading—please wait.");
       return;
     }
-
     if (!validate()) return;
 
     setLoading(true);
     try {
       if (mode === "login") {
         await login(form.email, form.password, form.remember, recaptchaToken);
-        toast.success("Logged in successfully!", { icon: "✔️" });
+        toast.success("Logged in!", { icon: "✔️" });
       } else if (mode === "signup") {
         await signup(form.name, form.email, form.password, recaptchaToken);
-        toast.success("Registration successful! Please log in.", {
-          icon: "🎉",
-        });
+        toast.success("Registered! Please log in.", { icon: "🎉" });
         setMode("login");
       } else {
         await sendResetEmail(form.email, recaptchaToken);
-        toast.info("If that email exists, reset instructions have been sent.");
+        toast.info("If that email exists, you’ll get reset instructions.");
         setMode("login");
       }
     } catch (err) {
-      toast.error(
-        err.response?.data?.error || err.message || "Something went wrong"
-      );
+      toast.error(err.response?.data?.error || err.message || "Error");
     } finally {
       setLoading(false);
-      if (recaptchaRef.current) recaptchaRef.current.reset();
+      recaptchaRef.current.reset();
       setRecaptchaToken(null);
     }
   };
@@ -120,7 +112,11 @@ export default function Login({ initialMode = "login" }) {
   const pwStrength = calcPasswordStrength(form.password);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#101010] px-4">
+    <div
+      className={`${
+        dark ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+      } flex items-center justify-center min-h-screen px-4`}
+    >
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -129,17 +125,18 @@ export default function Login({ initialMode = "login" }) {
         pauseOnHover
         draggable
         transition={Slide}
-        theme="dark"
-        toastClassName="bg-[#2a2a2a] text-white border-purple-500 border rounded-lg"
-        bodyClassName="text-sm"
+        theme={dark ? "dark" : "light"}
+        toastClassName={dark ? "bg-gray-800 text-white" : "bg-white text-black"}
         progressClassName="bg-purple-400"
       />
 
       <div
         ref={formTop}
-        className="w-full max-w-lg bg-[#1f1f1f] rounded-xl shadow-xl p-8 space-y-6 transition-all duration-500 overflow-hidden"
+        className={`${
+          dark ? "bg-gray-800" : "bg-gray-100"
+        } w-full max-w-lg rounded-xl shadow-xl p-8 space-y-6 transition-all duration-500`}
       >
-        <h2 className="flex items-center justify-center text-4xl font-extrabold text-white">
+        <h2 className="flex items-center justify-center text-4xl font-extrabold">
           <FontAwesomeIcon
             icon={
               mode === "login"
@@ -160,16 +157,17 @@ export default function Login({ initialMode = "login" }) {
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "signup" && (
             <div>
-              <label className="block text-gray-300 mb-1">Name</label>
+              <label className="block mb-1">Name</label>
               <input
                 name="name"
-                type="text"
                 value={form.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 bg-[#2a2a2a] text-white rounded-lg outline-none ${
+                className={`w-full px-4 py-2 rounded-lg outline-none ${
                   errors.name
                     ? "border-red-500 border"
-                    : "focus:ring-2 focus:ring-purple-500"
+                    : dark
+                    ? "bg-gray-700 text-white focus:ring-2 focus:ring-purple-500"
+                    : "bg-white text-black focus:ring-2 focus:ring-purple-500"
                 }`}
               />
               {errors.name && (
@@ -179,16 +177,18 @@ export default function Login({ initialMode = "login" }) {
           )}
 
           <div>
-            <label className="block text-gray-300 mb-1">Email</label>
+            <label className="block mb-1">Email</label>
             <input
               name="email"
               type="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full px-4 py-2 bg-[#2a2a2a] text-white rounded-lg outline-none ${
+              className={`w-full px-4 py-2 rounded-lg outline-none ${
                 errors.email
                   ? "border-red-500 border"
-                  : "focus:ring-2 focus:ring-purple-500"
+                  : dark
+                  ? "bg-gray-700 text-white focus:ring-2 focus:ring-purple-500"
+                  : "bg-white text-black focus:ring-2 focus:ring-purple-500"
               }`}
             />
             {errors.email && (
@@ -198,17 +198,19 @@ export default function Login({ initialMode = "login" }) {
 
           {mode !== "reset" && (
             <div>
-              <label className="block text-gray-300 mb-1">Password</label>
+              <label className="block mb-1">Password</label>
               <div
-                className={`flex items-center bg-[#2a2a2a] rounded-lg px-3 py-2 ${
+                className={`flex items-center rounded-lg px-3 py-2 ${
                   errors.password
                     ? "border-red-500 border"
-                    : "focus-within:ring-2 focus-within:ring-purple-500"
+                    : dark
+                    ? "bg-gray-700 focus-within:ring-2 focus-within:ring-purple-500"
+                    : "bg-white focus-within:ring-2 focus-within:ring-purple-500"
                 }`}
               >
                 <FontAwesomeIcon
                   icon={faLock}
-                  className="text-purple-400 mr-3"
+                  className="mr-3 text-purple-400"
                 />
                 <input
                   name="password"
@@ -217,12 +219,12 @@ export default function Login({ initialMode = "login" }) {
                   onChange={handleChange}
                   onFocus={() => setPwFocused(true)}
                   onBlur={() => setPwFocused(false)}
-                  className="flex-1 bg-transparent text-white outline-none"
+                  className="flex-1 bg-transparent outline-none"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((s) => !s)}
-                  className="text-gray-400 hover:text-gray-200 ml-2 focus:outline-none"
+                  className="ml-2 focus:outline-none text-gray-400 hover:text-gray-200"
                 >
                   <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                 </button>
@@ -231,7 +233,7 @@ export default function Login({ initialMode = "login" }) {
                 <p className="mt-1 text-red-500 text-sm">{errors.password}</p>
               )}
               <div className="mt-2">
-                <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden mb-1">
+                <div className="h-2 w-full rounded-full bg-gray-700 mb-1 overflow-hidden">
                   <div
                     className={`h-full ${
                       pwStrength < 2
@@ -247,7 +249,7 @@ export default function Login({ initialMode = "login" }) {
                   Strength: {strengthLabels[pwStrength]}
                 </p>
                 {pwFocused && (
-                  <ul className="mt-1 text-xs text-gray-500 list-disc list-inside space-y-0.5">
+                  <ul className="mt-1 list-disc list-inside text-xs text-gray-500 space-y-0.5">
                     <li>8+ characters</li>
                     <li>One uppercase letter</li>
                     <li>One number</li>
@@ -274,8 +276,8 @@ export default function Login({ initialMode = "login" }) {
 
           <button
             type="submit"
-            disabled={loading || !recaptchaRef.current || !recaptchaToken}
-            className={`w-full flex items-center justify-center py-2 text-white font-semibold rounded-lg transition ${
+            disabled={loading || !recaptchaToken}
+            className={`w-full flex items-center justify-center py-2 font-semibold rounded-lg transition ${
               loading
                 ? "bg-gray-600 cursor-not-allowed"
                 : "bg-gradient-to-r from-purple-600 to-purple-400 hover:from-purple-500 hover:to-purple-300"
@@ -283,9 +285,7 @@ export default function Login({ initialMode = "login" }) {
           >
             {loading ? (
               <svg
-                className="animate-spin h-5 w-5 mr-2 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                className="h-5 w-5 animate-spin mr-2 text-white"
                 viewBox="0 0 24 24"
               >
                 <circle
@@ -305,16 +305,18 @@ export default function Login({ initialMode = "login" }) {
             ) : (
               <FontAwesomeIcon
                 icon={mode === "login" ? faSignInAlt : faUser}
-                className="mr-2"
+                className="mr-2 text-white"
               />
             )}
-            {
+            <span className="text-white">
               {
-                login: loading ? "Logging In..." : "Log In",
-                signup: loading ? "Signing Up..." : "Sign Up",
-                reset: loading ? "Sending..." : "Send Reset Link",
-              }[mode]
-            }
+                {
+                  login: loading ? "Logging In..." : "Log In",
+                  signup: loading ? "Signing Up..." : "Sign Up",
+                  reset: loading ? "Sending..." : "Send Reset Link",
+                }[mode]
+              }
+            </span>
           </button>
         </form>
 
@@ -342,7 +344,7 @@ export default function Login({ initialMode = "login" }) {
           )}
           {mode === "login" && (
             <p>
-              Forgot your password?{" "}
+              Forgot password?{" "}
               <button
                 onClick={() => setMode("reset")}
                 className="text-purple-400 hover:underline focus:outline-none"

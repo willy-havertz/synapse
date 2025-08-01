@@ -1,3 +1,4 @@
+// src/components/ChatHeader.jsx
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,25 +8,29 @@ import {
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
 import ThemeContext from "../contexts/ThemeContext";
+import MoreMenu from "./MoreMenu";
 
 export default function ChatHeader({
   active,
   onToggleSidebar,
   onVoiceCall,
   onVideoCall,
+  showMoreMenu,
   onMore,
+  onCloseMore,
 }) {
   const { dark } = useContext(ThemeContext);
 
   return (
     <header
-      className={`p-4 flex items-center justify-between border-b ${
+      className={`relative p-4 flex items-center justify-between border-b ${
         dark
           ? "bg-gray-800 border-gray-700 text-white"
           : "bg-white border-gray-200 text-black"
       }`}
     >
       <div className="flex items-center space-x-3">
+        {/* Mobile menu toggle */}
         <FontAwesomeIcon
           icon={faBars}
           onClick={onToggleSidebar}
@@ -35,6 +40,8 @@ export default function ChatHeader({
               : "text-gray-600 hover:text-purple-600"
           }`}
         />
+
+        {/* Active chat info */}
         {active && (
           <>
             <img
@@ -47,27 +54,41 @@ export default function ChatHeader({
         )}
       </div>
 
-      <div
-        className={`flex space-x-4 ${dark ? "text-gray-400" : "text-gray-600"}`}
-      >
+      <div className="flex items-center space-x-4">
+        {/* Call controls */}
         <FontAwesomeIcon
           icon={faPhone}
           title="Voice call"
-          onClick={() => onVoiceCall(active)}
-          className="cursor-pointer hover:text-purple-500"
+          onClick={onVoiceCall}
+          className={`cursor-pointer hover:text-purple-500 ${
+            dark ? "text-gray-300" : "text-gray-600"
+          }`}
         />
         <FontAwesomeIcon
           icon={faVideo}
           title="Video call"
-          onClick={() => onVideoCall(active)}
-          className="cursor-pointer hover:text-purple-500"
+          onClick={onVideoCall}
+          className={`cursor-pointer hover:text-purple-500 ${
+            dark ? "text-gray-300" : "text-gray-600"
+          }`}
         />
-        <FontAwesomeIcon
-          icon={faEllipsisV}
-          title="More"
-          onClick={onMore}
-          className="cursor-pointer hover:text-purple-500"
-        />
+
+        {/* More menu */}
+        <div className="relative">
+          <FontAwesomeIcon
+            icon={faEllipsisV}
+            title="More"
+            onClick={onMore}
+            className={`cursor-pointer hover:text-purple-500 ${
+              dark ? "text-gray-300" : "text-gray-600"
+            }`}
+          />
+          {showMoreMenu && (
+            <div className="absolute right-0 top-full mt-2 z-20">
+              <MoreMenu onClose={onCloseMore} />
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

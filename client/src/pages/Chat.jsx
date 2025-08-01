@@ -23,8 +23,6 @@ import ChatInput from "../components/ChatInput";
 import MoreMenu from "../components/MoreMenu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Chat() {
   const { user } = useContext(AuthContext);
@@ -48,6 +46,7 @@ export default function Chat() {
   const localVideoRef = useRef();
   const remoteVideoRef = useRef();
 
+  // Load conversations
   useEffect(() => {
     if (!user) return;
     fetch(
@@ -62,6 +61,7 @@ export default function Chat() {
       .catch(() => toast.error("Cannot load chats"));
   }, [user]);
 
+  // Load messages on active change
   useEffect(() => {
     if (!active) return;
     fetch(
@@ -79,6 +79,7 @@ export default function Chat() {
     };
   }, [active]);
 
+  // Socket handlers
   useEffect(() => {
     setupSignaling({
       onIncomingCall: (from) => {
@@ -97,7 +98,7 @@ export default function Chat() {
       setMessages((ms) => [...ms, msg]);
     const onFile = ({ conversation, fileData }) => {
       if (conversation === active._id) {
-        setMessages((ms) => [...ms, { ...fileData, conversation }]);
+        setMessages((ms) => [...ms, fileData]);
       }
     };
     const onTyping = ({ conversation, isTyping }) =>
@@ -114,16 +115,17 @@ export default function Chat() {
     };
   }, [active]);
 
+  // Auto-scroll
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Attach media streams
   useEffect(() => {
     if (localVideoRef.current && localStream) {
       localVideoRef.current.srcObject = localStream;
     }
   }, [localStream]);
-
   useEffect(() => {
     if (remoteVideoRef.current && remoteStream) {
       remoteVideoRef.current.srcObject = remoteStream;
@@ -139,6 +141,7 @@ export default function Chat() {
     if (remoteVideoRef.current) remoteVideoRef.current.srcObject = null;
   };
 
+  // UI actions
   const toggleSidebar = () => setSidebarOpen((v) => !v);
 
   const selectContact = useCallback((c) => {
@@ -180,32 +183,27 @@ export default function Chat() {
     [active, user]
   );
 
+  // Call handlers
   const handleVoiceCall = async () => {
     if (!active) return;
-    const stream = await startCall(active.id, "voice", (stream) =>
-      setRemoteStream(stream)
+    const stream = await startCall(active.id, "voice", (s) =>
+      setRemoteStream(s)
     );
     setLocalStream(stream);
   };
 
   const handleVideoCall = async () => {
     if (!active) return;
-    const stream = await startCall(active.id, "video", (stream) =>
-      setRemoteStream(stream)
+    const stream = await startCall(active.id, "video", (s) =>
+      setRemoteStream(s)
     );
     setLocalStream(stream);
   };
 
   const handleAccept = async () => {
     if (!active) return;
-    const stream = await answerCall(active.id, (stream) =>
-      setRemoteStream(stream)
-    );
+    const stream = await answerCall(active.id, (s) => setRemoteStream(s));
     setLocalStream(stream);
-    setIncomingCall(false);
-  };
-
-  const handleReject = () => {
     setIncomingCall(false);
   };
 
@@ -221,114 +219,53 @@ export default function Chat() {
         dark ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
-      {!sidebarOpen && (
-        <button
-          className={`md:hidden absolute top-4 left-4 z-20 p-2 ${
-            dark ? "bg-gray-800" : "bg-gray-200"
-          } rounded-full`}
-          onClick={toggleSidebar}
-        >
-          <FontAwesomeIcon
-            icon={faBars}
-            className={dark ? "text-white" : "text-black"}
-          />
-        </button>
-      )}
-      {sidebarOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-10"
-          onClick={toggleSidebar}
-        />
-      )}
-      <aside
-        className={`${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 w-64 z-20 transform
-        md:relative md:translate-x-0 transition-transform duration-300 ease-in-out
-        ${dark ? "bg-gray-800 border-gray-700" : "bg-gray-100 border-gray-300"}
-        border-r`}
-      >
-        <SidebarHeader />
-        <div className="flex-1 overflow-y-auto mt-4">
-          <button
-            className={`w-full text-left px-4 py-2 hover:${
-              dark ? "bg-gray-700" : "bg-gray-200"
-            }`}
-          >
-            Join Group
-          </button>
-          <button
-            className={`w-full text-left px-4 py-2 hover:${
-              dark ? "bg-gray-700" : "bg-gray-200"
-            }`}
-          >
-            Create Group
-          </button>
-          <button
-            className={`w-full text-left px-4 py-2 hover:${
-              dark ? "bg-gray-700" : "bg-gray-200"
-            }`}
-          >
-            Name Chats
-          </button>
-          <hr
-            className={dark ? "my-2 border-gray-700" : "my-2 border-gray-300"}
-          />
-          {contacts.length > 0 ? (
-            contacts.map((c) => (
-              <ContactItem
-                key={c._id}
-                contact={c}
-                active={c._id === active?._id}
-                onClick={() => selectContact(c)}
-              />
-            ))
-          ) : (
-            <p className={dark ? "p-4 text-gray-400" : "p-4 text-gray-500"}>
-              No chats
-            </p>
-          )}
-        </div>
-      </aside>
+      {/* Main area */}
       <div className="flex-1 flex flex-col">
         <ToastContainer
           position="top-right"
           autoClose={2000}
           theme={dark ? "dark" : "light"}
         />
-        <ChatHeader
-          active={active}
-          onToggleSidebar={toggleSidebar}
-          onVoiceCall={handleVoiceCall}
-          onVideoCall={handleVideoCall}
-          onAccept={handleAccept}
-          onReject={handleReject}
-          onHangUp={handleHangUp}
-          onMore={() => setShowMoreMenu((v) => !v)}
-          inCall={inCall}
-          incomingCall={incomingCall}
-        />
-        {showMoreMenu && <MoreMenu onClose={() => setShowMoreMenu(false)} />}
+
+        <div className="relative z-10">
+          <ChatHeader
+            active={active}
+            onToggleSidebar={toggleSidebar}
+            onVoiceCall={handleVoiceCall}
+            onVideoCall={handleVideoCall}
+            onAccept={handleAccept}
+            onHangUp={handleHangUp}
+            onMore={() => setShowMoreMenu((v) => !v)}
+            inCall={inCall}
+            incomingCall={incomingCall}
+          />
+          {showMoreMenu && (
+            <div className="absolute right-4 mt-2">
+              <MoreMenu onClose={() => setShowMoreMenu(false)} />
+            </div>
+          )}
+        </div>
+
         <main
           ref={containerRef}
-          className={`flex-1 p-4 overflow-y-auto scroll-smooth ${
+          className={`flex-1 p-4 overflow-y-auto ${
             dark ? "bg-gray-900" : "bg-gray-50"
           }`}
         >
-          {messages.map((m, idx) =>
+          {messages.map((m, i) =>
             m.url ? (
               m.file.type.startsWith("image/") ? (
                 <img
-                  key={idx}
+                  key={i}
                   src={m.url}
                   alt="attachment"
                   className="max-w-xs rounded mb-2"
                 />
               ) : (
                 <a
-                  key={idx}
+                  key={i}
                   href={m.url}
-                  className={`mb-2 block hover:underline ${
+                  className={`block mb-2 hover:underline ${
                     dark ? "text-blue-400" : "text-blue-600"
                   }`}
                 >
@@ -337,7 +274,7 @@ export default function Chat() {
               )
             ) : (
               <MessageBubble
-                key={m._id || idx}
+                key={m._id || i}
                 msg={m}
                 isMe={m.sender === user.id}
               />
@@ -354,11 +291,13 @@ export default function Chat() {
           )}
           <div ref={endRef} />
         </main>
+
         <ChatInput
           onSend={sendMessage}
           onFileSend={sendFile}
           activeId={active?._id}
         />
+
         {localStream && (
           <video
             ref={localVideoRef}
@@ -375,6 +314,66 @@ export default function Chat() {
           />
         )}
       </div>
+
+      {/* Mobile backdrop */}
+      {sidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-10"
+          onClick={toggleSidebar}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed inset-y-0 right-0 z-20 transform transition-transform duration-300 ease-in-out
+          ${sidebarOpen ? "translate-x-0" : "translate-x-full"}
+          md:relative md:translate-x-0 md:inset-y-0 md:left-0 md:right-auto
+          w-64 border-l ${
+            dark ? "bg-gray-800 border-gray-700" : "bg-gray-100 border-gray-300"
+          }`}
+      >
+        <SidebarHeader />
+        <div className="mt-4 flex-1 overflow-y-auto">
+          <button
+            className={`w-full px-4 py-2 text-left hover:${
+              dark ? "bg-gray-700" : "bg-gray-200"
+            }`}
+          >
+            Join Group
+          </button>
+          <button
+            className={`w-full px-4 py-2 text-left hover:${
+              dark ? "bg-gray-700" : "bg-gray-200"
+            }`}
+          >
+            Create Group
+          </button>
+          <button
+            className={`w-full px-4 py-2 text-left hover:${
+              dark ? "bg-gray-700" : "bg-gray-200"
+            }`}
+          >
+            Name Chats
+          </button>
+          <hr
+            className={`my-2 ${dark ? "border-gray-700" : "border-gray-300"}`}
+          />
+          {contacts.length ? (
+            contacts.map((c) => (
+              <ContactItem
+                key={c._id}
+                contact={c}
+                active={c._id === active?._id}
+                onClick={() => selectContact(c)}
+              />
+            ))
+          ) : (
+            <p className={`p-4 ${dark ? "text-gray-400" : "text-gray-500"}`}>
+              No chats
+            </p>
+          )}
+        </div>
+      </aside>
     </div>
   );
 }
