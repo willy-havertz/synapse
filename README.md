@@ -1,4 +1,3 @@
-
 # Synapse
 
 <p align="center">
@@ -8,59 +7,60 @@
 </p>
 
 <p align="center">
-  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:15px;" />
+  <img src="./client/src/assets/screenshots/banner.png" alt="Synapse Banner" width="100%" style="border-radius:20px;" alt="Synapse" />
 </p>
 
-## Welcome to *Synapse*
+## Welcome to Synapse
 
 Synapse bridges connections with real‑time chat, AI‑powered photo analysis, trend insights, and personalized analytics—all wrapped in a sleek, responsive interface. Dive in to experience seamless communication, intelligent interactions, and data‑driven decisions.
 
 <details open>
   <summary>📑 Table of Contents</summary>
 
-  1. [Features](#features)  
-  2. [Tech Stack](#tech-stack)  
-  3. [Demo](#demo)  
-  4. [Installation](#installation)  
-  5. [Env Variables](#env-variables)  
-  6. [Running the App](#running-the-app)  
-  7. [Folder Structure](#folder-structure)  
-  8. [Contributing](#contributing)  
-  9. [License](#license)  
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Demo](#demo)
+4. [Installation](#installation)
+5. [Env Variables](#env-variables)
+6. [Running the App](#running-the-app)
+7. [Folder Structure](#folder-structure)
+8. [Contributing](#contributing)
+9. [License](#license)
 </details>
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔐 **Secure Auth**: JWT + Google reCAPTCHA v2  
-- 💬 **Real‑time Chat**: 1:1 & group via Socket.io  
-- 🤖 **AI Chatbot**: GPT‑powered contextual conversations  
-- 🖼️ **DeepFace Analysis**: Photo face recognition & attributes  
-- 📈 **Analytics**: Recharts dashboard  
-- 🌐 **i18n**: Multi‑language via i18next  
-- 🎨 **Theme Toggle**: Persistent dark/light mode  
-- 📬 **Password Reset**: Email workflow  
-- ⚡️ **PWA Ready**: Offline caching & SEO  
-
----
-
-## 🛠 Tech Stack
-
-| Layer     | Technology                                                                 |
-|-----------|----------------------------------------------------------------------------|
-| Frontend  | React · Tailwind · Vite · Axios · react-hot-toast · Framer Motion · FontAwesome |
-| Backend   | Node.js · Express · Socket.io                                               |
-| AI        | OpenAI GPT · DeepFace.js                                                    |
-| DB        | MongoDB · Mongoose                                                          |
-| Auth      | JWT · Google reCAPTCHA                                                      |
-| Charts    | Recharts · react-countup                                                    |
-| i18n      | i18next · react-i18next                                                     |
-| Deploy    | Vercel · Render                                                             |
+- 🔐 **Secure Auth**: JWT + Google reCAPTCHA v2
+- 💬 **Real‑time Chat**: 1:1 & group via `Socket.io`
+- 🤖 **AI Chatbot**: GPT‑powered contextual conversations
+- 🖼️ **DeepFace Analysis**: Photo face recognition & attributes
+- 📈 **Analytics**: Recharts dashboard
+- 🌐 **i18n**: Multi‑language via i18next
+- 🎨 **Theme Toggle**: Persistent dark/light mode
+- 📬 **Password Reset**: Email workflow
+- ⚡️ **PWA Ready**: Offline caching & SEO
 
 ---
 
-## 🎬 Demo
+## Tech Stack
+
+| Layer    | Technology                                                                      |
+| -------- | ------------------------------------------------------------------------------- |
+| Frontend | ``React``  ``Tailwind``  ``Vite``  ``Axios``  ``react-hot-toast``  ``Framer Motion``  ``FontAwesome`` |
+| Backend  | ``Node.js``  ``Express``  `Socket.io`                                                 |
+| AI       | ``OpenAI GPT``  ``DeepFace.js``                                                        |
+| DB       | ``MongoDB``  ``Mongoose``                                                              |
+| Auth     | ``JWT``  ``Google reCAPTCHA``                                                          |
+| Charts   | ``Recharts``  ``react-countup``                                                        |
+| i18n     | ``i18next``  ``react-i18next``                                                         |
+| Deploy   | ``Vercel``  ``Render``                                                                 |
+
+---
+
+## Demo
+
 <p align="center">Click the image to see the live site</p>
 <p align="center">
   <a href="https://synapse-gold.vercel.app"><img src="./client/src/assets/screenshots/banner.png" style="border-radius:50%; border:3px solid purple" height="200px" width="200px"></a>
@@ -68,7 +68,7 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <table>
   <tr>
@@ -137,16 +137,15 @@ Synapse bridges connections with real‑time chat, AI‑powered photo analysis, 
       <strong>Language Switcher</strong>
     </td>
     <td align="center">
-      &mdash;
+      <img src="./client/src/assets/screenshots/banner.png" width="240" height="160" alt="Language Switcher" /><br/>
+      <strong>Synapse</strong>
     </td>
   </tr>
 </table>
 
-
-
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 # Clone the repository
@@ -157,26 +156,18 @@ cd synapse
 ---
 
 <details>
-<summary>2. Install and run <strong>Server</strong> (Node.js + Express) </summary>
+<summary>1. Install and run <strong>Server</strong> (Node.js + Express) </summary>
 
 ```bash
 cd server
 npm install
 npm start   # starts backend on configured PORT
 ```
+
 </details>
 
 <details>
-<summary>2. Install and run <strong>Server/strong> (Node.js + Express)</summary>
-
-```bash
-cd server
-npm install   
-npm start
-```
-</details>
-<details>
-<summary>3. Install and run <strong>Chatbot</strong> (Python)</summary>
+<summary>2. Install and run <strong>Chatbot</strong> (Python)</summary>
 
 ```bash
 cd chatbot
@@ -188,10 +179,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 python bot.py               # starts chatbot service
 ```
+
 </details>
 
 <details>
-<summary>4. Install and run <strong>DeepFace Service</strong> (Python)</summary>
+<summary>3. Install and run <strong>DeepFace Service</strong> (Python)</summary>
 
 ```bash
 cd deepface-service
@@ -200,23 +192,26 @@ source venv/bin/activate    # or Windows activation
 pip install -r requirements.txt
 python app.py               # launches DeepFace API server
 ```
+
 </details>
 
 <details>
-  <summary>5. Install and run <strong>Client</strong> (React + Vite + Tailwind)</summary>
+  <summary>4. Install and run <strong>Client</strong> (React + Vite + Tailwind)</summary>
 
-  ```bash
-  cd client
-  npm install
-  npm run dev  # starts frontend at http://localhost:3000
-  ```
+```bash
+cd client
+npm install
+npm run dev  # starts frontend at http://localhost:3000
+```
+
 </details>
 
 ---
 
-## 🌐 Env Variables
+## Env Variables
 
 **Server** (`./.env`)
+
 ```ini
 PORT=5000
 MONGO_URI=your_mongo_uri
@@ -231,6 +226,7 @@ CLOUDINARY_API_NAME=your_name_name
 ```
 
 **Client** (`/client/.env`)
+
 ```ini
 VITE_API_URL=http://localhost:5000
 VITE_RECAPTCHA_SITE_KEY=your_site_key
@@ -238,9 +234,10 @@ VITE_RECAPTCHA_SITE_KEY=your_site_key
 
 ---
 
-## 🚀 Running the App
+## Running the App
 
 **Development:**
+
 ```bash
 cd server
 npm start     # backend
@@ -249,6 +246,7 @@ npm run dev      # frontend
 ```
 
 **Production:**
+
 ```bash
 cd client && npm run build
 npm run dev
@@ -256,7 +254,7 @@ npm run dev
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```text
 Synapse/                 # Root project folder
@@ -285,39 +283,45 @@ Synapse/                 # Root project folder
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We ❤️ your contributions! Follow these steps to get started:
 
 1. **Fork** the repository
+
    - Click “Fork” at the top right of this page and clone your copy:
      ```bash
      git clone https://github.com/willy-havertz/synapse.git
      cd synapse
      ```
-   <p align="center">
-     <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Forking Repo" width="300" height="200"/>
-   </p>
+     <p align="center">
+       <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Forking Repo" width="300" height="200"/>
+     </p>
 
 2. **Create a branch** for your feature or bugfix:
+
    ```bash
    git checkout -b feature/awesome-feature
    ```
+
    <p align="center">
      <img src="https://media.giphy.com/media/l41YtZOb9EUABnuqA/giphy.gif" alt="Creating Branch" width="300" height="200"/>
    </p>
 
 3. **Install dependencies** and run locally:
+
    ```bash
    npm install       # install backend deps
    cd client && npm install  # install frontend deps
    npm run dev       # start both servers
    ```
+
    <p align="center">
      <img src="https://media.giphy.com/media/xUPGczXtO18pE7gG5i/giphy.gif" alt="Installing Dependencies" width="300" height="200"/>
    </p>
 
 4. **Write code**
+
    - Adhere to existing **code style** (ESLint/Prettier)
    - Add tests under `server/__tests__` or `client/__tests__`
    <p align="center">
@@ -325,18 +329,22 @@ We ❤️ your contributions! Follow these steps to get started:
    </p>
 
 5. **Commit changes** with clear, conventional commit messages:
+
    ```bash
    git add .
    git commit -m "feat(auth): add social login support"
    ```
+
    <p align="center">
      <img src="https://media.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif" alt="Commit Changes" width="300" height="200"/>
    </p>
 
 6. **Push** to your fork:
+
    ```bash
    git push origin feature/awesome-feature
    ```
+
    <p align="center">
      <img src="https://media.giphy.com/media/26tknCqiJrBQG6bxC/giphy.gif" alt="Pushing to Fork" width="300" height="200"/>
    </p>
@@ -348,38 +356,39 @@ We ❤️ your contributions! Follow these steps to get started:
      <img src="https://media.giphy.com/media/l2JehQ2GitHGdVG9y/giphy.gif" alt="Open PR" width="300" height="200"/>
    </p>
 
-<details>
-<summary>Pull Request Template</summary>
+    <p>
+    <summary>Pull Request Template</summary>
 
-```markdown
-## Description
+    ```markdown
+    ## Description
 
-Briefly explain what this PR does and why.
+    Briefly explain what this PR does and why.
 
-## Related Issue
+    ## Related Issue
 
-Closes #<issue_number>
+    Closes #<issue_number>
 
-## Type of Change
+    ## Type of Change
 
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Documentation update
-- [ ] Tests added
+    - [ ] Bug fix
+    - [ ] New feature
+    - [ ] Documentation update
+    - [ ] Tests added
 
-## How Has This Been Tested?
+    ## How Has This Been Tested?
 
-Describe the tests and manual steps you ran.
+    Describe the tests and manual steps you ran.
 
-## Checklist
+    ## Checklist
 
-- [ ] Code follows project style guidelines
-- [ ] Self-reviewed my code
-- [ ] Added relevant comments
-- [ ] Updated documentation if needed
-- [ ] Added tests and they pass
-```
-</details>
+    - [ ] Code follows project style guidelines
+    - [ ] Self-reviewed my code
+    - [ ] Added relevant comments
+    - [ ] Updated documentation if needed
+    - [ ] Added tests and they pass
+    ```
+
+    </p>
 
 8. **Respond to feedback** from reviewers and update your PR.
 
@@ -387,6 +396,6 @@ Describe the tests and manual steps you ran.
 
 ---
 
-## 📄 License
+## License
 
 Synapse is released under the MIT License. See [LICENSE](LICENSE) for details.
